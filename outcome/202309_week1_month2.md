@@ -23,7 +23,7 @@
   - 备注：
     - 测试需要在非 root 用户下运行，或者提供其他参数 (--angerout, --dropprivs), 这里选择采用 openeuler 用户做测试
     - 测试耗时不稳定，两次测试中，一次耗时 2.5 小时超时未导出日志（约 5000000 iteration），一次超过 4 小时仍未结束（>= 10000000 iteration）。
-    - assert_script_run 函数有 timeout 参数，openQA 任务也有最大时间 MAX_JOB_TIME，暂时未查明是哪个导致超时，调整 openQA 默认 MAX_JOB_TIME 再次测试，相关文档 <https://open.qa/docs/#_changing_timeouts>
+    - assert_script_run 函数有 timeout 参数，openQA 任务也有最大时间 MAX_JOB_TIME，暂时未查明是哪个导致超时，需要调整 openQA 默认 MAX_JOB_TIME 再次测试，相关文档 <https://open.qa/docs/#_changing_timeouts>
 
 相关代码尚未提交 PR，保留在 fork 仓库
 
