@@ -34,4 +34,4 @@
 
 - function/LTP：
   - 测试了在 openQA 中 reboot 的行为：正常，touch 创建的文件均有保留
-    - [reboot.png](./202309_week1/openqa-reboot.png)
+    - ![reboot.png](./202309_week1/openqa-reboot.png)
