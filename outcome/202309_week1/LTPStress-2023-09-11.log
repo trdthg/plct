@@ -1,0 +1,296 @@
+ 22:14:44 up  3:08,  1 user,  load average: 31.53, 28.72, 22.45
+0   bfq_io_cq              0      0   1360   24    8 : tunables    0    0    0 : slabdata      0      0      0
+0   btrfs_extent_map       0      0    144   28    1 : tunables    0    0    0 : slabdata      0      0      0
+0   btrfs_free_space       0      0    104   39    1 : tunables    0    0    0 : slabdata      0      0      0
+0   btrfs_inode            0      0   1128   29    8 : tunables    0    0    0 : slabdata      0      0      0
+0   dnotify_struct         0      0     32  128    1 : tunables    0    0    0 : slabdata      0      0      0
+0   exfat_cache            0      0     40  102    1 : tunables    0    0    0 : slabdata      0      0      0
+0   exfat_inode_cache      0      0    824   19    4 : tunables    0    0    0 : slabdata      0      0      0
+0   ext4_fc_dentry_update      0      0     96   42    1 : tunables    0    0    0 : slabdata      0      0      0
+0   fanotify_perm_event      0      0     96   42    1 : tunables    0    0    0 : slabdata      0      0      0
+0   fat_cache              0      0     40  102    1 : tunables    0    0    0 : slabdata      0      0      0
+0   fuse_inode             0      0    832   19    4 : tunables    0    0    0 : slabdata      0      0      0
+0   fuse_request           0      0    152   26    1 : tunables    0    0    0 : slabdata      0      0      0
+0   iint_cache             0      0    120   34    1 : tunables    0    0    0 : slabdata      0      0      0
+0   io_kiocb               0      0    256   16    1 : tunables    0    0    0 : slabdata      0      0      0
+0   ip4-frags              0      0    200   20    1 : tunables    0    0    0 : slabdata      0      0      0
+0   ip6-frags              0      0    184   22    1 : tunables    0    0    0 : slabdata      0      0      0
+0   isofs_inode_cache      0      0    672   24    4 : tunables    0    0    0 : slabdata      0      0      0
+0   kioctx                 0      0    576   28    4 : tunables    0    0    0 : slabdata      0      0      0
+0   kmalloc-rcl-1k         0      0   1024   16    4 : tunables    0    0    0 : slabdata      0      0      0
+0   kmalloc-rcl-256        0      0    256   16    1 : tunables    0    0    0 : slabdata      0      0      0
+0   kmalloc-rcl-2k         0      0   2048   16    8 : tunables    0    0    0 : slabdata      0      0      0
+0   kmalloc-rcl-4k         0      0   4096    8    8 : tunables    0    0    0 : slabdata      0      0      0
+0   kmalloc-rcl-8k         0      0   8192    4    8 : tunables    0    0    0 : slabdata      0      0      0
+0   # name            <active_objs> <num_objs> <objsize> <objperslab> <pagesperslab> : tunables <limit> <batchcount> <sharedfactor> : slabdata <active_slabs> <num_slabs> <sharedavail>
+0   nfs4_xattr_cache_cache      0      0   2128   15    8 : tunables    0    0    0 : slabdata      0      0      0
+0   nfs_direct_cache       0      0    224   18    1 : tunables    0    0    0 : slabdata      0      0      0
+0   nfs_inode_cache        0      0   1064   30    8 : tunables    0    0    0 : slabdata      0      0      0
+0   ntfs_big_inode_cache      0      0    960   17    4 : tunables    0    0    0 : slabdata      0      0      0
+0   ntfs_inode_cache       0      0    296   27    2 : tunables    0    0    0 : slabdata      0      0      0
+0   p9_req_t               0      0    160   25    1 : tunables    0    0    0 : slabdata      0      0      0
+0   perf_event             0      0   1248   26    8 : tunables    0    0    0 : slabdata      0      0      0
+0   PING                   0      0   1024   16    4 : tunables    0    0    0 : slabdata      0      0      0
+0   PINGv6                 0      0   1216   26    8 : tunables    0    0    0 : slabdata      0      0      0
+0   request_sock_TCPv6      0      0    312   26    2 : tunables    0    0    0 : slabdata      0      0      0
+0   rpc_inode_cache        0      0    704   23    4 : tunables    0    0    0 : slabdata      0      0      0
+0   slabinfo - version: 2.1
+0   task_delay_info        0      0    144   28    1 : tunables    0    0    0 : slabdata      0      0      0
+0   tw_sock_TCPv6          0      0    272   30    2 : tunables    0    0    0 : slabdata      0      0      0
+0   userfaultfd_ctx_cache      0      0    192   21    1 : tunables    0    0    0 : slabdata      0      0      0
+0   user_namespace         0      0    624   26    4 : tunables    0    0    0 : slabdata      0      0      0
+0   v9fs_inode_cache       0      0    704   23    4 : tunables    0    0    0 : slabdata      0      0      0
+0   xfrm_dst_cache         0      0    320   25    2 : tunables    0    0    0 : slabdata      0      0      0
+0   xfs_bmbt_cur           0      0    328   24    2 : tunables    0    0    0 : slabdata      0      0      0
+0   xfs_buf                0      0    384   21    2 : tunables    0    0    0 : slabdata      0      0      0
+0   xfs_buf_item           0      0    272   30    2 : tunables    0    0    0 : slabdata      0      0      0
+0   xfs_bui_item           0      0    208   19    1 : tunables    0    0    0 : slabdata      0      0      0
+0   xfs_da_state           0      0    480   17    2 : tunables    0    0    0 : slabdata      0      0      0
+0   xfs_dqtrx              0      0    528   31    4 : tunables    0    0    0 : slabdata      0      0      0
+0   xfs_efd_item           0      0    440   18    2 : tunables    0    0    0 : slabdata      0      0      0
+0   xfs_ili                0      0    200   20    1 : tunables    0    0    0 : slabdata      0      0      0
+0   xfs_inode              0      0   1024   16    4 : tunables    0    0    0 : slabdata      0      0      0
+0   xfs_rmapbt_cur         0      0    264   31    2 : tunables    0    0    0 : slabdata      0      0      0
+0   xfs_rud_item           0      0    176   23    1 : tunables    0    0    0 : slabdata      0      0      0
+0   xfs_rui_item           0      0    688   23    4 : tunables    0    0    0 : slabdata      0      0      0
+0   xfs_trans              0      0    232   17    1 : tunables    0    0    0 : slabdata      0      0      0
+4.08   numa_policy           85     85     48   85    1 : tunables    0    0    0 : slabdata      1      1      0
+8   bio-296               25     25    320   25    2 : tunables    0    0    0 : slabdata      1      1      0
+8.064   bio-360               21     21    384   21    2 : tunables    0    0    0 : slabdata      1      1      0
+8.064   bio-376               21     21    384   21    2 : tunables    0    0    0 : slabdata      1      1      0
+8.064   bio-432               18     18    448   18    2 : tunables    0    0    0 : slabdata      1      1      0
+8.064   kmalloc-rcl-192       42     42    192   21    1 : tunables    0    0    0 : slabdata      2      2      0
+8.16   bio_post_read_ctx    170    170     48   85    1 : tunables    0    0    0 : slabdata      2      2      0
+12.288   bio-248               48     48    256   16    1 : tunables    0    0    0 : slabdata      3      3      0
+15.552   file_lock_cache       72     72    216   18    1 : tunables    0    0    0 : slabdata      4      4      0
+15.984   request_queue         18     18    888   18    4 : tunables    0    0    0 : slabdata      1      1      0
+16.128   dax_cache             21     21    768   21    4 : tunables    0    0    0 : slabdata      1      1      0
+16.128   ext4_prealloc_space    144    144    112   36    1 : tunables    0    0    0 : slabdata      4      4      0
+16.128   khugepaged_mm_slot    144    144    112   36    1 : tunables    0    0    0 : slabdata      4      4      0
+16.128   nsproxy              224    224     72   56    1 : tunables    0    0    0 : slabdata      4      4      0
+16.32   ext4_allocation_context    120    120    136   30    1 : tunables    0    0    0 : slabdata      4      4      0
+16.32   ext4_system_zone     408    408     40  102    1 : tunables    0    0    0 : slabdata      4      4      0
+16.32   ip_fib_trie          340    340     48   85    1 : tunables    0    0    0 : slabdata      4      4      0
+16.32   kernfs_iattrs_cache    204    204     80   51    1 : tunables    0    0    0 : slabdata      4      4      0
+16.32   mqueue_inode_cache     17     17    960   17    4 : tunables    0    0    0 : slabdata      1      1      0
+16.32   pde_opener           408    408     40  102    1 : tunables    0    0    0 : slabdata      4      4      0
+16.32   seq_file             136    136    120   34    1 : tunables    0    0    0 : slabdata      4      4      0
+16.352   ip_fib_alias         292    292     56   73    1 : tunables    0    0    0 : slabdata      4      4      0
+16.384   bio-120              128    128    128   32    1 : tunables    0    0    0 : slabdata      4      4      0
+16.384   ep_head             1024   1024     16  256    1 : tunables    0    0    0 : slabdata      4      4      0
+16.384   jbd2_revoke_table_s   1024   1024     16  256    1 : tunables    0    0    0 : slabdata      4      4      0
+16.384   RAW                   16     16   1024   16    4 : tunables    0    0    0 : slabdata      1      1      0
+24.576   dquot                 96     96    256   16    1 : tunables    0    0    0 : slabdata      6      6      0
+24.576   kmem_cache_node      384    384     64   64    1 : tunables    0    0    0 : slabdata      6      6      0
+28.224   skbuff_ext_cache     147    147    192   21    1 : tunables    0    0    0 : slabdata      7      7      0
+28.672   kmalloc-cg-128       224    224    128   32    1 : tunables    0    0    0 : slabdata      7      7      0
+31.104   taskstats             72     72    432   18    2 : tunables    0    0    0 : slabdata      4      4      0
+31.104   uts_namespace         72     72    432   18    2 : tunables    0    0    0 : slabdata      4      4      0
+31.616   TCPv6                 13     13   2432   13    8 : tunables    0    0    0 : slabdata      1      1      0
+32.256   nfs_read_data         36     36    896   18    4 : tunables    0    0    0 : slabdata      2      2      0
+32.256   sgpool-16             84     84    384   21    2 : tunables    0    0    0 : slabdata      4      4      0
+32.448   request_sock_TCP     104    104    312   26    2 : tunables    0    0    0 : slabdata      4      4      0
+32.64   sigqueue             408    408     80   51    1 : tunables    0    0    0 : slabdata      8      8      0
+32.64   tw_sock_TCP          120    120    272   30    2 : tunables    0    0    0 : slabdata      4      4      0
+32.768   kmalloc-rcl-512       64     64    512   16    2 : tunables    0    0    0 : slabdata      4      4      0
+32.768   skbuff_fclone_cache     64     64    512   16    2 : tunables    0    0    0 : slabdata      4      4      0
+36.432   ext4_groupinfo_4k    198    198    184   22    1 : tunables    0    0    0 : slabdata      9      9      0
+36.864   pending_reservation    896   1152     32  128    1 : tunables    0    0    0 : slabdata      9      9      0
+40.96   fsnotify_mark_connector   1280   1280     32  128    1 : tunables    0    0    0 : slabdata     10     10      0
+49.152   kmalloc-rcl-64       768    768     64   64    1 : tunables    0    0    0 : slabdata     12     12      0
+53.248   kmem_cache           208    208    256   16    1 : tunables    0    0    0 : slabdata     13     13      0
+57.12   lsm_file_cache      1733   2380     24  170    1 : tunables    0    0    0 : slabdata     14     14      0
+61.2   jbd2_journal_head    374    510    120   34    1 : tunables    0    0    0 : slabdata     15     15      0
+64   dio                  100    100    640   25    4 : tunables    0    0    0 : slabdata      4      4      0
+64.512   sgpool-32             84     84    768   21    4 : tunables    0    0    0 : slabdata      4      4      0
+64.768   bdev_cache            44     44   1472   22    8 : tunables    0    0    0 : slabdata      2      2      0
+64.768   task_group            92     92    704   23    4 : tunables    0    0    0 : slabdata      4      4      0
+64.8   hugetlbfs_inode_cache    100    100    648   25    4 : tunables    0    0    0 : slabdata      4      4      0
+65.408   mbcache             1168   1168     56   73    1 : tunables    0    0    0 : slabdata     16     16      0
+65.536   biovec-64             64     64   1024   16    4 : tunables    0    0    0 : slabdata      4      4      0
+69.632   kmalloc-cg-64        927   1088     64   64    1 : tunables    0    0    0 : slabdata     17     17      0
+69.632   skbuff_head_cache    256    272    256   16    1 : tunables    0    0    0 : slabdata     17     17      0
+73.728   ext4_io_end         1152   1152     64   64    1 : tunables    0    0    0 : slabdata     18     18      0
+84.672   kmalloc-cg-192       309    441    192   21    1 : tunables    0    0    0 : slabdata     21     21      0
+94.208   kmemleak_scan_area   2944   2944     32  128    1 : tunables    0    0    0 : slabdata     23     23      0
+96.768   UDPv6                 72     72   1344   24    8 : tunables    0    0    0 : slabdata      3      3      0
+97.152   ext4_groupinfo_1k    552    552    176   23    1 : tunables    0    0    0 : slabdata     24     24      0
+97.776   fat_inode_cache      126    126    776   21    4 : tunables    0    0    0 : slabdata      6      6      0
+112.896   bio-184              588    588    192   21    1 : tunables    0    0    0 : slabdata     28     28      0
+118.784   kmalloc-cg-256       363    464    256   16    1 : tunables    0    0    0 : slabdata     29     29      0
+120.064   net_namespace         28     28   4288    7    8 : tunables    0    0    0 : slabdata      4      4      0
+121.68   anon_vma             999   1170    104   39    1 : tunables    0    0    0 : slabdata     30     30      0
+122.88   pid                  781    960    128   32    1 : tunables    0    0    0 : slabdata     30     30      0
+122.88   sgpool-128            40     40   3072   10    8 : tunables    0    0    0 : slabdata      4      4      0
+125.44   TCP                   56     56   2240   14    8 : tunables    0    0    0 : slabdata      4      4      0
+126.464   RAWv6                104    104   1216   26    8 : tunables    0    0    0 : slabdata      4      4      0
+129.024   cred_jar             649    672    192   21    1 : tunables    0    0    0 : slabdata     32     32      0
+129.024   sgpool-64             84     84   1536   21    8 : tunables    0    0    0 : slabdata      4      4      0
+131.072   biovec-128            64     64   2048   16    8 : tunables    0    0    0 : slabdata      4      4      0
+131.072   kmalloc-cg-8k         16     16   8192    4    8 : tunables    0    0    0 : slabdata      4      4      0
+131.072   names_cache           32     32   4096    8    8 : tunables    0    0    0 : slabdata      4      4      0
+139.264   anon_vma_chain      1490   2176     64   64    1 : tunables    0    0    0 : slabdata     34     34      0
+139.264   kmalloc-rcl-128     1088   1088    128   32    1 : tunables    0    0    0 : slabdata     34     34      0
+143.36   maple_node           473    560    256   16    1 : tunables    0    0    0 : slabdata     35     35      0
+145.728   files_cache          207    207    704   23    4 : tunables    0    0    0 : slabdata      9      9      0
+160   mnt_cache            466    500    320   25    2 : tunables    0    0    0 : slabdata     20     20      0
+163.2   UNIX                 150    150   1088   30    8 : tunables    0    0    0 : slabdata      5      5      0
+163.84   kmalloc-cg-512       228    320    512   16    2 : tunables    0    0    0 : slabdata     20     20      0
+165.312   proc_dir_entry       861    861    192   21    1 : tunables    0    0    0 : slabdata     41     41      0
+208.896   filp                 615    816    256   16    1 : tunables    0    0    0 : slabdata     51     51      0
+226.688   trace_event_file    2576   2576     88   46    1 : tunables    0    0    0 : slabdata     56     56      0
+237.12   sock_inode_cache     285    285    832   19    4 : tunables    0    0    0 : slabdata     15     15      0
+258.048   mm_struct            192    192   1344   24    8 : tunables    0    0    0 : slabdata      8      8      0
+264   vm_area_struct      1361   1650    160   25    1 : tunables    0    0    0 : slabdata     66     66      0
+310.464   vmap_area           4312   4312     72   56    1 : tunables    0    0    0 : slabdata     77     77      0
+320   skbuff_small_head    500    500    640   25    4 : tunables    0    0    0 : slabdata     20     20      0
+335.216   ftrace_event_field   5986   5986     56   73    1 : tunables    0    0    0 : slabdata     82     82      0
+360.448   kmalloc-cg-1k        215    352   1024   16    4 : tunables    0    0    0 : slabdata     22     22      0
+360.448   kmalloc-cg-4k         88     88   4096    8    8 : tunables    0    0    0 : slabdata     11     11      0
+409.6   kmalloc-128         2024   3200    128   32    1 : tunables    0    0    0 : slabdata    100    100      0
+419.328   kmalloc-192         1817   2184    192   21    1 : tunables    0    0    0 : slabdata    104    104      0
+419.328   signal_cache         310    364   1152   28    8 : tunables    0    0    0 : slabdata     13     13      0
+448   sighand_cache        240    280   1600   20    8 : tunables    0    0    0 : slabdata     14     14      0
+458.752   kmalloc-8k            56     56   8192    4    8 : tunables    0    0    0 : slabdata     14     14      0
+491.52   kmalloc-cg-2k        221    240   2048   16    8 : tunables    0    0    0 : slabdata     15     15      0
+655.36   biovec-max           128    160   4096    8    8 : tunables    0    0    0 : slabdata     20     20      0
+688.128   kmalloc-1k           572    672   1024   16    4 : tunables    0    0    0 : slabdata     42     42      0
+720.896   kmalloc-256         2767   2816    256   16    1 : tunables    0    0    0 : slabdata    176    176      0
+870.912   task_struct          195    243   3584    9    8 : tunables    0    0    0 : slabdata     27     27      0
+876.544   kmalloc-64         12711  13696     64   64    1 : tunables    0    0    0 : slabdata    214    214      0
+925.68   shmem_inode_cache   1131   1218    760   21    4 : tunables    0    0    0 : slabdata     58     58      0
+966.656   dmaengine-unmap-2   9669  15104     64   64    1 : tunables    0    0    0 : slabdata    236    236      0
+992.496   proc_inode_cache    1332   1426    696   23    4 : tunables    0    0    0 : slabdata     62     62      0
+1212.42   kmalloc-2k           582    592   2048   16    8 : tunables    0    0    0 : slabdata     37     37      0
+1268.88   extent_status      18000  31722     40  102    1 : tunables    0    0    0 : slabdata    311    311      0
+1961.98   kernfs_node_cache  15240  15328    128   32    1 : tunables    0    0    0 : slabdata    479    479      0
+2228.22   kmalloc-4k           541    544   4096    8    8 : tunables    0    0    0 : slabdata     68     68      0
+5169.02   dentry             26599  26922    192   21    1 : tunables    0    0    0 : slabdata   1282   1282      0
+7979.01   kmalloc-512        15087  15584    512   16    2 : tunables    0    0    0 : slabdata    974    974      0
+11291.9   inode_cache        17926  18096    624   26    4 : tunables    0    0    0 : slabdata    696    696      0
+16025   radix_tree_node    26042  27440    584   28    4 : tunables    0    0    0 : slabdata    980    980      0
+21879   ext4_inode_cache   13014  18732   1168   28    8 : tunables    0    0    0 : slabdata    669    669      0
+58061.6   buffer_head       557835 558285    104   39    1 : tunables    0    0    0 : slabdata  14315  14315      0
+168534   kmemleak_object   748081 957582    176   23    1 : tunables    0    0    0 : slabdata  41634  41634      0
+root 301 0.0 0.0 21268 1792    0:00 /sbin/agetty -o -p -- \u --keep-baud 115200,57600,38400,9600 - vt220
+root 302 0.0 0.0 21268 1792    0:00 /sbin/agetty -o -p -- \u --keep-baud 115200,57600,38400,9600 - vt220
+root 68070 35.0 0.0 21836 2048    0:00 grep /
+root 299 0.0 0.0 23044 2560    0:01 /usr/sbin/crond -n
+dbus 273 0.4 0.1 7788 4096    0:54 /usr/bin/dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation --syslog-only
+root 279 0.2 0.1 14720 6912    0:23 /usr/lib/systemd/systemd-logind
+root 213 0.6 0.1 27976 7680    1:15 /usr/lib/systemd/systemd-udevd
+root 287 0.0 0.1 14656 7680    0:00 sshd: /usr/sbin/sshd -D [listener] 0 of 10-100 startups
+systemd+ 265 0.0 0.2 88296 8896    0:04 /usr/lib/systemd/systemd-timesyncd
+root 1 1.3 0.2 165268 10492    2:30 /sbin/init
+root 178 0.3 0.2 31160 11160    0:38 /usr/lib/systemd/systemd-journald
+root 281 0.0 0.5 346444 22384    0:07 /usr/sbin/NetworkManager --no-daemon
+24
+real-time non-blocking time  (microseconds, -R) unlimited
+core file size              (blocks, -c) unlimited
+data seg size               (kbytes, -d) unlimited
+scheduling priority                 (-e) 0
+file size                   (blocks, -f) unlimited
+pending signals                     (-i) 15361
+max locked memory           (kbytes, -l) 65536
+max memory size             (kbytes, -m) unlimited
+open files                          (-n) 1024
+pipe size                (512 bytes, -p) 8
+POSIX message queues         (bytes, -q) 819200
+real-time priority                  (-r) 0
+stack size                  (kbytes, -s) 8192
+cpu time                   (seconds, -t) unlimited
+max user processes                  (-u) 15361
+virtual memory              (kbytes, -v) unlimited
+file locks                          (-x) unlimited
+.:
+ltpstress-for-openeuler
+run_ltpstress.log
+run_ltpstress.sh
+trinity-2023-09-11.log
+
+.:
+ltpstress-for-openeuler
+run_ltpstress.log
+run_ltpstress.sh
+trinity-2023-09-11.log
+
+.:
+ltpstress-for-openeuler
+run_ltpstress.log
+run_ltpstress.sh
+trinity-2023-09-11.log
+
+.:
+ltpstress-for-openeuler
+run_ltpstress.log
+run_ltpstress.sh
+trinity-2023-09-11.log
+
+.:
+ltpstress-for-openeuler
+run_ltpstress.log
+run_ltpstress.sh
+trinity-2023-09-11.log
+
+.:
+ltpstress-for-openeuler
+run_ltpstress.log
+run_ltpstress.sh
+trinity-2023-09-11.log
+
+.:
+ltpstress-for-openeuler
+run_ltpstress.log
+run_ltpstress.sh
+trinity-2023-09-11.log
+total 1608
+drwxr-xr-x  2 root root   4096 Aug 30 01:25 catalog
+drwxr-xr-x  2 root root   4096 Aug 30 01:27 network
+drwxr-xr-x  2 root root   4096 Aug 30 01:27 ntp-units.d
+-rwxr-xr-x  1 root root   2351 Jul 31 08:00 purge-nobody-user
+drwxr-xr-x 26 root root  12288 Aug 30 01:37 system
+-rwxr-xr-x  1 root root 114176 Jul 31 08:00 systemd
+-rwxr-xr-x  1 root root  19768 Jul 31 08:00 systemd-binfmt
+-rwxr-xr-x  1 root root  14680 Jul 31 08:00 systemd-boot-check-no-failures
+-rwxr-xr-x  1 root root   8920 Jul 31 08:00 systemd-cgroups-agent
+-rwxr-xr-x  1 root root  79824 Jul 31 08:00 systemd-coredump
+-rwxr-xr-x  1 root root  24968 Jul 31 08:00 systemd-fsck
+-rwxr-xr-x  1 root root  19136 Jul 31 08:00 systemd-growfs
+-rwxr-xr-x  1 root root  13344 Jul 31 08:00 systemd-hibernate-resume
+-rwxr-xr-x  1 root root  54416 Jul 31 08:00 systemd-hostnamed
+-rwxr-xr-x  1 root root  19184 Jul 31 08:00 systemd-initctl
+-rwxr-xr-x  1 root root 226160 Jul 31 08:00 systemd-journald
+-rwxr-xr-x  1 root root  54512 Jul 31 08:00 systemd-localed
+-rwxr-xr-x  1 root root 320288 Jul 31 08:00 systemd-logind
+-rwxr-xr-x  1 root root  14096 Jul 31 08:00 systemd-makefs
+-rwxr-xr-x  1 root root  19920 Jul 31 08:00 systemd-modules-load
+-rwxr-xr-x  1 root root  43936 Jul 31 08:00 systemd-network-generator
+-rwxr-xr-x  1 root root  24600 Jul 31 08:00 systemd-random-seed
+-rwxr-xr-x  1 root root  18960 Jul 31 08:00 systemd-remount-fs
+-rwxr-xr-x  1 root root  14448 Jul 31 08:00 systemd-reply-password
+-rwxr-xr-x  1 root root  64904 Jul 31 08:00 systemd-shutdown
+-rwxr-xr-x  1 root root  34088 Jul 31 08:00 systemd-sleep
+-rwxr-xr-x  1 root root  30520 Jul 31 08:00 systemd-socket-proxyd
+-rwxr-xr-x  1 root root  14120 Jul 31 08:00 systemd-sulogin-shell
+-rwxr-xr-x  1 root root  25040 Jul 31 08:00 systemd-sysctl
+lrwxrwxrwx  1 root root     41 Jul 31 08:00 systemd-sysroot-fstab-check -> system-generators/systemd-fstab-generator
+lrwxrwxrwx  1 root root     27 Aug  4 08:00 systemd-sysv-install -> ../../../usr/sbin/chkconfig
+-rwxr-xr-x  1 root root  45784 Jul 31 08:00 systemd-timedated
+-rwxr-xr-x  1 root root  64384 Jul 31 08:00 systemd-timesyncd
+-rwxr-xr-x  1 root root  19016 Jul 31 08:00 systemd-time-wait-sync
+lrwxrwxrwx  1 root root     17 Jul 31 08:00 systemd-udevd -> ../../bin/udevadm
+-rwxr-xr-x  1 root root  13408 Jul 31 08:00 systemd-update-done
+-rwxr-xr-x  1 root root   3208 Jul 31 08:00 systemd-update-helper
+-rwxr-xr-x  1 root root  19320 Jul 31 08:00 systemd-update-utmp
+-rwxr-xr-x  1 root root  19424 Jul 31 08:00 systemd-user-runtime-dir
+-rwxr-xr-x  1 root root  13584 Jul 31 08:00 systemd-user-sessions
+-rwxr-xr-x  1 root root  23096 Jul 31 08:00 systemd-vconsole-setup
+-rwxr-xr-x  1 root root  18976 Jul 31 08:00 systemd-volatile-root
+drwxr-xr-x  2 root root   4096 Aug 30 01:27 system-generators
+drwxr-xr-x  2 root root   4096 Aug 30 01:25 system-preset
+drwxr-xr-x  2 root root   4096 Jul 31 08:00 system-shutdown
+drwxr-xr-x  2 root root   4096 Jul 31 08:00 system-sleep
+drwxr-xr-x  3 root root   4096 Aug 30 01:26 user
+drwxr-xr-x  2 root root   4096 Aug 30 01:25 user-environment-generators
+drwxr-xr-x  2 root root   4096 Jul 31 08:00 user-generators
+drwxr-xr-x  2 root root   4096 Aug 30 01:25 user-preset
