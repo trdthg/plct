@@ -13,7 +13,7 @@
   - 日志：[unixbench-2023-09-10.log](./202309_week1/unixbench-unixbench-2023-09-10.log)
   - 视频：[stream_unixbench-20230910.ogv](./202309_week1/stream_unixbench-20230910.ogv)
 - long_stress/LTPStress
-  - openQA 截图：![OpenQA-LTPStress.png](./202309_week1/LTPStress.png)
+  - openQA 截图：![OpenQA-LTPStress.png](./202309_week1/openqa-LTPStress.png)
   - 日志：[LTPStress-2023-09-11.log](./202309_week1/LTPStress-2023-09-11.log)
   - 备注：
     - 原测试需要 24 小时，这里调整为 3 小时
