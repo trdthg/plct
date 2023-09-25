@@ -1,10 +1,8 @@
 # 2023 年 9 月 第三周
 
-## openEuler RISC-V 23.09 测试
+## 本周工作
 
-- mugen
-- 问题：
-  - mugen 启动前需要配置环境变量文件，单机测试可以直接写 127.0.0.1，多机测试时暂时无法获取其他机器的 ip 地址
+mugen
 
 - 测试环境：本机 - 单机 - 测试所有用例
 - 运行截图：![mugen_run_in_openqa](202309_week3/mugen_run_in_openqa.png)
@@ -15,6 +13,8 @@
 ## 其他
 
 - 多机测试方案 (待定)
+
+  mugen 启动前需要配置环境变量文件，单机测试可以直接写 127.0.0.1，多机测试时暂时无法获取其他机器的 ip 地址
 
   1. 考虑启动前手动设置 qemu 虚拟机 ip，然后直接用此 ip 生成配置文件（或者提前写好配置文件）
   2. 动态获取 ip。openQA 的 mmapi（Multi-Machine API）内置函数库提供了一些获取其他机器信息的方法。未提供文档，需要前往 [源代码仓库](https://github.com/os-autoinst/os-autoinst/blob/master/mmapi.pm) 寻找。例如 get_job_info 函数可以拿到任务的 Setting, vars 等信息。get_children 可以拿到其他机器的信息。
