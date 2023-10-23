@@ -1,0 +1,86 @@
+   #    #  #    #  #  #    #          #####   ######  #    #   ####   #    #
+   #    #  ##   #  #   #  #           #    #  #       ##   #  #    #  #    #
+   #    #  # #  #  #    ##            #####   #####   # #  #  #       ######
+   #    #  #  # #  #    ##            #    #  #       #  # #  #       #    #
+   #    #  #   ##  #   #  #           #    #  #       #   ##  #    #  #    #
+    ####   #    #  #  #    #          #####   ######  #    #   ####   #    #
+
+   Version 5.1.3                      Based on the Byte Magazine Unix Benchmark
+
+   Multi-CPU version                  Version 5 revisions by Ian Smith,
+                                      Sunnyvale, CA, USA
+   January 13, 2011                   johantheghost at yahoo period com
+
+------------------------------------------------------------------------------
+   Use directories for:
+      * File I/O tests (named fs***) = /home/openeuler/byte-unixbench/UnixBench/tmp
+      * Results                      = /home/openeuler/byte-unixbench/UnixBench/results
+------------------------------------------------------------------------------
+
+
+4 x Dhrystone 2 using register variables  1 2 3 4 5 6 7 8 9 10
+
+4 x Double-Precision Whetstone  1 2 3 4 5 6 7 8 9 10
+
+4 x Execl Throughput  1 2 3
+
+4 x File Copy 1024 bufsize 2000 maxblocks  1 2 3
+
+4 x File Copy 256 bufsize 500 maxblocks  1 2 3
+
+4 x File Copy 4096 bufsize 8000 maxblocks  1 2 3
+
+4 x Pipe Throughput  1 2 3 4 5 6 7 8 9 10
+
+4 x Pipe-based Context Switching  1 2 3 4 5 6 7 8 9 10
+
+4 x Process Creation  1 2 3
+
+4 x System Call Overhead  1 2 3 4 5 6 7 8 9 10
+
+4 x Shell Scripts (1 concurrent)  1 2 3
+
+4 x Shell Scripts (8 concurrent)  1 2 3
+
+========================================================================
+   BYTE UNIX Benchmarks (Version 5.1.3)
+
+   System: openeuler: GNU/Linux
+   OS: GNU/Linux -- 6.4.0-10.1.0.20.oe2309.riscv64 -- #1 SMP Sat Oct  7 06:19:28 UTC 2023
+   Machine: riscv64 (riscv64)
+   Language: en_US.utf8 (charmap="UTF-8", collate="UTF-8")
+   22:45:16 up 41 min,  1 user,  load average: 1.55, 0.64, 0.62; runlevel 2023-10-10
+
+------------------------------------------------------------------------
+Benchmark Run: Tue Oct 10 2023 22:45:17 - 23:15:13
+4 CPUs in system; running 4 parallel copies of tests
+
+Dhrystone 2 using register variables        8043208.4 lps   (10.2 s, 7 samples)
+Double-Precision Whetstone                      283.2 MWIPS (9.2 s, 7 samples)
+Execl Throughput                                 52.3 lps   (29.9 s, 2 samples)
+File Copy 1024 bufsize 2000 maxblocks         26589.1 KBps  (30.0 s, 2 samples)
+File Copy 256 bufsize 500 maxblocks            7676.1 KBps  (30.0 s, 2 samples)
+File Copy 4096 bufsize 8000 maxblocks         78912.7 KBps  (30.0 s, 2 samples)
+Pipe Throughput                               34760.0 lps   (10.3 s, 7 samples)
+Pipe-based Context Switching                   6028.5 lps   (10.4 s, 7 samples)
+Process Creation                                132.1 lps   (30.4 s, 2 samples)
+Shell Scripts (1 concurrent)                    119.5 lpm   (61.0 s, 2 samples)
+Shell Scripts (8 concurrent)                     21.1 lpm   (65.5 s, 2 samples)
+System Call Overhead                         160542.9 lps   (10.3 s, 7 samples)
+
+System Benchmarks Index Values               BASELINE       RESULT    INDEX
+Dhrystone 2 using register variables         116700.0    8043208.4    689.2
+Double-Precision Whetstone                       55.0        283.2     51.5
+Execl Throughput                                 43.0         52.3     12.2
+File Copy 1024 bufsize 2000 maxblocks          3960.0      26589.1     67.1
+File Copy 256 bufsize 500 maxblocks            1655.0       7676.1     46.4
+File Copy 4096 bufsize 8000 maxblocks          5800.0      78912.7    136.1
+Pipe Throughput                               12440.0      34760.0     27.9
+Pipe-based Context Switching                   4000.0       6028.5     15.1
+Process Creation                                126.0        132.1     10.5
+Shell Scripts (1 concurrent)                     42.4        119.5     28.2
+Shell Scripts (8 concurrent)                      6.0         21.1     35.1
+System Call Overhead                          15000.0     160542.9    107.0
+                                                                   ========
+System Benchmarks Index Score                                          45.8
+
