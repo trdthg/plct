@@ -1,0 +1,20 @@
+[root@openeuler qemu]# ruyibuild generate
+[  568.834583][  T723] docker0: port 1(vetheaf7c2f) entered blocking state
+[  568.837254][  T723] docker0: port 1(vetheaf7c2f) entered disabled state
+[  568.838567][  T723] vetheaf7c2f: entered allmulticast mode
+[  568.844816][  T723] vetheaf7c2f: entered promiscuous mode
+[  571.485930][ T1014] memfd_create() without MFD_EXEC nor MFD_NOEXEC_SEAL, pid=1014 'exe'
+[  574.859072][  T761] eth0: renamed from veth8af4b54
+[  574.899677][  T200] IPv6: ADDRCONF(NETDEV_CHANGE): vetheaf7c2f: link becomes ready
+[  574.902362][  T200] docker0: port 1(vetheaf7c2f) entered blocking state
+[  574.903707][  T200] docker0: port 1(vetheaf7c2f) entered forwarding state
+[  574.906284][  T200] IPv6: ADDRCONF(NETDEV_CHANGE): docker0: link becomes ready
+2023-10-30 19:55:56,612 - INFO - docker run amd64/ubuntu:latest successful
+[  577.200418][  T724] veth8af4b54: renamed from eth0
+[  577.274047][  T255] docker0: port 1(vetheaf7c2f) entered disabled state
+[  577.449080][  T724] docker0: port 1(vetheaf7c2f) entered disabled state
+[  577.460282][  T724] vetheaf7c2f (unregistering): left allmulticast mode
+[  577.460894][  T724] vetheaf7c2f (unregistering): left promiscuous mode
+[  577.461475][  T724] docker0: port 1(vetheaf7c2f) entered disabled state
+Error response from daemon: Container be2cf43acb200b6a22459899d8edc30c31bc52b3439ef1b1c2f6c49a5ddb8132 is not running
+[root@openeuler qemu]#
