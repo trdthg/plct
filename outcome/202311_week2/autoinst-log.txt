@@ -1,0 +1,66 @@
+[2023-11-09T20:50:14.227087+08:00] [info] +++ setup notes +++
+[2023-11-09T20:50:14.227475+08:00] [info] Running on localhost:21 (Linux 6.5.4-1-default #1 SMP PREEMPT_DYNAMIC Wed Sep 20 05:07:04 UTC 2023 (fdd7e9e) x86_64)
+[2023-11-09T20:50:14.232973+08:00] [debug] +++ worker notes +++
+[37m[2023-11-09T20:50:14.883977+08:00] [debug] [pid:5644] Current version is 4.6.1687960328.0df62a5 [interface v39][0m
+[37m[2023-11-09T20:50:14.916934+08:00] [debug] [pid:5644] git hash in pointer_box_dev: 13ec27f2cd1cce2e4a86b7641d87fba415e3fbdc[0m
+x11tty:1[37m[2023-11-09T20:50:15.348518+08:00] [debug] [pid:5644] usingenv DESKTOP=xfce[0m
+[37m[2023-11-09T20:50:15.348721+08:00] [debug] [pid:5644] usingenv DISTRI=pointer_box_dev[0m
+[37m[2023-11-09T20:50:15.348804+08:00] [debug] [pid:5644] usingenv INSTLANG=en_US[0m
+[37m[2023-11-09T20:50:15.351664+08:00] [debug] [pid:5644] parse_vars (variables parsed from YAML schedule):[0m
+[37m[2023-11-09T20:50:15.351977+08:00] [debug] [pid:5644] --- {}
+  [0m
+[37m[2023-11-09T20:50:15.352597+08:00] [debug] [pid:5644] ---
+  - ruyisdk/init
+  - ruyisdk/install_package
+  - ruyisdk/ruyi
+  - shutdown/console_shutdown_inplace
+  [0m
+[37m[2023-11-09T20:50:15.352699+08:00] [debug] [pid:5644] parse_test_suite_data (data parsed from YAML test_data):[0m
+[37m[2023-11-09T20:50:15.352845+08:00] [debug] [pid:5644] --- {}
+  [0m
+[37m[2023-11-09T20:50:15.355864+08:00] [debug] [pid:5644] scheduling init tests/ruyisdk/init.pm[0m
+[37m[2023-11-09T20:50:15.357366+08:00] [debug] [pid:5644] scheduling install_package tests/ruyisdk/install_package.pm[0m
+[37m[2023-11-09T20:50:15.358827+08:00] [debug] [pid:5644] scheduling ruyi tests/ruyisdk/ruyi.pm[0m
+[37m[2023-11-09T20:50:15.359776+08:00] [debug] [pid:5644] scheduling console_shutdown_inplace tests/shutdown/console_shutdown_inplace.pm[0m
+[2023-11-09T20:50:15.370072+08:00] [info] [pid:5653] cmdsrv: daemon reachable under http://*:20213/GTLB47U6knDFL4EF/
+[2023-11-09T20:50:15.373041+08:00] [info] [pid:5653] Listening at "http://0.0.0.0:20213"
+Web application available at http://0.0.0.0:20213
+[37m[2023-11-09T20:50:15.399133+08:00] [debug] [pid:5644] git hash in pointer_box_dev/products/pointer_box_dev/needles: d6ab76e8dd18b7af1e29e8c2a620e1c5d60acbd3[0m
+[37m[2023-11-09T20:50:15.399360+08:00] [debug] [pid:5644] init needles from pointer_box_dev/products/pointer_box_dev/needles[0m
+[37m[2023-11-09T20:50:15.513690+08:00] [debug] [pid:5644] loaded 598 needles[0m
+[37m[2023-11-09T20:50:15.533969+08:00] [debug] [pid:5644] 5644: channel_out 16, channel_in 15[0m
+[37m[2023-11-09T20:50:15.566049+08:00] [debug] [pid:5661] 5661: cmdpipe 14, rsppipe 17[0m
+[37m[2023-11-09T20:50:15.566213+08:00] [debug] [pid:5661] started mgmt loop with pid 5661[0m
+[37m[2023-11-09T20:50:45.593449+08:00] [debug] [pid:5661] Establishing VNC connection to 192.168.0.23:5901[0m
+GOT GO
+
+[37m[2023-11-09T20:50:45.658895+08:00] [debug] [pid:5644] received magic close[0m
+[31m[2023-11-09T20:50:45.659695+08:00] [warn] [pid:5644] !!! OpenQA::Isotovideo::Runner::_read_response: THERE IS NOTHING TO READ 16 5 4[0m
+[37m[2023-11-09T20:50:45.659999+08:00] [debug] [pid:5644] stopping command server 5653 because test execution ended[0m
+[37m[2023-11-09T20:50:45.660137+08:00] [debug] [pid:5644] isotovideo: informing websocket clients before stopping command server: http://127.0.0.1:20213/GTLB47U6knDFL4EF/broadcast[0m
+[37m[2023-11-09T20:50:45.680976+08:00] [debug] [pid:5644] commands process exited: 0[0m
+[37m[2023-11-09T20:50:45.792192+08:00] [debug] [pid:5644] done with command server[0m
+[37m[2023-11-09T20:50:45.792402+08:00] [debug] [pid:5644] stopping autotest process 5660[0m
+[37m[2023-11-09T20:50:45.801829+08:00] [debug] [pid:5644] [autotest] process exited: 1[0m
+[37m[2023-11-09T20:50:45.902263+08:00] [debug] [pid:5644] done with autotest process[0m
+[37m[2023-11-09T20:50:45.902379+08:00] [debug] [pid:5644] isotovideo failed[0m
+[37m[2023-11-09T20:50:45.903286+08:00] [debug] [pid:5644] stopping backend process 5661[0m
+[37m[2023-11-09T20:50:45.903714+08:00] [debug] [pid:5661] backend got TERM[0m
+Use of uninitialized value $cmd in concatenation (.) or string at /usr/lib/os-autoinst/backend/generalhw.pm line 38, <$fh> line 7.
+[33m[2023-11-09T20:50:45.904158+08:00] [info] [pid:5661] ::: backend::baseclass::die_handler: Backend process died, backend errors are reported below in the following lines:
+  Need test variable '' at /usr/lib/os-autoinst/backend/generalhw.pm line 38, <$fh> line 7.[0m
+Use of uninitialized value $cmd in concatenation (.) or string at /usr/lib/os-autoinst/backend/generalhw.pm line 38, <$fh> line 7.
+[33m[2023-11-09T20:50:45.904513+08:00] [info] [pid:5661] ::: backend::baseclass::die_handler: Backend process died, backend errors are reported below in the following lines:
+  Need test variable '' at /usr/lib/os-autoinst/backend/generalhw.pm line 38, <$fh> line 7.[0m
+Use of uninitialized value $cmd in concatenation (.) or string at /usr/lib/os-autoinst/backend/generalhw.pm line 38, <$fh> line 7.
+[31m[2023-11-09T20:50:45.904700+08:00] [warn] [pid:5661] !!! backend::baseclass::run_capture_loop: capture loop failed Need test variable '' at /usr/lib/os-autoinst/backend/generalhw.pm line 38, <$fh> line 7.
+  [0m
+[37m[2023-11-09T20:50:45.904833+08:00] [debug] [pid:5661] sending magic and exit[0m
+[37m[2023-11-09T20:50:46.131155+08:00] [debug] [pid:5644] done with backend process[0m
+5644: EXIT 1
+[2023-11-09T20:50:46.170600+08:00] [info] Isotovideo exit status: 1
+[2023-11-09T20:50:46.263486+08:00] [info] +++ worker notes +++
+[2023-11-09T20:50:46.263706+08:00] [info] End time: 2023-11-09 12:50:46
+[2023-11-09T20:50:46.263784+08:00] [info] Result: died
+[2023-11-09T20:50:46.269544+08:00] [info] Uploading video.ogv
+[2023-11-09T20:50:46.370907+08:00] [info] Uploading autoinst-log.txt

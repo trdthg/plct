@@ -1,0 +1,22 @@
+docker run --name=sail-riscv-1 -it ubuntu:22.04 bash
+root@c171dcda22e8:/sail/log# cat ~/.bash_history
+mkdir sail
+cd sail
+apt update
+apt install git
+git clone https://github.com/riscv/sail-riscv.git --depth 1
+ls
+cd sail-riscv/
+ls
+apt install opam
+ocaml -version
+opam switch create 5.1.0
+opam init
+eval $(opam config env)
+eval $(opam env --switch=default)
+apt-get install build-essential libgmp-dev z3 pkg-config zlib1g-dev
+opam install sail
+sail --help
+mkdir ../log
+sail --help | tee ../log/sail.help.log
+make | tee ../log/make.log
