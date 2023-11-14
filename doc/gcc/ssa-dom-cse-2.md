@@ -61,7 +61,7 @@ make: *** [Makefile:1057: report-gcc-newlib] Error 1
 | -ftree-vectorize | 数组变成了向量  |  循环未被优化 |
 | -ftree-vectorize, -fno-tree-slp-vectorize | 正常  |  正常 |
 | -ftree-vectorize, -fpeel-loops | 数组变成了向量 | for 循环被优化成多次重复赋值 |
-| -ftree-vectorize, -fno-tree-slp-vectorize, -fpeel-loops | 数组变成了向量 | for 循环被优化成多次重复赋值 |
+| -ftree-vectorize, -fno-tree-slp-vectorize, -fpeel-loops | 正常 | 正常 |
 
 推测 tree-slp-vectorize 导致 tree-vectorize 优化失败？
 
