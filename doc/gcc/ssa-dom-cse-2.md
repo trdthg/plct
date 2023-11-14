@@ -2,6 +2,8 @@
 
 ## 问题描述
 
+部分测试结果：
+
 ```txt
 root@f9fd30c0c5e7:/plct/riscv-gnu-toolchain# make -j$(nproc) report-gcc | tee ./debug/report-gcc.log
 /plct/riscv-gnu-toolchain/scripts/testsuite-filter gcc newlib /plct/riscv-gnu-toolchain/test/allowlist `find build-gcc-newlib-stage2/gcc/testsuite/ -name *.sum |paste -sd "," -`
@@ -63,19 +65,7 @@ make: *** [Makefile:1057: report-gcc-newlib] Error 1
 
 推测 tree-slp-vectorize 导致 tree-vectorize 优化失败？
 
-## 问题原因
-
-- -ftree-vectorize 优化失败
-- -fpeel-loops 优化失败
-- -ftree-vectorize, -fno-tree-slp-vectorize 优化失败
-- -ftree-vectorize, -fpeel-loops 优化失败
-- -ftree-vectorize, -fno-tree-slp-vectorize, -fpeel-loops 优化失败
-
-## 重要 pass 函数
-
-### pass_vectorize
-
-plz search: `flag_tree_loop_vectorize`
+搜索：`flag_tree_loop_vectorize`
 
 ## 测试方法
 
@@ -92,7 +82,7 @@ plz search: `flag_tree_loop_vectorize`
 
 **missed: not vectorized: relevant stmt not supported: sum_10 = _1 + sum_13;**
 
-此处报错语句和中间文件 27 行对应
+此处报错语句和中间文件 27 行对应，是一条赋值赋值语句 `sum_10 =_1 + sum_13`
 
 ```c
 ;; Function foo (foo, funcdef_no=0, decl_uid=2269, cgraph_uid=1, symbol_order=0)
@@ -144,7 +134,8 @@ int foo ()
        stmt_info->stmt);
 ```
 
-由于报错处是一条赋值赋值语句 `sum_10 =_1 + sum_13`
+## 具体流程分析
+
 
 追踪调用链：
 
@@ -184,7 +175,5 @@ pass_vectorize:
 ```txt
 can_vectorize_live_stmts <- vect_transform_stmt <- vect_transform_loop_stmt <- vect_transform_loop <- vect_transform_loops <- try_vectorize_loop_1 <- try_vectorize_loop <- pass_vectorize::execute (passes.def:310)
 ```
-
-## 具体流程分析
 
 pass_vectorize::execute
