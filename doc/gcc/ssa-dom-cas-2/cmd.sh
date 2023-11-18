@@ -1,5 +1,5 @@
 rm ssa-dom-cse-2.* || echo ""
-./build-toolchain-out/bin/riscv64-unknown-elf-gcc-13.2.0 ./gcc/gcc/testsuite/gcc.dg/tree-ssa/ssa-dom-cse-2.c \
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc ./gcc/gcc/testsuite/gcc.dg/tree-ssa/ssa-dom-cse-2.c \
     -O1 \
     --verbose \
     -fdiagnostics-plain-output \
@@ -11,7 +11,7 @@ rm ssa-dom-cse-2.* || echo ""
 
 # gcc ./gcc/gcc/testsuite/gcc.dg/tree-ssa/ssa-dom-cse-2.c \
 
- gcc ./gcc/gcc/testsuite/gcc.dg/tree-ssa/ssa-dom-cse-2.c \
+gcc ./gcc/gcc/testsuite/gcc.dg/tree-ssa/ssa-dom-cse-2.c \
     -O1 \
     -fdiagnostics-plain-output \
     -ftree-vectorize \

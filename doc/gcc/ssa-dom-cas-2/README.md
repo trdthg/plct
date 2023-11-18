@@ -46,12 +46,18 @@ make: *** [Makefile:1057: report-gcc-newlib] Error 1
 - -ftree-vectorize 或者 -fpeel-loops 都足够了
 - 都不使用时，数组未被转为向量，循环未被优化
 
-|参数 | 向量化优化 | 循环优化 |
-|-------------------------------|---------------------------|---------------------------|
-| None | 不变  |  for 循环未被优化 |
-| -ftree-vectorize  | 28 | 28 |
-| -fpeel-loops | 28 | 28 |
-| -ftree-vectorize, -fpeel-loops | 28 | 28 |
+下面为编译结果：_ssa-dom-cse-2.c.254t.optimized_
+
+```c
+;; Function foo (foo, funcdef_no=0, decl_uid=2269, cgraph_uid=1, symbol_order=0)
+
+int foo ()
+{
+  <bb 2> [local count: 119292720]:
+  return 28;
+
+}
+```
 
 ### 开发环境下
 
