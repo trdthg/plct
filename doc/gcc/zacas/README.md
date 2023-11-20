@@ -8,7 +8,7 @@
 
 riscv-opts.h -> riscv.opt
 
-### error: 'CODE_FOR_riscv_amocas32' was not declared in this scope;
+### `error: 'CODE_FOR_riscv_amocas32' was not declared in this scope;`
 
 ```bash
 g++  -fno-PIE -c   -g -O2   -DIN_GCC -DCROSS_DIRECTORY_STRUCTURE   -fno-exceptions -fno-rtti -fasynchronous-unwind-tables -W -Wall -Wno-narrowing -Wwrite-strings -Wcast-qual -Wmissing-format-attribute -Wconditionally-supported -Woverloaded-virtual -pedantic -Wno-long-long -Wno-variadic-macros -Wno-overlength-strings -fno-common  -DHAVE_CONFIG_H -fno-PIE -I. -I. -I../.././gcc/gcc -I../.././gcc/gcc/. -I../.././gcc/gcc/../include  -I../.././gcc/gcc/../libcpp/include -I../.././gcc/gcc/../libcody -I/plct/riscv-gnu-toolchain/build-gcc-newlib-stage1/./gmp -I/plct/riscv-gnu-toolchain/gcc/gmp -I/plct/riscv-gnu-toolchain/build-gcc-newlib-stage1/./mpfr/src -I/plct/riscv-gnu-toolchain/gcc/mpfr/src -I/plct/riscv-gnu-toolchain/gcc/mpc/src  -I../.././gcc/gcc/../libdecnumber -I../.././gcc/gcc/../libdecnumber/dpd -I../libdecnumber -I../.././gcc/gcc/../libbacktrace -I/plct/riscv-gnu-toolchain/build-gcc-newlib-stage1/./isl/include -I/plct/riscv-gnu-toolchain/gcc/isl/include  -o riscv-selftests.o -MT riscv-selftests.o -MMD -MP -MF ./.deps/riscv-selftests.TPo ../.././gcc/gcc/config/riscv/riscv-selftests.cc
@@ -132,8 +132,122 @@ RISCV_BUILTIN (sha256sig0_si, "sha256sig0", RISCV_BUILTIN_DIRECT, RISCV_USI_FTYP
   [(set_attr "type" "crypto")])
 ```
 
+### `internal compiler error: in riscv_expand_builtin_direct, at config/riscv/riscv-builtins.cc:347`
+
+```bash
+root@f9fd30c0c5e7:/plct/riscv-gnu-toolchain# ./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64gc_zacas -mabi=lp64 -O2 -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas64.c
+during RTL pass: expand
+./gcc/gcc/testsuite/gcc.target/riscv/zacas64.c: In function 'foo1':
+./gcc/gcc/testsuite/gcc.target/riscv/zacas64.c:5:5: internal compiler error: in riscv_expand_builtin_direct, at config/riscv/riscv-builtins.cc:347
+    5 |     __builtin_riscv_amocas64(rd, rs1, rs2);
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+0xb0485b riscv_expand_builtin_direct
+        ../.././gcc/gcc/config/riscv/riscv-builtins.cc:347
+0xeb1242 expand_expr_real_1(tree_node*, rtx_def*, machine_mode, expand_modifier, rtx_def**, bool)
+        ../.././gcc/gcc/expr.cc:11944
+0xd7944a expand_expr(tree_node*, rtx_def*, machine_mode, expand_modifier)
+        ../.././gcc/gcc/expr.h:310
+0xd7944a expand_call_stmt
+        ../.././gcc/gcc/cfgexpand.cc:2831
+0xd7944a expand_gimple_stmt_1
+        ../.././gcc/gcc/cfgexpand.cc:3880
+0xd7944a expand_gimple_stmt
+        ../.././gcc/gcc/cfgexpand.cc:4044
+0xd7e404 expand_gimple_tailcall
+        ../.././gcc/gcc/cfgexpand.cc:4090
+0xd7e404 expand_gimple_basic_block
+        ../.././gcc/gcc/cfgexpand.cc:6074
+0xd80266 execute
+        ../.././gcc/gcc/cfgexpand.cc:6835
+Please submit a full bug report, with preprocessed source (by using -freport-bug).
+Please include the complete backtrace with any bug report.
+See <https://gcc.gnu.org/bugs/> for instructions.
+```
+
+```cpp
+
+  gcc_assert (opno + call_expr_nargs (exp)
+	      == insn_data[icode].n_generator_args);
+
+struct insn_operand_data
+{
+  const insn_operand_predicate_fn predicate;
+
+  const char *const constraint;
+
+  ENUM_BITFIELD(machine_mode) const mode : 16;
+
+  const char strict_low;
+
+  const char is_operator;
+
+  const char eliminable;
+
+  const char allows_mem;
+};
+
+
+struct insn_data_d
+{
+  const char *const name;
+#if HAVE_DESIGNATED_UNION_INITIALIZERS
+  union {
+    const char *single;
+    const char *const *multi;
+    insn_output_fn function;
+  } output;
+#else
+  struct {
+    const char *single;
+    const char *const *multi;
+    insn_output_fn function;
+  } output;
+#endif
+  const insn_gen_fn genfun;
+  const struct insn_operand_data *const operand;
+
+  const char n_generator_args;
+  const char n_operands;
+  const char n_dups;
+  const char n_alternatives;
+  const char output_format;
+};
+
+
+  /* ../.././gcc/gcc/config/riscv/zacas.md:15 */
+  {
+    "riscv_amocas64",
+#if HAVE_DESIGNATED_UNION_INITIALIZERS
+    { .single =
+#else
+    {
+#endif
+    "return amocas.d\t%0,%1,%2",
+#if HAVE_DESIGNATED_UNION_INITIALIZERS
+    },
+#else
+    0, 0 },
+#endif
+    { (insn_gen_fn::stored_funcptr) gen_riscv_amocas64 },
+    &operand_data[48],
+    3,
+    3,
+    0,
+    1,
+    1
+  },
+```
+
 ## 运行测试
 
 ```bash
 RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-gcc | tee ./debug/report-gcc-riscv-zacas.log
+```
+
+```bash
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -O2 -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas64.c
+```
+
+```bash
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv32gc_zacas -mabi=ilp32 -O2 -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas32.c
 ```
