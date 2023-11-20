@@ -36,33 +36,32 @@ concurrency models) 相结合所必需的结构
 
 ### Sail spec
 
-> TODO: 这是规范是什么？干什么用的？
-
-Sail spec 通常会定义：
+一个 Sail Spec 通常会定义：
 
 - 机器指令的抽象语法类型 (AST)
-- 将二进制值转换为 AST 值的解码函数
-- 描述每个指令在运行时的行为方式的执行函数
-- 所需的任何辅助函数和类型
+- 一个将二进制值转换为 AST 值的解码函数
+- 描述每个指令在运行时行为的执行函数
+- 任何所需的任何辅助函数和类型
 
 给定这样的规范后，Sail 实现可以对其进行类型检查并生成：
 
-- 完全类型注释的定义 (定义的深度嵌入) 的内部表示形式，可由 Sail 解释器执行。这些都用 Lem(一种类型、函数和关系定义的语言，可以编译成 OCaml 和各种定理证明器) 表示。Sail 解释器还可用于分析指令定义 (或部分执行的指令)，以确定其潜在的寄存器和内存占用。
+- 完全类型注释的定义 (定义的深度嵌入) 的内部表示形式，可由 Sail 解释器执行。这些都用 Lem(一种类型、函数和关系定义的语言，可以编译成 OCaml 和各种定理证明器) 表示。Sail 解释器还可用于分析指令定义 (或部分执行的指令)，以确定其潜在的寄存器和内存占用情况。
 
-- 定义的浅层嵌入 (也在 Lem 中)，可以更直接地执行或转换为定理代码。目前，这是针对 Isabelle/HOL 或 HOL4 的，尽管 Sail 依赖类型应该支持生成惯用的 Coq 定义 (直接而不是通过 Lem)。
-- 直接将规范的编译版本编译到 OCaml 中。
-- 规范的高效可执行版本，编译成 C 代码。
+- 定义的浅层嵌入 (同样是用 Lem 编写)，可以直接地执行或转换为定理证明器代码。目前，这主要面向 `Isabelle/HOL` 或 `HOL4`，尽管 Sail 依赖类型应该支持生成惯用的 Coq 定义 (直接而不是通过 Lem)。
+- 直接编译成 OCaml 的 Spec 的编译版本。
+- 编译成 C 代码的高效可执行版本。
 
 ### 不足
 
-Sail 目前不支持指令的汇编语法描述，也不支持指令与指令 AST 或二进制描述之间的映射，尽管这是我们计划添加的内容。
+Sail 目前不支持描述指令的汇编语法，也不支持汇编语法与指令 AST 或二进制描述之间的映射，尽管这是我们计划添加的内容。Sail 已被用于开发几种架构的部分模型。
 
 ## 2 快速入门
 
 我们通过 RISC-V 模型中的一个小例子来介绍 Sail 的基本功能，该模型仅包含两个指令：`add immediately` 和 `load double`。
 
-> TODO: 添加对顺序的简单解释
-> 这里定义了默认顺序，并且引入了 Sail prelude.
+这里定义了默认顺序，并且引入了 Sail prelude.
+
+> 见后续，可以暂时理解为向量的索引方向，prelude 即为内置函数库
 
 ```ocaml
 default Order dec
@@ -71,7 +70,7 @@ $include <prelude.sail>
 
 Sail 的 prelude 非常少，Sail 规范通常会建立在它的基础上。一些 Sail 规范源自预先存在的伪代码，这些伪代码已经使用了特定的习惯用语——我们的 Sail ARM 规范使用 ZeroExtend 和 SignExtend 镜像一份 ASL 代码，而我们的 MIPS 和 RISC-V 规范使用 EXTZ 和 EXTS 来实现相同的功能。因此，在此示例中，我们将零扩展 (ZeroExtend) 和符号扩展 (SignExtend) 函数定义为：
 
-> TODO: 解释这两个拓展，解释这里的语法，是什么语言
+> 零扩展和符号扩展是两种数据扩展方式，通常用于处理不同位宽的数据，零扩展是指将高位用零填充，不改变原始数据的符号位。符号扩展是指将高位用数据的符号位填充，以保持原始数值的符号
 
 ```ocaml
 val EXTZ : forall 'n 'm, 'm >= 'n. (implicit('m), bits('n)) -> bits('m)
@@ -84,8 +83,6 @@ function EXTS(m, v) = sail sign extend(v, m)
 ```
 
 现在，我们定义一个整数类型同义词 xlen，在本例中，该同义词将等于 64。Sail 支持对常规类型和整数 (类比 C++ 中的常量泛型，但这里更具表现力) 的定义。我们还为长度为 xlen 的位向量 (bit vector) 创建类型 xlenbits。
-
-> TODO: 解释语法
 
 ```ocaml
 type xlen : Int = 64
@@ -138,7 +135,6 @@ function wX(r, v) =
 overload X = {rX, wX}
 ```
 
-> TODO: 啥内置函数？
 我们还给出了一个用于读取内存的函数 MEMr，这个函数只指向我们在其他地方定义的内置函数。
 
 ```ocaml
@@ -152,8 +148,6 @@ val MEMr = monadic {lem: "MEMr", coq: "MEMr", _: "read_ram"}: forall 'n 'm, 'n >
 
 首先，我们给出 execute 和 decode 函数的类型，以及 ast union:
 
-> TODO: scattered union ast 是什么东西
-
 ```ocaml
 enum iop = {RISCV_ADDI, RISCV_SLTI, RISCV_SLTIU, RISCV_XORI, RISCV_ORI, RISCV_ANDI}
 
@@ -163,6 +157,8 @@ val decode : bits(32) -> option(ast)
 
 val execute : ast -> unit
 ```
+
+> TODO: scattered 见后续
 
 现在，我们提供了 `add-immediate` 的 ast 类型子句，以及它的 `execute` 和 `decode` 子句。
 
@@ -204,6 +200,225 @@ function clause execute(LOAD(imm, rs1, rd)) =
 最后，我们定义解码函数的回退情况。请注意，分散函数中的子句将按照它们在文件中出现的顺序进行匹配。
 
 ## 3 使用 Sail
+
+首先，Sail 是一个命令行工具，类似于编译器：输入一个 Sail 文件列表; sail 命令行工具会对它们进行类型检查并输出
+
+如果你只是想对 Sail 文件进行类型检查，你可以直接在命令行上传递，没有其他选项，因此对于我们的 RISC-V spec 示例，我们可以这样做：
+
+```bash
+sail prelude.sail riscv_types.sail riscv_mem.sail riscv_sys.sail riscv_vmem.sail riscv.sail
+```
+
+在命令行上传递的 sail 文件列表会被简单地视为一个连接在一起的大文件，尽管解析器会跟踪每个文件的位置以进行错误报告。
+
+在上面的例子中，该 spec 分为以下几个组件。
+
+- `prelude.sail` 定义了初始类型环境和内置函数
+- `riscv_types.sail` 给出了规范其余部分使用的类型定义
+- `riscv_mem.sail` 和 `riscv_vmem.sail` 描述了物理和虚拟内存的交互
+- `riscv_sys.sail` 和 `riscv.sail` 实现了大部分 spec。
+
+对于更复杂的项目，你可以在 Sail 源代码中使用 `$include` 语句，例如：
+
+```ocaml
+$include <library.sail>
+$include "file.sail"
+```
+
+在这个例子中，Sail 将在 `$SAIL_DIR/lib` 中查找 `library.sail`，其中 `$SAIL_DIR` 通常是 `sail` 仓库的根目录。它将相对于包含 `$include`的文件的位置搜索 `file.sail`。`$include`后的空格是必填项。Sail 还支持 `$define`、`$ifdef` 和 `$ifndef`。这些是 `Sail` 本身支持的东西，而不是单独的预处理器，并且会在 AST 解析后处理。
+
+### 3.1 编译为 OCaml
+
+要将 Sail 规范编译为 OCaml，可以这样调用 Sail:
+
+```bash
+sail -ocaml FILES
+```
+
+命令将产生一个翻译成 OCaml 语言的 spec 版本，该 spec 会被放置在一个名为 _sbuild 的目录中，类似于 ocamlbuild 的 `_build` 目录。生成的 OCaml 旨在与原始 Sail 源代码相当接近，目前我们不尝试对此输出进行太多优化。
+
+_sbuild 目录的内容被设置为一个 ocamlbuild 项目，因此只需切换到该目录并运行下面的命令：
+
+```ocaml
+ocamlbuild -use-ocamlfind out.cmx
+```
+
+编译生成的模型。目前，OCaml 编译依赖于 `lem`、`linksem` 和 `zarith` 作为 ocamlfind 可查找库提供，并且环境变量 `$SAIL_DIR` 设置为 `Sail` 存储库的根目录。
+
+如果 sail spec 包含一个 `unit -> unit` 类型的 `main` 函数，并且该函数实现了一个 `fetch/decode/execute loop`，那么 OCaml 后端可以生成一个能正常运行的文件：
+
+```bash
+sail -o out -ocaml FILES
+```
+
+运行方法：
+
+```bash
+./out ELF_FILE
+```
+
+如果你想模拟运行基于此 spec 的 ELF 文件。可以调用 `$include <elf.sail>` 来获得一些有用的函数，以便从 sail spec 中访问加载的 ELF 文件的信息。特别是 `elf.sail` 定义了一个函数 `elf_entry: unit -> int`，可用于将 PC 寄存器设置到正确的位置。ELF 加载由 `linksem` 库完成。
+
+> 还有一个 `-ocaml_trace` 选项，它与 `-ocaml` 相同，只是它为生成的 OCaml 代码附加了 tracing 信息。
+
+#### 3.1.1 OCaml 随机生成器支持
+
+还有一些基本支持，用于为 sail 数据类型生成 `Quick-check` 样式的随机生成器。
+
+> 注：Quick-Check 是一个由 Haskell 语言编写的自动化随机测试库
+
+添加 `-ocaml_generators <type>` 选项将为每个类型产生一个 record type `generators`，并在名为 `rand_gens` 的 record 中生成一个 `generator` 的默认实现。生成器可以通过替换 `rand_gens` 中的单个字段来自定义，例如限制寄存器的选择。即使寄存器索引类型只是一个别名 (例如特定大小的位向量)，这也是可能的，因为每个类型名称都会生成单独的生成器。
+
+例如，如果在第 2 节中为迷你 RISCV 生成 OCaml 输出时添加了 `-ocaml_generators ast`，则可以通过以下方式生成随机指令 AST：
+
+```ocaml
+let generated_ast = rand_gens.gen_zast rand_gens in ...
+```
+
+请注意，类型名称是 mildly encoded(温和编码？) 的。
+
+对于每个 union 类型（如 ast），还提供了构造函数名称列表、constructors_zast 和函数 build_zast，以创建给定构造函数的实例。可以使用此功能的示例在 <https://github.com/rems-project/sail-riscv-test-generation> 中找到。
+
+### 3.2 编译为 C
+
+要将 Sail 编译为 C，请使用 -c 选项，如下所示：
+
+```bash
+sail -c FILES 1> out.c
+```
+
+默认情况下，翻译后的 C 语言打印为 stdout，但也可以使用 -o 选项输出到文件，下面将生成一个名为 out.c 的文件：
+
+```ml
+sail -c FILES -o out
+```
+
+要生成可执行文件，则需要与 sail/lib 目录中的 C 文件链接：
+
+```bash
+gcc out.c $SAIL_DIR/lib/*.c -lgmp -lz -I $SAIL_DIR/lib/ -o out
+```
+
+C 输出需要依赖于 GMP 库 (用于任意精度算术)，以及 zlib(用于处理压缩的 ELF 二进制文件)
+
+下面列出了几个 Sail 选项会影响 C 输出：
+
+- `-O` 打开优化。如果不设置此标志，生成的 C 代码将非常慢。
+- `-Oconstant_fold` 使用常量折叠优化。
+- `-c_include` 提供要包含在生成的 C 中的其他头文件。
+- `-c_no_main` 不生成 `main()` 函数。
+- `-static` 在可能的情况下，将生成的 C 函数标记为静态。对统计代码覆盖率很有用。
+
+为 sail spec 生成的可执行文件（前提是生成了 main 函数）支持多个选项，用于将 ELF 文件和二进制数据加载到 spec 内存中。
+
+- `-e/--elf` 将 ELF 文件加载到内存中。目前仅支持 AArch64 和 RISC-V ELF 文件。
+- `-b/--binary` 将原始二进制数据加载到 spec 的内存中。它的使用方式如下：
+
+    ```bash
+    ./out --binary=0xADDRESS,FILE
+    ./out -b 0xADDRESS,FILE
+    ```
+
+    提供的文件的内容将从给定地址开始放置在内存中，该地址必须以十六进制数形式给出。
+
+- `-i/--image` 对于无法通过 `--elf` 标志加载的 ELF 文件，Sail 可以利用 linksem 转成一个特殊的 image file
+
+    ```bash
+    sail -elf ELF_FILE -o image.bin
+    ./out --image=image.bin
+    ```
+
+    此标志的优点是它使用 Linksem 来处理 ELF 文件，因此它可以处理 linksem 能够理解的任何 ELF 文件。这也保证了加载到内存中的 ELF 二进制文件的内容与 OCaml 后端和解释器的内容完全相同，因为它们也在内部使用 Linksem 来加载 ELF 文件。
+
+- `-n/--entry` 设置 elf_entry 函数返回的自定义入口点。必须是以 `0x` 为前缀的十六进制地址。
+- `-l/--cyclelimit` 运行模拟，直到达到设定的循环数。spec 的主循环必须调用 `cycle_count` 函数才能正常工作。
+
+### 3.3 Lem, Isabelle & HOL4
+
+官方有一个单独的文档，详细介绍了如何从 Sail 模型生成 Isabelle 理论，以及如何在 Isabelle 中使用这些模型，请参阅：
+
+[<https://github.com/rems-project/sail/raw/sail2/lib/isabelle/manual.pdf>](https://github.com/rems-project/sail/raw/sail2/lib/isabelle/manual.pdf)
+
+目前，在 Sail 仓库的 `snapshots/isabelle` 中为我们的一些模型生成了 Isabelle 快照。提供这些快照只是为了方便，并不保证最新。
+
+为了在 Isabelle 中打开其中一个 spec 的 theory，请使用 `-l Sail` 命令行标志来加载包含 Sail 库的会话。Sail 和 Lem 库的快照分别位于 `lib/sail` 和 `lib/lem` 目录中。您可以使用 `-d` 标志告诉 Isabelle 在哪里可以找到它们，例如：
+
+```bash
+isabelle jedit -l Sail -d lib/lem -d lib/sail riscv/Riscv.thy
+```
+
+当从 `snapshots/isabelle` 目录运行时，会打开 RISC-V spec。
+
+### 3.4 交互模式
+
+编译 Sail: `make isail`
+
+使用 GHCi(译者注，ghc 是 haskell 的编译器，ghc 则是交互式命令行，类似于 ipython) 风格的交互式解释器构建它。你可以通过使用 `sail -i` 启动。如果 Sail 没有启用交互式支持进行编译，则 -i 标志不执行任何操作。Sail 仍能正常处理其他命令行参数，包括编译为 OCaml 或 Lem。还可以使用 `-is` 标志将命令列表传递给解释器，如下所示：
+
+```bash
+sail -is FILE
+```
+
+其中 FILE 包含命令列表。进入交互模式后，可以通过输入 `:commands` 来访问命令列表，`:help` 会为每个命令提供一些文档。
+
+### 3.5 LTEX 生成
+
+Sail 可用于在文档中生成 Latex，如下所示：
+
+```bash
+sail -o DIRECTORY -latex FILES
+```
+
+- FILES 列表是要为其生成 latex 的 Sail 文件列表
+- DIRECTORY 是将放置生成的 latex 的目录。
+
+文件列表必须是一系列有效的可类型检查的 Sail 文件。生成 latex 的目的是将其包含在用 Latex 编写的现有 ISA 手册中，因此 latex 输出为 `DIRECTORY/commands.tex` 中的每个顶级 Sail 声明生成命令列表。
+
+本节的其余部分将讨论 latex 生成过程的已稳定特性——还有一些额外的特性，用于在 Sail 代码中包含 markdown doc-comments，并将它们格式化为 latex 以用于包含 ID 文档等 (原文：inclusion id documentation)，但这些特性还不完全稳定。本手册本身使用了 Sail latex 生成，因此可以使用 `doc/manual.tex` 和 `doc/Makefile` 来查看该生成过程。
+
+**Requirements** 生成的 latex 使用 `listings` 包格式化源代码，使用 `etoolbox` 包中的宏生成命令，并依赖 `hyperref` 包进行交叉引用。这些软件包在大多数 TeX 发行版中都可用，并作为 Ubuntu 的 texlive 软件包的一部分提供。
+
+**Usage** 由于 latex 环境的奇怪性，每个 Sail 声明都必须放在它自己的文件中，然后 `command.tex` 中的 command 包含在 `\lstinputlisting` 中。要将生成的 Sail 包含在文档中，可以执行以下操作：
+
+```latex
+\input{commands.tex}
+\sailtype{my_type}
+\sailval{my_function}
+\sailfn{my_function}
+```
+
+其中包括 `my_type` 的类型定义、声明（`\sailval`）以及 `my_function` 的定义（`\sailfn`）。还有用于值定义和寄存器定义的 `\saillet` 和 `\sailregister` 宏。这些也可以与转义一起使用，例如 `my\_type`，这在定义更复杂的宏时很有用。
+
+```latex
+\input{commands.tex}
+\prefixtype{my_type}
+\prefixval{my_function}
+\prefixfn{my_function}
+```
+
+生成的定义被包装在可自定义的宏中，你可以覆盖这些宏以更改 Sail 代码的格式。对于 `\sailfn`，有一个可以重新定义的宏 `\saildocfn`，对于其他 Sail 顶级类型也是如此。
+
+**Cross-referencing(交叉引用)**：对于每个宏 `\sailX {id}`，都有一个宏 `\sailrefX {id}{text}`，它创建对原始定义的超引用 (hyper-ref)。这需要 `hyper-ref` 包。
+
+### 3.6 其他选项
+
+在这里，我们总结了 Sail 可用的大多数其他选项。调试选项（通常用于调试 Sail 本身）以字母 d 开头表示。
+
+- `-v` 打印 Sail 版本。
+- `-help` 打印选项列表。
+- `-no_warn` 关闭警告。
+- `-enum_casts` 允许枚举元素自动转换为数字。
+- `-memo_z3` 记住对 Z3 求解器的调用。如果在开发时频繁对同一规范进行排版检查，这可以大大缩短排版时间。
+- `-no_lexp_bounds_check` 关闭对赋值左侧变量的边界检查。
+- `-no_effects` 关闭效果检查。可能会破坏一些假设效果已正确检查的后端。
+- `-undefined_gen` 为用户定义的类型生成一个函数，这个函数会返回 undefined。每个类型 `T` 都会为其创建一个 `undefined_T` 函数。此标志由一些想要重写 `undefined` 的后端自动设置。
+- `-just_check` 强制 Sail 在类型检查后立即终止。
+- `-dno_cast` 强制 Sail 在任何情况下都不要进行类型强转。
+- `-dtc_verbose <verbosity>` 使类型检查器打印出类型检查过程的 trace 记录。如果详细程度级别为 1，则这应该只包括关于检查和推理规则的相当可读的判断。如果详细程度为 2，则将包含大量调试信息。此选项可用于诊断棘手的类型错误，尤其是在错误消息不是很好的情况下。
+- `-ddump_tc_ast` 类型检查后将类型检查的 AST 写入 stdout
+- `-ddump_rewrite_ast <prefix>` 输出每个 pass 结束后的 AST。每个 pass 的输出都放置在以 `<prefix>` 开头的文件中。
+- `-dsanity` 对 AST 执行额外的健全性检查。
+- `-dmagic_hash` 允许在标识符中使用 `#` 符号。它目前被用作魔术符号，用于将生成的标识符与用户可以写入的标识符分开，因此此选项允许将各种其他调试选项的输出反馈到 Sail 中。
 
 ## 4 语法
 
@@ -416,7 +631,7 @@ match n {
     1 => print("1"),
     2 => print("2"),
     3 => print("3"),
-    m if m <= 10 => print("n␣is␣less␣than␣or␣equal␣to␣10"),
+    m if m <= 10 => print("n is less than or equal to 10"),
     _ => print("wildcard")
 }
 ```
@@ -456,7 +671,7 @@ Match 也可用于解构联合体构造函数，例如使用第 4.10.3 节中的
 ```ocaml
 match option {
     Some(x) => foo(x),
-    None() => print("matched␣None()")
+    None() => print("matched None()")
 }
 ```
 
@@ -666,7 +881,6 @@ pattern 匹配到第一个表达式，绑定该模式中的任何标识符。该
 }
 ```
 
-// TODO: 1-value
 最后，我们允许函数以 1-value 出现。这是一种非常简单的方法来声明看起来像自定义 1-value 的 "setter" 函数，例如：
 
 ```ocaml
@@ -903,7 +1117,7 @@ val print_string : string -> unit
 overload print = {print_int, print_string}
 
 function main() : unit -> unit = {
-    print("Hello,␣World!");
+    print("Hello, World!");
     print(4);
 }
 ```
@@ -912,7 +1126,7 @@ function main() : unit -> unit = {
 
 ```ocaml
 function main () : unit = {
-    print_string("Hello,␣World!");
+    print_string("Hello, World!");
     print_int(4)
 }
 ```
@@ -1017,8 +1231,6 @@ end bar
 
 也许令人惊讶，对于一个规范语言来说，Sail 竟然支持异常。这是因为异常作为一种语言功能有时会出现在供应商的 ISA 伪代码中，如果 Sail 本身不支持异常，则此类代码将很难转换为 Sail。我们已经将 Sail 翻译成 monadic theorem 证明代码，因此使用支持异常的 monad 是相当自然的。
 
-> TODO: 解释 monad 和 monadic theorem
-
 对于异常，我们提供两种语言功能：`throw` 语句和 `try-catch` 块。throw 关键字的参数为 `exception` 类型的值，该值可以是任何用户定义的类型。Sail 没有内置的异常类型，因此要使用异常，必须基于每个项目设置一个异常。通常异常类型会是一个 union，通常是一个 `cattered union`，它允许在整个规范中声明异常，就像在 OCaml 中一样，例如：
 
 ```ocaml
@@ -1076,3 +1288,311 @@ val ZeroExtend = "zero_extend" : ...
 ## 5 深入 Sail 内部
 
 ### 5.1 AST
+
+Sail 抽象语法树（AST）由 `sail.ott` 中的 `ott` 语法定义。这会在 `src/ast.ml` 和 `src/ast.lem` 中生成 `ast` 的 OCaml（和 lem）语言版本。从技术上讲，AST 的 OCaml 版本是由 Lem 生成的，它允许 Sail OCaml 源代码与用 Lem 编写的部分无缝互操作。虽然我们没有太多使用它，但原则上它允许我们在 Lem 中实现 Sail 的部分内容，这将使它们能够在 Isabelle 或 HOL4 中得到验证。
+
+Sail AST 如下所示：
+
+```ocaml
+and 'a exp =
+  | E_aux of ( 'a exp_aux) * 'a annot
+and 'a exp_aux = (* expression *)
+  | E_block of ( 'a exp) list (* sequential block *)
+  | E_id of id (* identifier *)
+  | E_lit of lit (* literal constant *)
+  | E_cast of typ * ( 'a exp) (* cast *)
+  | E_app of id * ( 'a exp) list (* function application *)
+  | E_tuple of ( 'a exp) list (* tuple *)
+  | E_if of ( 'a exp) * ( 'a exp) * ( 'a exp) (* conditional *)
+  ...
+```
+
+每个构造函数都以唯一 code 为前缀（在本例中为 E 为表达式的前缀），并且还被 aux 构造函数包装，该构造函数将注释附加到 AST 中的每个节点，该构造函数由一个 参数化 AST 的任意类型 和 标识 AST 节点在源代码中位置的位置组成：
+
+```ocaml
+type ’a annot = l * ’a
+```
+
+location 有多种类型:
+
+```ocaml
+type l =
+  | Unknown
+  | Unique of int * l
+  | Generated of l
+  | Range of Lexing.position * Lexing.position
+  | Documented of string * l
+```
+
+- Range 定义解析器给出的位置范围，
+- Documented 构造函数将 doccomments 附加到位置
+- Generated 用于表示代码是基于来自其他位置的代码生成的
+- Unique 在内部用于标记具有唯一整数的位置，以便以后可以引用它们
+- Unknown 用于没有明显对应位置的 Sail，尽管应尽可能避免这种情况，因为它会导致糟糕的错误消息。最初以编码方式生成的 Ast 节点具有未知位置，但 `Ast_util.locate` 可用于递归附加 `Generated` 的位置，以用于错误。
+
+Sail 源中的约定是，单个变量 `l` 始终是一个位置，通常是最近的位置。
+
+#### 5.1.1 AST 实用程序
+
+有各种函数可用于操作在 `ast_util` 中定义的 AST。其中包括：
+
+- 构造函数（如用于生成非类型化表达式的 `mk_exp`）和用于解构 AST 节点的各种函数
+- 它还定义了各种有用的集合和映射，例如标识符集 (identifiers)、类型变量 (type variable) 等。
+
+请注意，Sail 中的类型变量通常在内部称为 kids，我认为这是因为类型变量被定义为具有特定类型，即 `'n：Int` 是具有 int 类型的类型变量（尽管 `kinded_id` 在技术上是一个单独的类型，它是一个类型变量 `* kind pair`）。
+
+#### 5.1.2 解析 AST
+
+解析器会生成一个单独的 AST `ast.ml`。它与主 AST 非常相似，但是它包含了一些额外的句法糖 (syntactic sugar)。解析 AST 首先由 [initial_check](https://github.com/rems-project/sail/blob/sail2/src/initial_check.mli) 脱糖，该文件除了执行一些基本检查外，还会解析 AST 映射并到主 AST。
+
+### 5.2 整体结构
+
+Sail 的主要入口点是文件 `sail.ml`。每个后端选项（例如 `-c`、`-lem`、`-ocaml` 等）都被称为一个**目标**，set_target` 函数用于设置 `opt_target` 变量，例如:
+
+```ocaml
+( "-c",
+  Arg.Tuple [set_target "c"; Arg.Set Initial_check.opt_undefined_gen],
+  " output a C translated version of the input");
+```
+
+定义 -c 选项。每个 Sail 选项都通过每个相关文件顶部定义的 `opt_` 变量进行配置。在本例中，我们告诉 Sail，当我们生成 C 时，我们还希望为每个类型 `X` 生成 `undefined_X` 函数。一般来说 `opt_` 这些变量应该在我们启动 Sail 时设置，此后保持不变。
+
+main 调用的第一个函数是 `Sail.load_files`。此函数解析传递给 Sail 的所有文件，然后拼接它们的 AST。然后运行预处理器，它会运行 Sail 中的 `$directive` 语句，例如:
+
+```ocaml
+$include <prelude.sail>
+```
+
+> 与 C 预处理器不同，Sail 预处理器在实际的 Sail AST 上运行，而不是在字符串上运行。这可以递归地将其他文件包含在 AST 中，以及使用 `$ifdef` 等添加/删除 AST 的某些部分。使用的指令保留在 AST 中，因此它们还可以作为将辅助信息传递到各个 Sail 后端的方法。
+
+下一步试运行上面提到的 initial_check 以对 AST 进行脱糖
+
+然后运行 type checker 以生成经过完全类型检查的 AST。
+
+接着使用 aux 构造函数将类型注释附加到每个节点（对于这些节点，注释是有意义的）。稍后将更详细地讨论类型检查器。
+
+在类型检查之后，Sail 分散的定义被分解为单个函数。
+
+以上所有操作由每个目标共享，并由 `load_files` 函数执行。下一步是将各种特定于目标的 rewrites 应用于 AST，然后再将其传递到每个目标的后端。
+
+文件 [rewrites.ml](https://github.com/rems-project/sail/blob/sail2/src/rewrites.ml) 定义了一个重写列表：
+
+```ocaml
+let all_rewrites = [
+    ("pat_string_append", Basic_rewriter rewrite_defs_pat_string_append);
+    ("mapping_builtins", Basic_rewriter rewrite_defs_mapping_patterns);
+    ("mono_rewrites", Basic_rewriter mono_rewrites);
+    ("toplevel_nexps", Basic_rewriter rewrite_toplevel_nexps);
+    ("monomorphise", Basic_rewriter monomorphise);
+```
+
+每个目标指定一个要应用的重写列表，如下所示：
+
+```ocaml
+let rewrites_interpreter = [
+    ("no_effect_check", []);
+    ("realise_mappings", []);
+    ("toplevel_string_append", []);
+    ("pat_string_append", []);
+    ("mapping_builtins", []);
+    ("undefined", [Bool_arg false]);
+    ("vector_concat_assignments", []);
+    ("tuple_assignments", []);
+    ("simple_assignments", [])
+  ]
+```
+
+一旦发生这些重写，就会调用 `Sail.target` 函数，该函数会调用每个目标的后端，例如 OCaml：
+
+```ocaml
+| Some "ocaml" ->
+  let ocaml_generator_info =
+    match !opt_ocaml_generators with
+    | [] -> None
+    | _ -> Some (Ocaml_backend.orig_types_for_ocaml_generator ast, !opt_ocaml_generators)
+  in
+  let out = match !opt_file_out with None -> "out" | Some s -> s in
+  Ocaml_backend.ocaml_compile out ast ocaml_generator_info
+```
+
+还有一个 `Sail.prover_regstate` 函数，允许以 OCaml 的证明方式为每个定理证明器目标设置寄存器状态。
+
+### 5.3 类型检查器
+
+Sail 类型检查器包含在 `src/type_check.ml` 中。此文件很长，结构如下：
+
+1. 定义类型检查环境。操作类型环境的函数包含在一个独立的 Env 模块中。该模块的目的是隐藏类型检查环境的内部表示，并确保主类型检查器代码只能使用该模块中定义的函数与之交互，可以设置这些函数以保证我们需要的任何不变性。类型检查器本身之外的代码只能与更受限制的上述函数的子集进行交互，该子集通过 `mli` 接口文件导出
+
+2. 定义辅助程序用于子类型化和约束求解。实际与外部 SMT 求解器通信的代码包含在单独的文件 `src/constraint.ml` 中，而此处的代码设置了环境和求解器之间的接口。
+
+3. 接下来是类型的 unification(一致性？) 和 instantiation(实例化) 的定义。还有一些额外的代码（3.5）使用现有类型处理子类型，这些代码可以使用 unification to instantiate existentially quantified type variables.
+
+4. Sail 允许一些类型级别的构造出现在术语级变量中，但在类型检查过程中，这些结构在 `sizeof-rewriting` 过程中被消除，(在 sizeof 关键字之后)。
+
+5. 最后给出了所有的类型规则。Sail 采用双向类型检查方法。所以有 `check_exp`、`check_pat` 等检查规则，也有 `infer_exp`、`infer_pat` 等推理规则。
+
+6. 以前的类型规则添加的效果现在通过 AST 向上传播
+
+7. 最后，我们有类型检查规则，处理顶级函数和数据类型的定义的规则。Sail 的其余部分可以与类型检查器和类型注释交互的接口由其 `mli` 接口文件严格控制。我们试图使大部分类型检查内部尽可能抽象。
+
+### 5.4 Rewriter
+
+前面提到的各种重写使用的重写框架在 `src/rewriter.ml` 中定义。它为每类 AST 节点都定义了结构体以及函数，并允许数据以各种方式通过每个重写传递。大多数重写都是在 `src/rewrites.ml` 中定义的，尽尽管重写器还用于其他诸如 `src/constant_fold.ml` 中的常量折叠等重写过程，该过程将重写器与 Sail 解释器结合在一起。
+
+重写器还充当 Sail 单态化代码的接口，位于 `src/monomorphise.ml` 中。
+
+### 5.5 Jib(三角帆)
+
+Sail 的 C 和 SMT 后端使用一种名为 Jib 的自定义中间表示法（它是 Sail 的一种）。与完整 AST 一样，Jib 也被定义为 `language/jib.ott` 中的 `ott` 语法。Sail 的 `-ir` 目标可将 Sail 转换为该 IR，而无需任何进一步处理。
+
+Jib 相关文件包含在子目录 `src/jib/` 中。首先，我们在 `src/jib/` 目录中将 Sail 转换为 `A-normal` 形式（ANF），然后在 `src/jib/anf.ml` 中将其转换为 Jib。
+
+Jib 表示法的优点是比完整的 Sail AST 简单得多，而且消除了大量的类型复杂性。因为类型被替换成了更简单的形式（ctyp）。请注意，许多与 Jib 相关的类型的前缀是 c，因为它最初只用于生成 C 语言。
+
+在生成 Jib 时，我们所做的关键优化是使用 SMT 分析 Sail 类型，以尝试将任意精度类型放入 Jib 中更小的固定精度机器字类型中。为了帮助实现这一目标，我们有一个 [specialisation pass](https://github.com/rems-project/sail/blob/sail2/src/specialize.ml) 通过创建函数的特殊副本来消除多态性 (根据类型向量的示例化) 这部分可以与之前的单态化一起使用
+
+一旦我们生成了 Jib，从 Jib 到 C 的代码生成器就相当简单了。
+
+### 5.6 Jib 到 SMT 翻译
+
+从一些 Sail 开始，例如：
+
+```ocaml
+default order dec
+
+$include <prelude.sail>
+
+register r : bits(32)
+
+$property
+function property(xs: bits(32)) -> bool = {
+  ys : bits(32) = 0x1234_5678;
+  if (r[0] == bitzero) then {
+    ys = 0xffff_ffff
+  } else {
+    ys = 0x0000_0000
+  };
+  (ys == sail_zeros(32) | ys == sail_ones(32))
+}
+```
+
+我们首先把代码编译为 Jib，然后内联所有函数并将生成的代码扁平化为指令列表，如下所示。`Sail->Jib` 步骤可以通过几种方式进行参数化，因此与我们将 Sail 编译到 C 时略有不同。首先，specialisation pass 会对整数多态函数和内建函数进行特殊化处理，这体现在名称混淆方案中，例如，
+
+```txt
+zz7mzJzK0zCz0z7nzJzK32#bitvector_access
+```
+
+这是一种针对 `'n => 32 & 'm => 0` 的比特向量访问的专门版本。这使我们能够为单态代码生成最佳的 SMT（Satisfiability Modulo Theories）操作，因为 SMTLIB 操作（如 ZeroExtend 和 Extract）仅对已知长度的自然数常数和比特向量定义。我们还必须将零长度的比特向量与 C 语言区别对待，因为 SMT 不允许零长度的比特向量，并且与我们编译到 C 语言时不同，生成的 Jib 可以具有大于 64 位的固定精度比特向量。
+
+```txt
+var ys#u12_l#9 : fbits(32, dec)
+ys#u12_l#9 : fbits(32, dec) = UINT64_C(0x12345678)
+var gs#2#u12_l#15 : bool
+var gs#1#u12_l#17 : bit
+gs#1#u12_l#17 : bit = zz7mzJzK0zCz0z7nzJzK32#bitvector_access(R, 0l)
+gs#2#u12_l#15 : bool = eq_bit(gs#1#u12_l#17, UINT64_C(0))
+kill gs#1#u12_l#17 : bit
+var gs#6#u12_l#16 : unit
+jump gs#2#u12_l#15 then_13
+ys#u12_l#9 : fbits(32, dec) = UINT64_C(0x00000000)
+gs#6#u12_l#16 : unit = UNIT
+goto endif_14
+then_13:
+ys#u12_l#9 : fbits(32, dec) = UINT64_C(0xFFFFFFFF)
+gs#6#u12_l#16 : unit = UNIT
+endif_14:
+kill gs#2#u12_l#15 : bool
+var gs#5#u12_l#10 : bool
+var gs#3#u12_l#14 : fbits(32, dec)
+gs#3#u12_l#14 : fbits(32, dec) = zz7nzJzK32#sail_zeros(32l)
+gs#5#u12_l#10 : bool = zz7nzJzK32#eq_bits(ys#u12_l#9, gs#3#u12_l#14)
+kill gs#3#u12_l#14 : fbits(32, dec)
+var gs#7#u12_l#11 : bool
+jump gs#5#u12_l#10 then_11
+var gs#4#u12_l#12 : fbits(32, dec)
+var gs#0#u9_l#13 : fbits(32, dec)
+gs#0#u9_l#13 : fbits(32, dec) = zz7nzJzK32#sail_zeros(32l)
+gs#4#u12_l#12 : fbits(32, dec) = zz7nzJzK32#not_vec(gs#0#u9_l#13)
+kill gs#0#u9_l#13 : fbits(32, dec)
+goto end_inline_10
+end_inline_10:
+gs#7#u12_l#11 : bool = zz7nzJzK32#eq_bits(ys#u12_l#9, gs#4#u12_l#12)
+kill gs#4#u12_l#12 : fbits(32, dec)
+goto endif_12
+then_11:
+gs#7#u12_l#11 : bool = true
+endif_12:
+return : bool = gs#7#u12_l#11
+kill gs#5#u12_l#10 : bool
+kill ys#u12_l#9 : fbits(32, dec)
+end
+undefined bool
+```
+
+然后将上面的 Jib 转换为 SSA 形式的控制流图。
+
+影响控制流的条件被放在单独的节点（黄色）中，因此我们可以通过使用每个节点和起始节点之间的黄色条件节点来轻松计算每个块（存储在函数 pi（cond0， . . . ，condn）中的全局路径条件。
+
+从这种形式到 SMT 的转换如下：
+
+一个变量声明, 比如:
+
+```ocaml
+var x : fbits(32, dec)
+```
+
+会变成
+
+```ml
+(declare-const x (BitVec 32))
+```
+
+一个对 builtin 的调用
+
+```ml
+x : T = f(y0, ... , yn)
+```
+
+会变成:
+
+```ml
+(define-const x T’ exp)
+```
+
+其中，exp 使用 SMT 位向量运算对内置 f 进行编码
+
+Phi 函数与 muxers 的映射如下
+
+- 对于函数 `phi(x0,...,xn)`，我们将其转化为一个 `if-then-else` 语句，该语句根据每个参数对应的父 block 的全局路径条件选择 x0 至 xn。块中的每个 phi 函数的参数数总是与父节点数相同。参数的顺序与每个父节点的节点索引相同。上述方案会产生大量可能不需要的 `declare-const` 和 `define-const` 语句 因此，我们进行了一些简单的死代码消除和常量传播，结果如下：
+
+![ssa_graph](./assets/ssa_graph.png)
+
+```ocaml
+(set-logic QF_AUFBVDT)
+(declare-const zR/0 (_ BitVec 32))
+(define-const zysz3u12_lz30/5 (_ BitVec 32) (ite (not (= ((_ extract 0 0) zR/0) #b0)) #
+  -> x00000000 #xFFFFFFFF))
+(assert (and (not (ite (not (= zysz3u12_lz30/5 #x00000000)) (= zysz3u12_lz30/5 (bvnot #
+  -> x00000000)) true))))
+(check-sat)
+```
+
+对于单态位向量操纵代码，我们可以生成非常紧凑的 SMT。特化和单态化都可以用来帮助单态化位向量。对于可变长度的位向量，我们可以将它们表示为 length-bitvector 对，最达到最大长度（默认为 256）的情况, 虽然效率较低，但是不可避免。整数当前被映射为 128 位位向量（或任何可配置的最大长度）或 64 位位向量。
+
+支持的一个稍微棘手的事情是寄存器引用，例如。
+
+```ml
+(*r) : T = 0xFFFF_FFFF
+```
+
+其中 r 是寄存器引用。为此，我们查找所有类型为 T 的寄存器（对于 Jib 类型，类型比较是很容易的），上面可以被转换为
+
+```ml
+if r = ref R1 then
+  R1 = 0xFFFF_FFFF
+else if r = ref R2 then
+  R2 = 0xFFFF_FFFF
+else ...
+```
+
+如果我们进行一些更智能的常量折叠（例如，在某些规范中传播通用寄存器（GPRs）的绑定），这有可能生成的 SMT 代码与手动用 `if-then-else` 实现寄存器读写函数一样出色。这一步在转换为 SSA 之前完成，因此 `if-then-else` 级联中的每个寄存器都会获得正确的索引。
