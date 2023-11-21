@@ -158,7 +158,7 @@ val decode : bits(32) -> option(ast)
 val execute : ast -> unit
 ```
 
-> TODO: scattered 见后续
+> scattered 将定义分散到不同部分
 
 现在，我们提供了 `add-immediate` 的 ast 类型子句，以及它的 `execute` 和 `decode` 子句。
 
@@ -167,8 +167,6 @@ val execute : ast -> unit
 Sail 支持向量拼接 (@ 是向量拼接运算符)，并使用已提供的类型 (例如 bits 和 regbits) 以正确的方式解构向量。
 
 我们使用 `EXTS` 函数来对其参数进行符号扩展。
-
-> TODO: 代码看不懂
 
 ```ocaml
 union clause ast = ITYPE : (bits(12), regbits, regbits, iop)
