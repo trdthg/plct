@@ -166,53 +166,13 @@ See <https://gcc.gnu.org/bugs/> for instructions.
 
 ```cpp
 
+  /* Map any target to operand 0.  */
+  int opno = 0;
+  if (has_target_p)
+    create_output_operand (&ops[opno++], target, TYPE_MODE (TREE_TYPE (exp)));
+
   gcc_assert (opno + call_expr_nargs (exp)
 	      == insn_data[icode].n_generator_args);
-
-struct insn_operand_data
-{
-  const insn_operand_predicate_fn predicate;
-
-  const char *const constraint;
-
-  ENUM_BITFIELD(machine_mode) const mode : 16;
-
-  const char strict_low;
-
-  const char is_operator;
-
-  const char eliminable;
-
-  const char allows_mem;
-};
-
-
-struct insn_data_d
-{
-  const char *const name;
-#if HAVE_DESIGNATED_UNION_INITIALIZERS
-  union {
-    const char *single;
-    const char *const *multi;
-    insn_output_fn function;
-  } output;
-#else
-  struct {
-    const char *single;
-    const char *const *multi;
-    insn_output_fn function;
-  } output;
-#endif
-  const insn_gen_fn genfun;
-  const struct insn_operand_data *const operand;
-
-  const char n_generator_args;
-  const char n_operands;
-  const char n_dups;
-  const char n_alternatives;
-  const char output_format;
-};
-
 
   /* ../.././gcc/gcc/config/riscv/zacas.md:15 */
   {
@@ -238,6 +198,29 @@ struct insn_data_d
   },
 ```
 
+经检查断言右侧输出符合预期 3. 左侧输出不符合预期，`call_expr_nargs` 不是很能看得懂，推测 opno 有问题，has_target_p 暂时不知道触发条件。
+
+经过多次对比，我的函数唯一不同之处是返回值为 VOID, 查看其他返回值为 VOID 的函数：
+
+```cpp
+// zicboz
+RISCV_BUILTIN (zero_si, "zicboz_cbo_zero", RISCV_BUILTIN_DIRECT_NO_TARGET, RISCV_VOID_FTYPE_VOID_PTR, zero32),
+```
+
+它使用的第三个参数是：`RISCV_BUILTIN_DIRECT_NO_TARGET`, 查看此 builtin 函数对应的机器描述：
+
+```lisp
+(define_insn "riscv_zero_<mode>"
+  [(unspec_volatile:X [(match_operand:X 0 "register_operand" "r")]
+    UNSPECV_ZERO)]
+  "TARGET_ZICBOZ"
+  "cbo.zero\t%a0"
+  [(set_attr "type" "cbo")]
+)
+```
+
+所以这里应该使用 `RISCV_BUILTIN_DIRECT_NO_TARGET`
+
 ## 运行测试
 
 ```bash
@@ -245,9 +228,9 @@ RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-gcc | tee ./debug/report-
 ```
 
 ```bash
-./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -O2 -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas64.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64gc_zacas -mabi=lp64d -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas64.c
 ```
 
 ```bash
-./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv32gc_zacas -mabi=ilp32 -O2 -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas32.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv32gc_zacas -mabi=ilp32 -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas32.c
 ```
