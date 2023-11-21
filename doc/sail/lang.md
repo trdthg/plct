@@ -75,11 +75,11 @@ Sail 的 prelude 非常少，Sail 规范通常会建立在它的基础上。一�
 ```ocaml
 val EXTZ : forall 'n 'm, 'm >= 'n. (implicit('m), bits('n)) -> bits('m)
 
-function EXTZ(m, v) = sail zero extend(v, m)
+function EXTZ(m, v) = sail_zero_extend(v, m)
 
 val EXTS : forall 'n 'm, 'm >= 'n. (implicit('m), bits('n)) -> bits('m)
 
-function EXTS(m, v) = sail sign extend(v, m)
+function EXTS(m, v) = sail_sign_extend(v, m)
 ```
 
 现在，我们定义一个整数类型同义词 xlen，在本例中，该同义词将等于 64。Sail 支持对常规类型和整数 (类比 C++ 中的常量泛型，但这里更具表现力) 的定义。我们还为长度为 xlen 的位向量 (bit vector) 创建类型 xlenbits。
@@ -435,7 +435,6 @@ sail -o DIRECTORY -latex FILES
 功能：复制 bitvector n 次
 
 ```ocaml
-val my_replicate_bits : forall 'n 'm, ('m >= 1 & 'n >= 1). (int('n), bits('m)) -> bits('n * 'm)
 ```
 
 Sail 中函数类型的一般语法如下：
@@ -444,6 +443,8 @@ Sail 中函数类型的一般语法如下：
 `replicate_bits` 函数的实现如下：
 
 ```ocaml
+val my_replicate_bits : forall 'n 'm, ('m >= 1 & 'n >= 1). (int('n), bits('m)) -> bits('n * 'm)
+
 function my_replicate_bits(n, xs) = {
     ys = zeros(n * length(xs));
     foreach (i from 1 to n) {
