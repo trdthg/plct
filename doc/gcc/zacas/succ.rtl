@@ -1,0 +1,74 @@
+
+;; Function foo1 (foo1, funcdef_no=0, decl_uid=2292, cgraph_uid=1, symbol_order=0)
+
+
+;; Generating RTL for gimple basic block 2
+
+
+try_optimize_cfg iteration 1
+
+Merging block 3 into block 2...
+Merged blocks 2 and 3.
+Merged 2 and 3 without moving.
+Merging block 4 into block 2...
+Merged blocks 2 and 4.
+Merged 2 and 4 without moving.
+
+
+try_optimize_cfg iteration 2
+
+
+
+;;
+;; Full RTL generated for this function:
+;;
+(note 1 0 8 NOTE_INSN_DELETED)
+(note 8 1 2 2 [bb 2] NOTE_INSN_BASIC_BLOCK)
+(insn 2 8 3 2 (set (mem/c:DI (plus:DI (reg/f:DI 129 virtual-stack-vars)
+                (const_int -16 [0xfffffffffffffff0])) [1 rd+0 S8 A128])
+        (reg:DI 10 a0 [ rd ])) "../gcc/gcc/testsuite/gcc.target/riscv/zacas128.c":4:53 -1
+     (nil))
+(insn 3 2 4 2 (set (mem/c:DI (plus:DI (reg/f:DI 129 virtual-stack-vars)
+                (const_int -8 [0xfffffffffffffff8])) [1 rd+8 S8 A64])
+        (reg:DI 11 a1 [ rd+8 ])) "../gcc/gcc/testsuite/gcc.target/riscv/zacas128.c":4:53 -1
+     (nil))
+(insn 4 3 5 2 (set (mem/c:DI (plus:DI (reg/f:DI 129 virtual-stack-vars)
+                (const_int -32 [0xffffffffffffffe0])) [1 rs2+0 S8 A128])
+        (reg:DI 12 a2 [ rs2 ])) "../gcc/gcc/testsuite/gcc.target/riscv/zacas128.c":4:53 -1
+     (nil))
+(insn 5 4 6 2 (set (mem/c:DI (plus:DI (reg/f:DI 129 virtual-stack-vars)
+                (const_int -24 [0xffffffffffffffe8])) [1 rs2+8 S8 A64])
+        (reg:DI 13 a3 [ rs2+8 ])) "../gcc/gcc/testsuite/gcc.target/riscv/zacas128.c":4:53 -1
+     (nil))
+(insn 6 5 7 2 (set (mem/f/c:DI (plus:DI (reg/f:DI 129 virtual-stack-vars)
+                (const_int -40 [0xffffffffffffffd8])) [2 rs1+0 S8 A64])
+        (reg:DI 14 a4 [ rs1 ])) "../gcc/gcc/testsuite/gcc.target/riscv/zacas128.c":4:53 -1
+     (nil))
+(note 7 6 12 2 NOTE_INSN_FUNCTION_BEG)
+(insn 12 7 10 2 (clobber (reg:TI 134)) "../gcc/gcc/testsuite/gcc.target/riscv/zacas128.c":5:5 -1
+     (nil))
+(insn 10 12 11 2 (set (subreg:DI (reg:TI 134) 0)
+        (mem/c:DI (plus:DI (reg/f:DI 129 virtual-stack-vars)
+                (const_int -16 [0xfffffffffffffff0])) [1 rd+0 S8 A128])) "../gcc/gcc/testsuite/gcc.target/riscv/zacas128.c":5:5 -1
+     (nil))
+(insn 11 10 15 2 (set (subreg:DI (reg:TI 134) 8)
+        (mem/c:DI (plus:DI (reg/f:DI 129 virtual-stack-vars)
+                (const_int -8 [0xfffffffffffffff8])) [1 rd+8 S8 A64])) "../gcc/gcc/testsuite/gcc.target/riscv/zacas128.c":5:5 -1
+     (nil))
+(insn 15 11 13 2 (clobber (reg:TI 135)) "../gcc/gcc/testsuite/gcc.target/riscv/zacas128.c":5:5 -1
+     (nil))
+(insn 13 15 14 2 (set (subreg:DI (reg:TI 135) 0)
+        (mem/c:DI (plus:DI (reg/f:DI 129 virtual-stack-vars)
+                (const_int -32 [0xffffffffffffffe0])) [1 rs2+0 S8 A128])) "../gcc/gcc/testsuite/gcc.target/riscv/zacas128.c":5:5 -1
+     (nil))
+(insn 14 13 16 2 (set (subreg:DI (reg:TI 135) 8)
+        (mem/c:DI (plus:DI (reg/f:DI 129 virtual-stack-vars)
+                (const_int -24 [0xffffffffffffffe8])) [1 rs2+8 S8 A64])) "../gcc/gcc/testsuite/gcc.target/riscv/zacas128.c":5:5 -1
+     (nil))
+(insn 16 14 0 2 (unspec_volatile [
+            (reg:TI 134)
+            (reg:TI 135)
+            (mem/f/c:DI (plus:DI (reg/f:DI 129 virtual-stack-vars)
+                    (const_int -40 [0xffffffffffffffd8])) [2 rs1+0 S8 A64])
+        ] UNSPEC_AMOCAS128) "../gcc/gcc/testsuite/gcc.target/riscv/zacas128.c":5:5 -1
+     (nil))

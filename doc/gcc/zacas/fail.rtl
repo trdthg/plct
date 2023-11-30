@@ -1,0 +1,46 @@
+
+;; Function foo1 (foo1, funcdef_no=0, decl_uid=2292, cgraph_uid=1, symbol_order=0)
+
+
+;; Generating RTL for gimple basic block 2
+
+
+try_optimize_cfg iteration 1
+
+Merging block 3 into block 2...
+Merged blocks 2 and 3.
+Merged 2 and 3 without moving.
+Merging block 4 into block 2...
+Merged blocks 2 and 4.
+Merged 2 and 4 without moving.
+
+
+try_optimize_cfg iteration 2
+
+
+
+;;
+;; Full RTL generated for this function:
+;;
+(note 1 0 10 NOTE_INSN_DELETED)
+(note 10 1 4 2 [bb 2] NOTE_INSN_BASIC_BLOCK)
+(insn 4 10 2 2 (clobber (reg/v:TI 134 [ rd ])) "../gcc/gcc/testsuite/gcc.target/riscv/zacas128.c":4:53 -1
+     (nil))
+(insn 2 4 3 2 (set (subreg:DI (reg/v:TI 134 [ rd ]) 0)
+        (reg:DI 10 a0 [ rd ])) "../gcc/gcc/testsuite/gcc.target/riscv/zacas128.c":4:53 -1
+     (nil))
+(insn 3 2 7 2 (set (subreg:DI (reg/v:TI 134 [ rd ]) 8)
+        (reg:DI 11 a1 [ rd+8 ])) "../gcc/gcc/testsuite/gcc.target/riscv/zacas128.c":4:53 -1
+     (nil))
+(insn 7 3 5 2 (clobber (reg/v:TI 135 [ rs2 ])) "../gcc/gcc/testsuite/gcc.target/riscv/zacas128.c":4:53 -1
+     (nil))
+(insn 5 7 6 2 (set (subreg:DI (reg/v:TI 135 [ rs2 ]) 0)
+        (reg:DI 12 a2 [ rs2 ])) "../gcc/gcc/testsuite/gcc.target/riscv/zacas128.c":4:53 -1
+     (nil))
+(insn 6 5 8 2 (set (subreg:DI (reg/v:TI 135 [ rs2 ]) 8)
+        (reg:DI 13 a3 [ rs2+8 ])) "../gcc/gcc/testsuite/gcc.target/riscv/zacas128.c":4:53 -1
+     (nil))
+(insn 8 6 9 2 (set (reg/v/f:DI 136 [ rs1 ])
+        (reg:DI 14 a4 [ rs1 ])) "../gcc/gcc/testsuite/gcc.target/riscv/zacas128.c":4:53 -1
+     (nil))
+(note 9 8 0 2 NOTE_INSN_FUNCTION_BEG)
