@@ -538,9 +538,8 @@ memory_operand (rtx op, machine_mode mode)
 匹配 memory_operand 的条件：
 
 1. 要么 mode 是 VOIDmode，要么 mode 和 op mode 相同
-2. op 不是 SUBREG
-3. op 是 MEM_P: `#define MEM_P(X) (GET_CODE (X) == MEM)`
-4. op 是 general_operand
+2. op 是 MEM_P: `#define MEM_P(X) (GET_CODE (X) == MEM)`
+3. op 是 general_operand
 
 检查生成的 rtl：
 
