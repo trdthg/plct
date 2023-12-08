@@ -541,12 +541,12 @@ memory_operand (rtx op, machine_mode mode)
 2. op 是 MEM_P: `#define MEM_P(X) (GET_CODE (X) == MEM)`
 3. op 是 general_operand
 
-检查生成的 rtl：
+增加编译参数 `-fdump-rtl-all`, 检查生成的 rtl：
 
 ```bash
 mkdir xxx
 
-../build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -fdump-rtl-all  -S ../gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+../build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -fdump-rtl-all -S ../gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
 
 echo `pwd`/zacas128.c.262r.expand
 ```
@@ -579,7 +579,7 @@ void foo1()
 
 对应的：
 
-```lisp
+```rust
 (note 1 0 3 NOTE_INSN_DELETED)
 (note 3 1 2 2 [bb 2] NOTE_INSN_BASIC_BLOCK)
 (note 2 3 5 2 NOTE_INSN_FUNCTION_BEG)
@@ -621,6 +621,8 @@ time RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-gcc | tee ./debug/re
 time RUNTESTFLAGS=riscv.exp=zacas* make -j$(nproc) report-binutils | tee ./debug/report-binutils-riscv-zacas.log
 ```
 
+<!-- -fdump-rtl-all -->
+
 ```bash
 rm -f ./zacas32.s ./zacas32.o
 rm -f ./zacas64.s ./zacas64.o
@@ -635,9 +637,81 @@ rm -f ./zacas128.s ./zacas128.o
 ./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -c ./gcc/gcc/testsuite/gcc.target/riscv/zacas64.c
 ./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -c ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
 
+# zawrs: 参考价值: 都属于 za 子集
 rm -f ./zawrs.s
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64gc_zawrs -S -O3 ./gcc/gcc/testsuite/gcc.target/riscv/zawrs.c
+
 ./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64gc_zawrs -c ./gcc/gcc/testsuite/gcc.target/riscv/zawrs.c
 
+# zicbom, 参考价值:参数时 VOID_PTR, 返回值为 VOID
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64gc_zicbom -mabi=lp64 -S -O3 ./gcc/gcc/testsuite/gcc.target/riscv/cmo-zicbom-1.c
 
-./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64gc_zicbom -mabi=lp64 -c ./gcc/gcc/testsuite/gcc.target/riscv/cmo-zicbom-1.c
+# atomic_load, 参考价值: 属于原子操作, 使用了 mem_operand
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64gc_zicbom -mabi=lp64 -S -O3 ./gcc/gcc/testsuite/gcc.target/riscv/amo-table-a-6-load-1.c
+```
+
+```rust
+
+;; Function foo (foo, funcdef_no=0, decl_uid=2289, cgraph_uid=1, symbol_order=0)
+
+
+;; Generating RTL for gimple basic block 2
+
+
+try_optimize_cfg iteration 1
+
+Merging block 3 into block 2...
+Merged blocks 2 and 3.
+Merged 2 and 3 without moving.
+Merging block 4 into block 2...
+Merged blocks 2 and 4.
+Merged 2 and 4 without moving.
+
+
+try_optimize_cfg iteration 2
+
+
+
+;;
+;; Full RTL generated for this function:
+;;
+(note 1 0 5 NOTE_INSN_DELETED)
+(note 5 1 2 2 [bb 2] NOTE_INSN_BASIC_BLOCK)
+(insn 2 5 3 2 (set (reg/v/f:DI 134 [ bar ])
+        (reg:DI 10 a0 [ bar ])) "./gcc/gcc/testsuite/gcc.target/riscv/amo-table-a-6-load-1.c":14:1 -1
+     (nil))
+(insn 3 2 4 2 (set (reg/v:DI 135 [ baz ])
+        (reg:DI 11 a1 [ baz ])) "./gcc/gcc/testsuite/gcc.target/riscv/amo-table-a-6-load-1.c":14:1 -1
+     (nil))
+(note 4 3 7 2 NOTE_INSN_FUNCTION_BEG)
+(insn 7 4 0 2 (set (reg:SI 136)
+        (unspec_volatile:SI [
+                (mem/v:SI (reg/v/f:DI 134 [ bar ]) [-1  S4 A32])
+                (const_int 0 [0])
+            ] UNSPEC_ATOMIC_LOAD)) "./gcc/gcc/testsuite/gcc.target/riscv/amo-table-a-6-load-1.c":15:3 -1
+     (nil))
+```
+
+```rust
+;; Function foo (foo, funcdef_no=0, decl_uid=2289, cgraph_uid=1, symbol_order=0)
+
+(note 1 0 5 NOTE_INSN_DELETED)
+(note 5 1 13 [bb 2] NOTE_INSN_BASIC_BLOCK)
+(note 13 5 4 NOTE_INSN_PROLOGUE_END)
+(note 4 13 7 NOTE_INSN_FUNCTION_BEG)
+(insn 7 4 19 (set (reg:SI 15 a5 [136])
+        (unspec_volatile:SI [
+                (mem/v:SI (reg/v/f:DI 10 a0 [orig:134 bar ] [134]) [-1  S4 A32])
+                (const_int 0 [0])
+            ] UNSPEC_ATOMIC_LOAD)) "./gcc/gcc/testsuite/gcc.target/riscv/amo-table-a-6-load-1.c":15:3 585 {atomic_load_rvwmosi}
+     (expr_list:REG_DEAD (reg/v/f:DI 10 a0 [orig:134 bar ] [134])
+        (expr_list:REG_UNUSED (reg:SI 15 a5 [136])
+            (nil))))
+(note 19 7 15 NOTE_INSN_EPILOGUE_BEG)
+(jump_insn 15 19 16 (simple_return) "./gcc/gcc/testsuite/gcc.target/riscv/amo-table-a-6-load-1.c":16:1 346 {simple_return}
+     (nil)
+ -> simple_return)
+(barrier 16 15 11)
+(note 11 16 12 NOTE_INSN_DELETED)
+(note 12 11 0 NOTE_INSN_DELETED)
 ```
