@@ -1,0 +1,5 @@
+;; starting at line 31
+<&0x7fc6f2cc7da8> [./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c:31:5] # .MEM_2 = VDEF <.MEM_1(D)>
+gimple_call <__builtin_riscv_amocas_test1D.xxxx, NULL, 1, 2, 3B>
+<&0x7fc6f2e35050> [./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c:35:1] # VUSE <.MEM_2>
+gimple_return <NULL>

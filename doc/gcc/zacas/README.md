@@ -469,9 +469,11 @@ register_operand 替换为 memory_operand 造成
 
 尝试手动添加优化参数查找原因，下面使用 `-Q --help=optimizers` 查看最终的优化结果：
 
-`diff -y <(./build-toolchain-out/bin/riscv64-unknown-elf-gcc -fbranch-count-reg -fcombine-stack-adjustments -fcompare-elim -fcprop-registers -fdefer-pop -fdse -fforward-propagate  -fguess-branch-probability -fif-conversion -fif-conversion2 -finline -finline-functions-called-once -fipa-modref -fipa-profile -fipa-pure-const -fipa-reference -fipa-reference-addressable -fmove-loop-invariants -fmove-loop-stores -fomit-frame-pointer -freorder-blocks -fsched-pressure -fsection-anchors -fsplit-wide-types -fssa-phiopt -fthread-jumps -ftoplevel-reorder -ftree-bit-ccp  -ftree-builtin-call-dce -ftree-ccp -ftree-ch -ftree-coalesce-vars -ftree-copy-prop -ftree-dce -ftree-dominator-opts -Q --help=optimizers) <(./build-toolchain-out/bin/riscv64-unknown-elf-gcc -O1 -funreachable-traps -Q --help=optimizers) | rg "enable.*disable"`
+```bash
+diff -y <(./build-toolchain-out/bin/riscv64-unknown-elf-gcc -fthread-jumps -ftoplevel-reorder -ftree-builtin-call-dce -fsection-anchors -fsched-pressure -finline -fno-delayed-branch -fauto-inc-dec -fbranch-count-reg -fcombine-stack-adjustments -fcompare-elim -fcprop-registers -fdce -fdefer-pop -fdse -fforward-propagate -fguess-branch-probability -fif-conversion -fif-conversion2 -finline-functions-called-once -fipa-modref -fipa-profile -fipa-pure-const -fipa-reference -fipa-reference-addressable -fmerge-constants -fmove-loop-invariants -fmove-loop-stores -fomit-frame-pointer -freorder-blocks -fshrink-wrap -fshrink-wrap-separate -fsplit-wide-types -fssa-backprop -fssa-phiopt -ftree-bit-ccp -ftree-ccp -ftree-ch -ftree-coalesce-vars -ftree-copy-prop -ftree-dce -ftree-dominator-opts -ftree-dse -ftree-forwprop -ftree-fre -ftree-phiprop -ftree-pta -ftree-scev-cprop -ftree-sink -ftree-slsr -ftree-sra -ftree-ter -funit-at-a-time -finline -Q --help=optimizers) <(./build-toolchain-out/bin/riscv64-unknown-elf-gcc -O1 -funreachable-traps -Q --help=optimizers) | rg "enable.*disable"
+```
 
-除了 -finline 无法 enable 外都相同，依然报错
+除了 `-finline` 无法 enable 外都相同，依然报错
 
 几个 xxxxx_operand 定义如下：
 
@@ -605,6 +607,8 @@ void foo1()
 
 > 但机器指令从不产生值;它们仅对机器状态的副作用有意义。特殊表达式代码用于表示副作用。
 
+上面的似乎对此没有影响，毕竟 zicbom 的 md 中只有一条 unspec_volatile 依然正确生成
+
 ## 运行测试
 
 ```bash
@@ -613,7 +617,7 @@ void foo1()
 
 # 测试 gcc
 rm stamps/check-gcc-newlib
-rm build-gcc-newlib-stage2
+rm stamps/build-gcc-newlib-stage2
 time RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-gcc | tee ./debug/report-gcc-riscv-zacas.log
 
 
@@ -648,70 +652,18 @@ rm -f ./zawrs.s
 
 # atomic_load, 参考价值: 属于原子操作, 使用了 mem_operand
 ./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64gc_zicbom -mabi=lp64 -S -O3 ./gcc/gcc/testsuite/gcc.target/riscv/amo-table-a-6-load-1.c
+
+
+# rtl 检查脚本
+rm -rf ./zacas128.c.* ./zawrs.c.* ./cmo-zicbop-1.c.* ./cmo-zicbom-1.c.* ./amo-table-a-6-load-1.c.* && ./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas_zicbom_zawrs -mabi=lp64d -S -fdump-rtl-all -O1 ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c; ll ./*.expand
+
 ```
 
-```rust
+# 尝试打印 gimple
 
-;; Function foo (foo, funcdef_no=0, decl_uid=2289, cgraph_uid=1, symbol_order=0)
-
-
-;; Generating RTL for gimple basic block 2
-
-
-try_optimize_cfg iteration 1
-
-Merging block 3 into block 2...
-Merged blocks 2 and 3.
-Merged 2 and 3 without moving.
-Merging block 4 into block 2...
-Merged blocks 2 and 4.
-Merged 2 and 4 without moving.
-
-
-try_optimize_cfg iteration 2
-
-
-
-;;
-;; Full RTL generated for this function:
-;;
-(note 1 0 5 NOTE_INSN_DELETED)
-(note 5 1 2 2 [bb 2] NOTE_INSN_BASIC_BLOCK)
-(insn 2 5 3 2 (set (reg/v/f:DI 134 [ bar ])
-        (reg:DI 10 a0 [ bar ])) "./gcc/gcc/testsuite/gcc.target/riscv/amo-table-a-6-load-1.c":14:1 -1
-     (nil))
-(insn 3 2 4 2 (set (reg/v:DI 135 [ baz ])
-        (reg:DI 11 a1 [ baz ])) "./gcc/gcc/testsuite/gcc.target/riscv/amo-table-a-6-load-1.c":14:1 -1
-     (nil))
-(note 4 3 7 2 NOTE_INSN_FUNCTION_BEG)
-(insn 7 4 0 2 (set (reg:SI 136)
-        (unspec_volatile:SI [
-                (mem/v:SI (reg/v/f:DI 134 [ bar ]) [-1  S4 A32])
-                (const_int 0 [0])
-            ] UNSPEC_ATOMIC_LOAD)) "./gcc/gcc/testsuite/gcc.target/riscv/amo-table-a-6-load-1.c":15:3 -1
-     (nil))
-```
-
-```rust
-;; Function foo (foo, funcdef_no=0, decl_uid=2289, cgraph_uid=1, symbol_order=0)
-
-(note 1 0 5 NOTE_INSN_DELETED)
-(note 5 1 13 [bb 2] NOTE_INSN_BASIC_BLOCK)
-(note 13 5 4 NOTE_INSN_PROLOGUE_END)
-(note 4 13 7 NOTE_INSN_FUNCTION_BEG)
-(insn 7 4 19 (set (reg:SI 15 a5 [136])
-        (unspec_volatile:SI [
-                (mem/v:SI (reg/v/f:DI 10 a0 [orig:134 bar ] [134]) [-1  S4 A32])
-                (const_int 0 [0])
-            ] UNSPEC_ATOMIC_LOAD)) "./gcc/gcc/testsuite/gcc.target/riscv/amo-table-a-6-load-1.c":15:3 585 {atomic_load_rvwmosi}
-     (expr_list:REG_DEAD (reg/v/f:DI 10 a0 [orig:134 bar ] [134])
-        (expr_list:REG_UNUSED (reg:SI 15 a5 [136])
-            (nil))))
-(note 19 7 15 NOTE_INSN_EPILOGUE_BEG)
-(jump_insn 15 19 16 (simple_return) "./gcc/gcc/testsuite/gcc.target/riscv/amo-table-a-6-load-1.c":16:1 346 {simple_return}
-     (nil)
- -> simple_return)
-(barrier 16 15 11)
-(note 11 16 12 NOTE_INSN_DELETED)
-(note 12 11 0 NOTE_INSN_DELETED)
+```cpp
+FILE *fp;
+fp = fopen("gimple-before-expand", "w");
+FOR_BB_BETWEEN (bb, ENTRY_BLOCK_PTR ->next_bb, EXIT_BLOCK_PTR, next_bb)
+  gimple_dump_bb (bb, fp, 0, 0xffff);
 ```
