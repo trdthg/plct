@@ -1,0 +1,2 @@
+- openQA 基于 docker-compose 部署 [文档](./202312_week2/openqa_docker.md) [issue](https://github.com/os-autoinst/openQA/issues/5384)
+- 
