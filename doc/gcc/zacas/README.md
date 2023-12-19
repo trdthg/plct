@@ -465,6 +465,8 @@ RISCV_BUILTIN(amocas_si_64, "amocas32", RISCV_BUILTIN_DIRECT_NO_TARGET, RISCV_VO
 
 ### WIP: 编译不报错，加上 `-O1` 报错
 
+#### O1 优化排查
+
 register_operand 替换为 memory_operand 造成
 
 尝试手动添加优化参数查找原因，下面使用 `-Q --help=optimizers` 查看最终的优化结果：
@@ -474,6 +476,8 @@ diff -y <(./build-toolchain-out/bin/riscv64-unknown-elf-gcc -fthread-jumps -ftop
 ```
 
 除了 `-finline` 无法 enable 外都相同，依然报错
+
+#### memory_operand 匹配条件
 
 几个 xxxxx_operand 定义如下：
 
@@ -537,11 +541,26 @@ memory_operand (rtx op, machine_mode mode)
 
 ```
 
+MEM_P 的定义如下：
+
+```cpp
+// rtl.h
+#define MEM_P(X) (GET_CODE (X) == MEM)
+```
+
 匹配 memory_operand 的条件：
 
 1. 要么 mode 是 VOIDmode，要么 mode 和 op mode 相同
 2. op 是 MEM_P: `#define MEM_P(X) (GET_CODE (X) == MEM)`
 3. op 是 general_operand
+
+`op == inner`
+
+`GET_CODE(op) == GET_CODE(inner) == MEM`
+
+> 其他搜索关键词：riscv_load_store_insns
+
+#### rtl 检查
 
 增加编译参数 `-fdump-rtl-all`, 检查生成的 rtl：
 
@@ -609,11 +628,173 @@ void foo1()
 
 上面的似乎对此没有影响，毕竟 zicbom 的 md 中只有一条 unspec_volatile 依然正确生成
 
+#### gimple 检查
+
+在 pass_expand 入口处打印 gimple:
+
+以下代码来自书，需要做小幅调整
+
+```cpp
+FILE *fp;
+fp = fopen("gimple-before-expand", "w");
+FOR_BB_BETWEEN (bb, ENTRY_BLOCK_PTR ->next_bb, EXIT_BLOCK_PTR, next_bb)
+  gimple_dump_bb (bb, fp, 0, 0xffff);
+
+
+FILE *fp;
+fp = fopen("gimple-before-expand", "w");
+FOR_BB_BETWEEN (bb, ENTRY_BLOCK_PTR_FOR_FN(fun)->next_bb, EXIT_BLOCK_PTR_FOR_FN(fun), next_bb)
+  gimple_dump_bb (fp, bb, 0, (dump_flags_t)0xffff);
+
+```
+
+mem 并不指指针类型，
+
+> 1. 对于 GIMPLE 语句中的 GIMPLE 临时变量，一般为该变量分配虚拟寄存器，创建类型为 REG 的 RTX，通过该寄存器 RTX 访问该变量；
+> 2. 如果是函数中的自动变量，则使用堆栈进行空间分配，因此必须创建内存类型为的 RTX（其 RTX_CODE=MEM），一般通过基址寄存器（virtual_stack_vars_rtx）+ 偏移量的方式给出该变量的内存地址。
+
+观察其他 mem_operand 用例的 rtl 是否从 msm -> reg
+
+CODE_FOR_riscv_amocas_test_si
+
+file: _build-gcc-newlib-stage1/gcc/insn-emit-x.cc_
+
+```cpp
+/* ../.././gcc/gcc/config/riscv/zacas.md:66 */
+rtx
+gen_riscv_amocas_di (rtx operand0 ATTRIBUTE_UNUSED,
+ rtx operand1 ATTRIBUTE_UNUSED,
+ rtx operand2 ATTRIBUTE_UNUSED)
+{
+  return gen_rtx_UNSPEC_VOLATILE (DImode,
+ gen_rtvec (3,
+  operand0,
+  operand1,
+  operand2),
+ 147);
+}
+
+
+/* ../.././gcc/gcc/config/riscv/sync.md:59 */
+rtx
+gen_atomic_loadsi (rtx operand0,
+	rtx operand1,
+	rtx operand2)
+{
+  rtx_insn *_val = 0;
+  start_sequence ();
+  {
+    rtx operands[3];
+    operands[0] = operand0;
+    operands[1] = operand1;
+    operands[2] = operand2;
+#define FAIL return (end_sequence (), _val)
+#define DONE return (_val = get_insns (), end_sequence (), _val)
+#line 64 "../.././gcc/gcc/config/riscv/sync.md"
+{
+    if (TARGET_ZTSO)
+      emit_insn (gen_atomic_load_ztsosi (operands[0], operands[1],
+					     operands[2]));
+    else
+      emit_insn (gen_atomic_load_rvwmosi (operands[0], operands[1],
+					      operands[2]));
+    DONE;
+  }
+#undef DONE
+#undef FAIL
+    operand0 = operands[0];
+    (void) operand0;
+    operand1 = operands[1];
+    (void) operand1;
+    operand2 = operands[2];
+    (void) operand2;
+  }
+  emit (operand0, true);
+  emit (operand1, true);
+  emit (operand2, false);
+  _val = get_insns ();
+  end_sequence ();
+  return _val;
+}
+
+/* ../.././gcc/gcc/config/riscv/sync-rvwmo.md:49 */
+rtx
+gen_atomic_load_rvwmosi (rtx operand0 ATTRIBUTE_UNUSED,
+	rtx operand1 ATTRIBUTE_UNUSED,
+	rtx operand2 ATTRIBUTE_UNUSED)
+{
+  return gen_rtx_SET (operand0,
+	gen_rtx_UNSPEC_VOLATILE (SImode,
+	gen_rtvec (2,
+		operand1,
+		operand2),
+	75));
+}
+
+```
+
+1.1. insn selection
+insn selection 通过 `pass_expand` 完成，目的是生成 gimple 对应的 rtl, 基本过程：
+
+- 根据 gimple 的 tree code (例如 PLUS_EXPR) 找到 optab (例如 add_optab)
+
+  由于 gcc 为 C 语言而生，天上 AST 就是 GIMPLE, 所以 GIMPLE 的 TREE_CODE 就是 CALL_EXPR
+
+  `DEFTREECODE (CALL_EXPR, "call_expr", tcc_vl_exp, 3)`
+
+  在 `./gcc/gcc/optabs-tree.h` 没有匹配的，最后返回 `unknown_optab`
+
+- 根据 optab 找到 insn_code (例如 CODE_FOR_addsf3)
+
+  没有对应的 optab, optab 列表中有一个 optab_unknown
+
+- 根据 insn_code 找到对应的 rtl
+
+#### gimple 生成 rtl
+
+```c
+int global_int = 0;
+
+int gimple2rtl(int a, short b, char *p) {
+  int i;
+  static int static_sum;
+  int array[2] = {0, 1};
+  static_sum = a;
+
+  for (i = global_int; i < b; i++) {
+      int j = *p;
+      static_sum = static_sum + j + array[i];
+      if (static_sum > 1000) {
+        goto Label_RET;
+      }
+  }
+Label_RET:
+  return static_sum;
+}
+
+```
+
+```
+
+init_block = construct_init_block ();
+
+expand_gimple_basic_block
+expand_gimple_stmt
+expand_gimple_stmt_1
+expand_call_stmt
+
+ifn = replacement_internal_fn
+  expand_internal_call
+    internal_fn_expanders[fn] (fn, stmt)
+      expand_ATOMIC_COMPARE_EXCHANGE
+        expand_ifn_atomic_compare_exchange
+```
+
 ## 运行测试
 
 ```bash
 # 编译
-./configure --prefix=$(pwd)/build-toolchain-out --with-arch="rv64imafdc_zacas"
+./configure --prefix=$(pwd)/build-toolchain-out
 
 # 测试 gcc
 rm stamps/check-gcc-newlib
@@ -655,15 +836,6 @@ rm -f ./zawrs.s
 
 
 # rtl 检查脚本
-rm -rf ./zacas128.c.* ./zawrs.c.* ./cmo-zicbop-1.c.* ./cmo-zicbom-1.c.* ./amo-table-a-6-load-1.c.* && ./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas_zicbom_zawrs -mabi=lp64d -S -fdump-rtl-all -O1 ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c; ll ./*.expand
+rm -rf ./zacas128.c.* ./zawrs.c.* ./cmo-zicbop-1.c.* ./cmo-zicbom-1.c.* ./amo-table-a-6-load-1.c.* ./demo.c.* && ./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas_zicbom_zawrs -mabi=lp64d -S -fdump-rtl-all -fdump-tree-all -O1 ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c; ll ./*.expand
 
-```
-
-# 尝试打印 gimple
-
-```cpp
-FILE *fp;
-fp = fopen("gimple-before-expand", "w");
-FOR_BB_BETWEEN (bb, ENTRY_BLOCK_PTR ->next_bb, EXIT_BLOCK_PTR, next_bb)
-  gimple_dump_bb (bb, fp, 0, 0xffff);
 ```
