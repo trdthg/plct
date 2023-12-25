@@ -1,12 +1,19 @@
 # 深入分析 os-autoinst
 
-此文档尝试分析 os-autoinst 的底层逻辑, 但鉴于这是一个十年老库, 代码库复杂(或者对普通程序员说太不常见), 基于多进程架构, 以及 perl 语言, 难以阅读, 只能尽力
+此文档尝试分析 os-autoinst 的底层逻辑, 目的在于为定制测试框架, (鉴于 openQA 的可维护性太差, 使用依然过于复杂) 提供一个前导性质的可行性分析, 及思路
 
-本文档目的在于为定制测试框架, (鉴于 openQA 的可维护性太差, 使用依然过于复杂) 提供一个可行性分析, 以及基本思路
+但鉴于这是一个十年老库, 代码库复杂(或者对普通程序员说太不常见), 基于多进程架构, 以及 perl 语言及其生态, 难以阅读, 只能尽力
 
 ## 架构
 
 官方完整示例: <https://open.qa/docs/images/architecture.svg>
+
+### 模块
+
+- isotovideo: 负责启动下面三个子进程, 处理消息转发, 停止等
+- backend: 负责启动虚拟机, 连接 vnc, 串口等
+- autotest: 负责运行测试脚本
+- command server: 负责为 ui(live), worker 提供服务
 
 ### 进程树
 
@@ -23,14 +30,9 @@
 - 除 autotest 外，所有进程都有一个 IO 循环。后者主要执行测试代码，其他一切都对它做出反应。
 - `command server` 用于为 openQA worker 和 livehandler 提供服务
 
-### 重要模块
-
-- isotovideo: 负责启动下面三个子进程, 处理消息转发, 停止等
-- backend: 负责启动虚拟机
-- autotest: 负责运行测试脚本
-- command server: 负责为 ui(live), worker 提供服务
-
 ## 常用套路
+
+以下为 os-autoinst 代码库常用的一些代码片段
 
 ### 多进程
 
@@ -189,7 +191,9 @@ namespaces 可以指定命名空间, 后续的 handler, 例如 `to('commands#sta
 
 ## cosole 模块
 
-console 被定义为终端, 可以是 vnc 也可以是 ssh, 串口等任何终端. 一个 backend 可以有多个 console
+console 被定义为终端, 可以是 vnc 也可以是 ssh, 串口等任何终端. 一个 backend 可以有多个 console.
+
+分别用于基于图片, 输出的测试断言
 
 ### 初始化
 
@@ -255,7 +259,7 @@ sub select_console ($testapi_console, @args) {
 
 对于 vnc 来说, 在初始化过程中, `my $ret = $class->new($testapi_console, $backend_args);` 通过 login 获取 socket 对象
 
-os-autoinst 依赖通过 socket 向 VNC server 发送数据包, os-autoinst 自己实现了部分协议, 比如发送一个按键:
+os-autoinst 依赖通过 socket 向 VNC server 发送数据包, os-autoinst 自己零散的实现了部分 RDP 协议, 比如发送一个按键:
 
 ```perl
 sub send_key_event ($self, $key, $press_release_delay) {
@@ -265,10 +269,6 @@ sub send_key_event ($self, $key, $press_release_delay) {
 # map_and_send_key 会分别调用 key_down 和 key_up, 通过下面的函数发送两次数据
 
 sub _send_key_event ($self, $down_flag, $key) {
-    # A key press or release. Down-flag is non-zero (true) if the key is now pressed, zero
-    # (false) if it is now released. The key itself is specified using the "keysym" values
-    # defined by the X Window System.
-
     my $socket = $self->socket;
     my $template = 'CCnN';
     # for a strange reason ikvm has a lot more padding
@@ -828,6 +828,8 @@ sub _signal_handler ($self, $sig) {
 ### run
 
 runner 负责从 autotest fd, backend out_channel, cmd_server(初始化自 prepare 阶段, api server) fd 接受消息, 将消息发送到 backend 或者 直接调用
+
+例如许多有测试脚本即 autotest 调用的 testapi 就依赖 isotovideo 把命令转发到 backend
 
 ```perl
 sub run ($self) {
