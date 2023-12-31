@@ -1083,6 +1083,19 @@ isotovideo: isotovideo {
 
 ## testapi 实现
 
+### python 语言支持
+
+```py
+# publish all test API methods over perl into the modules context.
+# Use with `import testapi; testapi.method()` or `from testapi import *`
+import perl
+
+perl.use("testapi")
+for i in dir(perl.testapi):
+    locals()[i] = getattr(perl.testapi, i)
+
+```
+
 ### assert_screen
 
 testapi 相关代码:
