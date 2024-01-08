@@ -384,6 +384,8 @@ define_attr 可以设置默认值
 
 ```
 
+### binutil gen.d
+
 ### binutil 测试不过
 
 以为测试用例的正则中 空格 和 tab 写错（确实可能是原因之一），其实是正则使用 `[空格Tab]+` 同时匹配了两者
@@ -838,4 +840,51 @@ rm -f ./zawrs.s
 # rtl 检查脚本
 rm -rf ./zacas128.c.* ./zawrs.c.* ./cmo-zicbop-1.c.* ./cmo-zicbom-1.c.* ./amo-table-a-6-load-1.c.* ./demo.c.* && ./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas_zicbom_zawrs -mabi=lp64d -S -fdump-rtl-all -fdump-tree-all -O1 ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c; ll ./*.expand
 
+rm -rf ./zacas128.c.* ./zawrs.c.* ./cmo-zicbop-1.c.* ./cmo-zicbom-1.c.* ./amo-table-a-6-load-1.c.* ./demo.c.* && ./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv32g_zacas_zicbom_zawrs -mabi=ilp32 -S -fdump-rtl-all -fdump-tree-all -O1 ./gcc/gcc/testsuite/gcc.target/riscv/zacas32.c; ll ./*.expand
+```
+
+## binutils
+
+```bash
+time RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-binutils | tee ./debug/report-binutils-riscv-zacas.log
+
+/plct/riscv-gnu-toolchain/build-toolchain-out/bin/riscv64-unknown-elf-as -march=rv64gc_zacas -S /plct/riscv-gnu-toolchain/binutils/gas/testsuite/gas/riscv/zacas-64.s
+
+/plct/riscv-gnu-toolchain/build-toolchain-out/bin/riscv64-unknown-elf-objdump -dr ./a.out
+
+-march=rv32i_zawrs
+
+
+```
+
+```txt
+RISC-V: Implement ZACAS extensions
+
+This patch supports Zacas extension.
+It includes instruction's machine description and built-in functions.
+
+gcc/ChangeLog:
+
+        * config/riscv/riscv-common.cc
+        (riscv_implied_info): Add zacas extensions.
+        (riscv_ext_version_table): Likewise.
+        * config/riscv/arch-canonicalize
+        (IMPLIED_EXT): Add zacas extensions.
+        * config/riscv/iterators.md
+        (SIDI): New iterator.
+        (SIDITI): Likewise.
+        (amocas): New attribute.
+        * config/riscv/riscv-builtins.cc
+        (AVAIL): Add new.
+        * config/riscv/riscv-ftypes.def: Add new type for zacas instructions.
+        * config/riscv/riscv-zacas.def: Add ZACAS extension's built-in function file.
+        * config/riscv/riscv.md: Add new type for zacas instructions.
+        * config/riscv/riscv.opt: Add introduction of riscv_zacas_subext.
+        * config/riscv/zacas.md: Add ZACAS extension's machine description file.
+
+gcc/testsuite/ChangeLog:
+
+        * gcc.target/riscv/zacas32.c: New test.
+        * gcc.target/riscv/zacas64.c: New test.
+        * gcc.target/riscv/zacas128.c: New test.
 ```
