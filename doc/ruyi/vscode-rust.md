@@ -41,6 +41,8 @@ rust-analyzer 会自动检查项目目录下的 `Cargo.toml` 文件运行代码�
 
 包含所有代码补全，高亮，跳转等功能
 
+## riscv
+
 ## 编译
 
 准备：
@@ -72,7 +74,7 @@ rust-analyzer 会自动检查项目目录下的 `Cargo.toml` 文件运行代码�
 
 准备：
 
-- `sudo cp /usr/riscv64-linux-gnu/lib/* /lib/`
+- `export QEMU_LD_PREFIX=/usr/arm-linux-gnueabihf/` or `sudo cp /usr/riscv64-linux-gnu/lib/* /lib/`
 - `sudo apt install qemu-user-static`
 
 直接运行：`qemu-riscv64-static ./target/riscv64gc-unknown-linux-gnu/debug/demo`
@@ -89,11 +91,21 @@ rust-analyzer 会自动检查项目目录下的 `Cargo.toml` 文件运行代码�
 
 - `sudo apt install gdb-multiarch`
 
-### CodeLLDB
+### LLDB 本机调试
+
+未测试，但应该可以：[在 hifive-unmatched 上编译运行 lldb](https://dev.iachieved.it/iachievedit/compiling-lldb-on-the-risc-v-hifive-unmatched/)
+
+> Currently, lldb **only supports debugging riscv64 programs locally**, due to the unfinished ABI support (which is necessary for remote-gdb debugging).
+
+### LLDB 远程调试
+
+目前尚不支持
+
+- <https://discourse.llvm.org/t/is-lldb-for-riscv-ready-to-use/68326>
 
 ![no-riscv-arch-on-codelldb-remote-debug](image-1.png)
 
-- 对于 remote-linux: 支持 x86_64, i386, **arm**, aarch64, mips64, hexagon, mips, mips64el, mipsel, s390x
+- 对于 remote-linux: 支持 x86_64, i386, **arm**, **aarch64**, mips64, hexagon, mips, mips64el, mipsel, s390x
 - 对于 remote-windows: 支持 i686, x86_64, i386, i38
 - 对于 remote-macosx: 支持 x86_64, i386
 - 对于 **remote-gdb-server**: 均不支持
@@ -102,7 +114,7 @@ rust-analyzer 会自动检查项目目录下的 `Cargo.toml` 文件运行代码�
 
 > CodeLLDB supports AArch64, ARM, AVR, MSP430, RISCV, X86 architectures and **may be** used to debug on embedded platforms via remote debugging.
 
-### gdb
+### gdb(QEMU) 远程调试
 
 gdb 可以正常进行远程调试
 
@@ -124,7 +136,9 @@ gdb 可以正常进行远程调试
 
     ![Alt text](image-6.png)
 
-### VScode 可视化
+### VScode 可视化调试
+
+基于 QEMU gdbserver
 
 1. `task.json`
 
@@ -218,7 +232,7 @@ gdb 可以正常进行远程调试
 
         ![Alt text](image-4.png)
 
-## TODO 真机远程调试
+## arm(armvXxX) 架构调试
 
 以树莓派 3B 为例：
 
@@ -233,18 +247,40 @@ sudo apt install -y arm-linux-gnueabihf-gcc
 cargo build --target armv7-unknown-linux-gnueabihf
 ```
 
+### lldb 真机调试
+
+lldb 不支持调试 armv7hf 架构，所以在真机上无法使用 lldb 作为调试器，(gdb 应该可以，未测试)
+
+> 测试机器树莓派 3b 1.2 官方镜像
+
+![Alt text](image-8.png)
+
+- 更多不支持的 arm 拓展架构参考：<https://github.com/llvm/llvm-project/issues/39488>
+
+- aarch 尚未测试
+
+### codelldb 远程调试
+
+codelldb 远程调试支持
+
+可以使用 qemu 运行，模拟 gdb-server, 此时可以使用 codelldb 插件使用 lldb 调试
+
+![Alt text](image-9.png)
+
 ```json
 {
     "name": "Remote attach",
     "type": "lldb",
-    "request": "launch",
-    "program": "${workspaceFolder}/target/armv7-unknown-linux-gnueabihf/debug/demo", // Local path.
-    "initCommands": [
-        "platform select remote-linux", // For example: 'remote-linux', 'remote-macosx', 'remote-android', etc.
-        "platform connect connect://192.168.100.109:1234",
-        "settings set target.inherit-env false", // See note below.
+    "request": "custom",
+    "targetCreateCommands": [
+        "target create ${workspaceFolder}/target/armv7-unknown-linux-gnueabihf/debug/demo"
     ],
-},
+    "processCreateCommands": [
+        "gdb-remote 127.0.0.1:1234"
+    ]
+}
 ```
 
 ![Alt text](image-7.png)
+
+## TODO aarch
