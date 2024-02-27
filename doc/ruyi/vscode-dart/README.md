@@ -3,10 +3,10 @@ marp: true
 headingDivider: 2
 ---
 
-# dart 交叉编译调研
+# dart 交叉编译现状
 
 作者：第三测试小队 阎明铸
-时间：2024-02-xx
+时间：2024-02-21
 
 # dart 语言
 
@@ -61,9 +61,28 @@ hello world
 
 ## 调试
 
+命令：`dart --observe main.dart`
+
+```bash
+$ dart --observe main.dart
+The Dart VM service is listening on http://127.0.0.1:8181/w3b42z9-cWg=/
+The Dart DevTools debugger and profiler is available at: http://127.0.0.1:8181/w3b42z9-cWg=/devtools?uri=ws://127.0.0.1:8181/w3b42z9-cWg=/ws
+vm-service: isolate (3538528604437419) 'main' has no debugger attached and is paused.  Connect to the Dart VM service at http://127.0.0.1:8181/w3b42z9-cWg=/ to debug.
+```
+
+可以在 debugger tab 查看当前调试进度
+
+![w:700](image-12.png)
+
+## vscode 调试
+
 安装完插件之后，可以直接按 F5, 配置项目入口文件即可
 
 ![w:900](image-1.png)
+
+## vscode 调试
+
+![Alt text](image-13.png)
 
 ## 跨平台支持
 
@@ -113,11 +132,11 @@ issue: <https://github.com/dart-lang/sdk/issues/28617>
 - 不编译，使用 JIT 模式直接运行：`dart run main.dart`
 
 - 先编译后运行
-    - js 模块：`dart compile js main.dart`
     - 独立可执行文件：`dart compile exe main.dart`
-    - AOT (见下文，dart 2.6 添加)
-    - JIT (见下文)
-    - kernel (见下文)
+    - js 模块：`dart compile js main.dart`
+    - AOT module (见下文，dart 2.6 添加)
+    - JIT module (见下文)
+    - kernel module (见下文)
 > dart compile 原本分为：dart2native、dart2aot 和 dart2js 三部分
 
 ## dart 编译 - 1 js
@@ -154,8 +173,6 @@ hello world
 - JIT 编译模块：`dart compile jit-snapshot main.dart`
     - **特定于架构**的文件，包含所有源代码的**中间表示**形式
     - 包含程序训练运行期间执行的源代码的优化表示形式。(如果训练数据良好，JIT 编译的代码可以比 AOT 代码具有更快的峰值性能)
-- kernel 模块：`dart compile kernel main.dart`
-    - 源代码的**可移植中间表示**形式
 
 ## dart 编译 - 2 jit, aot
 
@@ -179,6 +196,10 @@ Hello world!
 
 ## dart 编译 - 3 kernel
 
+...
+- kernel 模块：`dart compile kernel main.dart`
+    - 源代码的**可移植中间表示**形式
+
 ```bash
 $ dart compile kernel bin/myapp.dart
 Compiling bin/myapp.dart to kernel file bin/myapp.dill.
@@ -187,7 +208,7 @@ $ dart run bin/myapp.dill
 
 dill: 抽象语法树 (AST) 的二进制形式。
 
-由于依然是 AST, 不是机器代码，所以启动速度相比 AOT 要慢很多
+由于还是 AST 语法树，不是机器代码，所以启动速度相比 AOT 要慢很多
 
 ## dart VM
 
@@ -219,6 +240,16 @@ dart 不能直接执行源代码，`dart run` 会先把源代码转换为 AST, �
 
 ![w:800](image-5.png)
 
+## 从 Snapshots 运行
+
+快照：堆中的对象图序列化为二进制
+
+![h:200](image-10.png)
+
+![h:220](image-11.png)
+
+> VM 无需解析 Dart 源代码并逐步创建数据结构，从快照中快速解压缩的所有必要数据结构
+
 ## 从 Snapshots 运行 - AppJIT
 
 - 问题：原本的 JIT 以 Kernel (AST binary) 形式执行代码，对象，函数等只有用到才会加载并编译为机器代码，预热很慢。
@@ -235,36 +266,33 @@ Generated: /Users/me/myapp/bin/myapp.aot
 $ dartaotruntime bin/myapp.aot
 ```
 
-- 机器代码以堆快照的形式存在 (为了快速解压所有数据结构)
-- 运行依赖预编译的 dart VM 变种
+- 所有可能访问的函数都编译为本机代码
+- 运行依赖预编译的 dart VM 特殊变体 (没有 jit 和动态代码加载等部件)
 
 ![h:250](image-8.png)
-
 
 - 编译后的 AOT snapshot
 - 预编译的 dartaotruntime
 
 ## hack 😎
 
-所有可能调用的函数都被编译为机器代码，为什么不能交叉编译呢
+所有可能调用的函数都已经被编译为机器代码，为什么不能交叉编译呢
 
 作者从源代码中发现 dart2native(dart compile exe) 分为三步：
 
-- 生成一个 AOT kernel
+- 生成 AOT kernel
 - 生成 AOT snapshot
 - 把 AOT snapshot 与 dartaotruntime 时相结合。
 
-第三步使通过 修改文件结构实现
+第三步是通过修改文件结构实现
 
 ![Alt text](image-9.png)
 
-## hack 😎
+## A2 明明有 AOT 模式为什么不能交叉编译？
 
-对于交叉编译，我们需要一个目标平台的 dartaotruntime, 还需要生成目标平台的 snapshot,
+作者手动编译了对应平台的 gen_snapshot 和 dartaotruntime 两个命令行工具
 
-因此作者手动编译了对应平台的 gen_snapshot 和 dartaotruntime 两个命令行工具
-
-为了使第三步拼接拥有正常的填充，偏移量等等，作者为 dart2native 添加了两个命令行参数，修改上面两个工具的入口
+为了使第三步拼接拥有正常的填充，偏移量等等，作者为 dart2native 添加了两个命令行参数：`--gen-snapshot`, `--aot-runtime`，修改上面两个工具的入口
 
 最后的命令：
 
@@ -274,22 +302,19 @@ $ dartaotruntime bin/myapp.aot
     --aot-runtime out/ProductXARM/dart-sdk/bin/dartaotruntime
 ```
 
-## A2 明明有 AOT 模式为什么不能交叉编译？
-
-dart2native 既没有给出修改 gen_snapshot 和 dartaotruntime 的入口
-
-也没有提供类似的二元组自动选择
-
 ## 总结
 
-dart 目前可以借助 JIT 或 AOT 在 linux 系统本机编译 or 运行 RISC-V 目标的程序 (实验性)
+dart 交叉编译现状
 
-目前不能在本机进行交叉编译 (除 flutter)
+- 可以借助 JIT 或 AOT 在 linux 系统本机编译 or 运行 RISC-V 目标的程序 (实验性)
+- 不能进行交叉编译
 
 ## 参考
 
 - <https://dart.cn/tools/dart-compile>
 - <https://github.com/dart-lang/sdk/issues/28617>
 - <https://mrale.ph/dartvm/>
+- <https://github.com/dart-lang/sdk/blob/master/pkg/dart2native/lib/generate.dart>
+- <https://github.com/jpnurmi/dart-sdk/commit/9625310991d3e7a7638c57bdfa47e910b2427a76>
 
 ## end
