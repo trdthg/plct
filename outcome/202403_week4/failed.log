@@ -1,0 +1,94 @@
+ poetry run python ./ruyi/__main__.py device provision
+
+RuyiSDK Device Provisioning Wizard
+
+This is a wizard intended to help you install a system on your device for your
+development pleasure, all with ease.
+
+You will be asked some questions that help RuyiSDK understand your device and
+your intended configuration, then packages will be downloaded and flashed onto
+the device's storage, that you should somehow make available on this host
+system beforehand.
+
+Note that, as Ruyi does not run as root, but raw disk access is most likely
+required to flash images, you should arrange to allow your user account sudo
+access to necessary commands such as dd. Flashing will fail if the sudo
+configuration does not allow so.
+
+Continue? (y/N) y
+
+The following devices are currently supported by the wizard. Please pick your device:
+
+  1. Allwinner Nezha D1
+  2. Canaan Kendryte K230
+  3. Milk-V Duo
+  4. Milk-V Duo S
+  5. Milk-V Mars
+  6. Milk-V Mars CM
+  7. Milk-V Pioneer Box
+  8. Milk-V Vega
+  9. SiFive HiFive Unmatched
+  10. Sipeed Lichee RV
+  11. Sipeed LicheePi 4A
+  12. StarFive VisionFive
+  13. StarFive VisionFive2
+
+Choice? (1-13) 11
+
+The device has the following variants. Please choose the one corresponding to your hardware at hand:
+
+  1. Sipeed LicheePi 4A (8G RAM)
+  2. Sipeed LicheePi 4A (16G RAM)
+
+Choice? (1-2) 1
+
+The following system configurations are supported by the device variant you have chosen. Please pick the one you want to put on the device:
+
+  1. openEuler RISC-V (headless) for Sipeed LicheePi 4A (8G RAM)
+  2. openEuler RISC-V (XFCE) for Sipeed LicheePi 4A (8G RAM)
+  3. RevyOS for Sipeed LicheePi 4A (8G RAM)
+
+Choice? (1-3) 3
+
+We are about to download and install the following packages for your device:
+
+* board-image/revyos-sipeed-lpi4a
+* board-image/uboot-revyos-sipeed-lpi4a-8g
+
+Proceed? (y/N) y
+info: skipping already installed package uboot-revyos-sipeed-lpi4a-8g-0.20231210.0
+info: extracting boot-lpi4a-20231210_134926.ext4.zst for package revyos-sipeed-lpi4a-0.20231210.0
+/home/trdthg/.cache/ruyi/distfiles/boot-lpi4a-20231210_134926.ext4.zst: 524288000 bytes
+info: extracting root-lpi4a-20231210_134926.ext4.zst for package revyos-sipeed-lpi4a-0.20231210.0
+/home/trdthg/.cache/ruyi/distfiles/root-lpi4a-20231210_134926.ext4.zst: 4294967296 bytes
+info: package revyos-sipeed-lpi4a-0.20231210.0 installed to /home/trdthg/.local/share/ruyi/blobs/revyos-sipeed-lpi4a-0.20231210.0
+
+We have collected enough information for the actual flashing. Now is the last
+chance to re-check and confirm everything is fine.
+
+We are about to:
+
+* flash /home/trdthg/.local/share/ruyi/blobs/uboot-revyos-sipeed-lpi4a-8g-0.20231210.0/u-boot-with-spl-lpi4a-8g.20231210.bin into device
+RAM
+* reboot the device
+* flash /home/trdthg/.local/share/ruyi/blobs/uboot-revyos-sipeed-lpi4a-8g-0.20231210.0/u-boot-with-spl-lpi4a-8g.20231210.bin into device
+partition uboot
+* flash /home/trdthg/.local/share/ruyi/blobs/revyos-sipeed-lpi4a-0.20231210.0/boot-lpi4a-20231210_134926.ext4 into device partition boot
+* flash /home/trdthg/.local/share/ruyi/blobs/revyos-sipeed-lpi4a-0.20231210.0/root-lpi4a-20231210_134926.ext4 into device partition root
+
+Proceed with flashing? (y/N) y
+
+Some flashing steps require the use of fastboot, in which case you should
+ensure the target device is showing up in fastboot devices output.
+Please confirm it yourself before the flashing begins.
+
+Is the device identified by fastboot now? (y/N) y
+info: flashing uboot image into device RAM
+Warning: skip copying ram image avb footer (ram partition size: 0, ram image size: 963368).
+Sending 'ram' (940 KB)                             OKAY [  0.044s]
+Writing 'ram'                                      FAILED (remote: 'cannot find partition')
+fastboot: error: Command failed
+fatal error: failed to flash uboot image into device RAM
+warn: the device state should be intact, but please re-check
+fatal error: flashing failed, check your device right now
+(ruyi-py3.11)

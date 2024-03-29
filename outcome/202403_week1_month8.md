@@ -2,9 +2,6 @@
 
 ## qtrvsim
 
-- [PR](https://github.com/cvut/qtrvsim/pull/108): [issue 99](https://github.com/cvut/qtrvsim/issues/99)
-  - 等待 review
-
 ## eulaceura
 
 ## autotest
