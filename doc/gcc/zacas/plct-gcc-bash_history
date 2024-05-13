@@ -1,0 +1,1435 @@
+ls
+cd plct/riscv-gnu-toolchain/
+ls
+vim Makefile
+less Makefile
+ls
+cd /plct/riscv-gnu-toolchain/
+ll
+ls
+make clean
+make -j$(nproc) report-gcc | tee ./debug/report-gcc.log
+ls
+cd /plct/riscv-gnu-toolchain/
+ls
+tail report-gcc-tree-ssa.txt 
+vim
+vim report-gcc-tree-ssa.txt 
+cd gcc
+git log
+ls
+cd /plct/riscv
+cd /plct/riscv-gnu-toolchain/
+ls
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv32gc_zacas -mabi=ilp32 -O2 -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas32.c
+make clean
+RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-gcc | tee ./debug/report-gcc-riscv-zacas.log
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64gc_zicboz -mabi=lp64 -O2 -S ./gcc/gcc/testsuite/gcc.target/riscv/cmo-zicboz-1.c 
+LS
+ls
+vim cmo-zicboz-1.s 
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -O2 -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas64.c
+ls
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -O2 -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas64.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64gc_zicboz -mabi=lp64 -O2 -S ./gcc/gcc/testsuite/gcc.target/riscv/cmo-zicboz-1.c 
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64gc_zacas -mabi=lp64d -O2 -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas64.c
+rm stamps/check-gcc-newlib 
+RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-gcc | tee ./debug/report-gcc-riscv-zacas.log
+rm stamps/check-gcc-newlib 
+rm stamps/build-gcc-newlib-stage2 
+RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-gcc | tee ./debug/report-gcc-riscv-zacas.log
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64gc_zacas -mabi=lp64d -O2 -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas64.c
+ls
+vim zacas64.s 
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv32gc_zacas -mabi=ilp32 -O2 -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas32.c
+ls
+vim zacas32.s 
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64gc_zicboz -mabi=lp64 -O2 -S ./gcc/gcc/testsuite/gcc.target/riscv/cmo-zicboz-1.c 
+ls
+vim cmo-zicboz-1.s 
+vim zacas32.s 
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64gc_zicboz -mabi=lp64 -O1 -S ./gcc/gcc/testsuite/gcc.target/riscv/cmo-zicboz-1.c 
+ls
+vim zacas64.s 
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64gc_zicboz -mabi=lp64 -S ./gcc/gcc/testsuite/gcc.target/riscv/cmo-zicboz-1.c 
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64gc_zacas -mabi=lp64d -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas64.c
+ls
+vim zacas64.s 
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64gc_zacas -mabi=lp64d -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas64.c
+rm zacas32.s 
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv32gc_zacas -mabi=ilp32 -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas32.c
+ls
+vim zacas32.s 
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv32gc_zacas -mabi=ilp32 -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas32.c
+rm stamps/build-gcc-newlib-stage2 
+RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-gcc | tee ./debug/report-gcc-riscv-zacas.log
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv32gc_zacas -mabi=ilp32 -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas32.c
+ls
+ll
+vim zacas32.s 
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv32gc_zacas -mabi=ilp32 -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas64.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64gc_zacas -mabi=lp64d -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas64.c
+ls
+vim zacas64.s 
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64gc_zacas -mabi=lp64d -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas64.c
+vim zacas64.s 
+vim zacas32.s 
+ls
+cd /plct/riscv-gnu-toolchain/
+ls
+vim zacas32.s 
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64gc_zacas -mabi=lp64d -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas64.c
+ls
+vim zacas64.s 
+cd /plct/riscv-gnu-toolchain/
+RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-gcc | tee ./debug/report-gcc-riscv-zacas.log
+make clean
+RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-gcc | tee ./debug/report-gcc-riscv-zacas.log
+ls
+rm zacas*
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64gc_zacas -mabi=lp64d -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas64.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv32gc_zacas -mabi=ilp32 -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas32.c
+ls
+vim zacas32.s 
+vim zacas64.s 
+vim zacas32.s 
+rm stamps/check-gcc-newlib 
+RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-gcc | tee ./debug/report-gcc-riscv-zacas.log
+cd /plct/riscv-gnu-toolchain/
+ls
+make clean
+./configure --with-extra-multilib-test="rv64g-lp64d;rv32g_zacas-ilp32"
+RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-gcc | tee ./debug/report-gcc-riscv-zacas.log
+make clean
+./configure --with-extra-multilib-test="rv64g-lp64d;rv32g_zacas-ilp32"
+RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-gcc | tee ./debug/report-gcc-riscv-zacas.log
+make clean
+./configure --with-multilib-generator="rv64g-lp64d--;rv32g_zacas-ilp32--" --with-extra-multilib-test="rv64g-lp64d;rv32g_zacas-ilp32"
+RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-gcc | tee ./debug/report-gcc-riscv-zacas.log
+ll
+code ./debug/report-gcc-riscv-zacas.log 
+./configure --with-extra-multilib-test="rv64g-lp64d;rv32g_zacas-ilp32"
+RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-gcc | tee ./debug/report-gcc-riscv-zacas.log
+make clean
+./configure --with-extra-multilib-test="rv64g-lp64d;rv32g_zacas-ilp32"
+RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-gcc | tee ./debug/report-gcc-riscv-zacas.log
+cd /plct/riscv-gnu-toolchain/
+ls
+rm -f ./zacas32.s
+rm -f ./zacas64.s
+ls
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv32gc_zacas -mabi=ilp32 -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas32.c
+ls
+vim zacas32.s 
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64gc_zacas -mabi=lp64d -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas64.c
+vim zacas64.s 
+vim zacas32.s 
+vim zacas64.s 
+ls
+cd /plct/riscv-gnu-toolchain/
+ls
+rm -f ./zacas32.s
+rm -f ./zacas64.s
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv32gc_zacas -mabi=ilp32 -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas32.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64gc_zacas -mabi=lp64d -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas64.c
+./configure --prefix=$(pwd)/build-toolchain-out --with-extra-multilib-test="rv64g-lp64d;rv32g_zacas-ilp32"
+RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-gcc | tee ./debug/report-gcc-riscv-zacas.log
+ls
+make clean
+./configure --prefix=$(pwd)/build-toolchain-out --with-extra-multilib-test="rv64g-lp64d;rv32g_zacas-ilp32"
+RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-gcc | tee ./debug/report-gcc-riscv-zacas.log
+ls
+rm -f ./zacas32.s
+rm -f ./zacas64.s
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv32gc_zacas -mabi=ilp32 -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas32.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64gc_zacas -mabi=lp64d -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas64.c
+ls
+vim zacas32.s 
+vim zacas64.s 
+cd /plct/riscv-gnu-toolchain/
+ls
+rm zacas32.s 
+/plct/riscv-gnu-toolchain/build-gcc-newlib-stage2/gcc/xgcc -B/plct/riscv-gnu-toolchain/build-gcc-newlib-stage2/gcc/  /plct/riscv-gnu-toolchain/gcc/gcc/testsuite/gcc.target/riscv/zacas32.c  -march=rv64gc -mabi=lp64d -mcmodel=medlow   -fdiagnostics-plain-output  -O2 -match=rv32gc_zacas -mabi=ilp32 -ffat-lto-objects -fno-ident -S   -o zacas32.s
+/plct/riscv-gnu-toolchain/build-gcc-newlib-stage2/gcc/xgcc -B/plct/riscv-gnu-toolchain/build-gcc-newlib-stage2/gcc/  /plct/riscv-gnu-toolchain/gcc/gcc/testsuite/gcc.target/riscv/zacas32.c  -fdiagnostics-plain-output  -O2 -match=rv32gc_zacas -mabi=ilp32 -ffat-lto-objects -fno-ident -S   -o zacas32.s
+/plct/riscv-gnu-toolchain/build-gcc-newlib-stage2/gcc/xgcc   /plct/riscv-gnu-toolchain/gcc/gcc/testsuite/gcc.target/riscv/zacas32.c  -fdiagnostics-plain-output  -O2 -match=rv32gc_zacas -mabi=ilp32 -ffat-lto-objects -fno-ident -S   -o zacas32.s
+/plct/riscv-gnu-toolchain/build-toolchain-out/bin/riscv64-unknown-elf-gcc   /plct/riscv-gnu-toolchain/gcc/gcc/testsuite/gcc.target/riscv/zacas32.c  -fdiagnostics-plain-output  -O2 -match=rv32gc_zacas -mabi=ilp32 -ffat-lto-objects -fno-ident -S   -o zacas32.s
+/plct/riscv-gnu-toolchain/build-toolchain-out/bin/riscv64-unknown-elf-gcc   /plct/riscv-gnu-toolchain/gcc/gcc/testsuite/gcc.target/riscv/zacas32.c  -fdiagnostics-plain-output -match=rv32gc_zacas -mabi=ilp32 -ffat-lto-objects -fno-ident -S   -o zacas32.s
+/plct/riscv-gnu-toolchain/build-toolchain-out/bin/riscv64-unknown-elf-gcc  -fdiagnostics-plain-output -match=rv32gc_zacas -mabi=ilp32 -ffat-lto-objects -fno-ident -S   -o zacas32.s  /plct/riscv-gnu-toolchain/gcc/gcc/testsuite/gcc.target/riscv/zacas32.c
+/plct/riscv-gnu-toolchain/build-toolchain-out/bin/riscv64-unknown-elf-gcc  -fdiagnostics-plain-output -match=rv32gc_zacas -mabi=ilp32 -o zacas32.s  /plct/riscv-gnu-toolchain/gcc/gcc/testsuite/gcc.target/riscv/zacas32.c
+/plct/riscv-gnu-toolchain/build-toolchain-out/bin/riscv64-unknown-elf-gcc -match=rv32gc_zacas -mabi=ilp32 -o zacas32.s  /plct/riscv-gnu-toolchain/gcc/gcc/testsuite/gcc.target/riscv/zacas32.c
+/plct/riscv-gnu-toolchain/build-toolchain-out/bin/riscv64-unknown-elf-gcc -match=rv32gc_zacas -mabi=ilp32 -S  /plct/riscv-gnu-toolchain/gcc/gcc/testsuite/gcc.target/riscv/zacas32.c
+/plct/riscv-gnu-toolchain/build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv32gc_zacas -mabi=ilp32 -S  /plct/riscv-gnu-toolchain/gcc/gcc/testsuite/gcc.target/riscv/zacas32.c
+/plct/riscv-gnu-toolchain/build-gcc-newlib-stage2/gcc/xgcc -B/plct/riscv-gnu-toolchain/build-gcc-newlib-stage2/gcc/  /plct/riscv-gnu-toolchain/gcc/gcc/testsuite/gcc.target/riscv/zacas32.c  -march=rv64gc -mabi=lp64d -mcmodel=medlow   -fdiagnostics-plain-output  -O2 -match=rv32gc_zacas -mabi=ilp32 -ffat-lto-objects -fno-ident -S   -o zacas32.s
+RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-gcc | tee ./debug/report-gcc-riscv-zacas.log
+RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) --with-extra-multilib-test="rv64gc_zacas/lp64d" report-gcc | tee ./debug/report-gcc-riscv-zacas.log
+cd /plct/riscv-gnu-toolchain/
+grep -r -H "zacas64" ./build-gcc-newlib-stage2/gcc/testsuite/**/*.sum
+grep -r -H "zacas64" ./build-gcc-newlib-stage2/gcc/testsuite/**/*.log
+pwd
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv32gc_zacas -mabi=ilp32 -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas32.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv32g_zacas -mabi=ilp32 -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas32.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv32_zacas -mabi=ilp32 -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas32.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv32g_zacas -mabi=ilp32 -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas32.c
+ls
+rm zacas*
+ls
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv32g_zacas -mabi=ilp32 -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas32.c
+ls
+vim zacas32.s 
+cd /plct/riscv-gnu-toolchain/
+make clean
+RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-gcc | tee ./debug/report-gcc-riscv-zacas.log
+cd /plct/riscv-gnu-toolchain/
+ls
+rm zawrs.o 
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv32gc_zacas -mabi=ilp32 -c ./gcc/gcc/testsuite/gcc.target/riscv/zacas32.c
+ls
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64gc_zawrs -c ./gcc/gcc/testsuite/gcc.target/riscv/zawrs.c
+ls
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas64.c
+ls
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64gc_zawrs -c ./gcc/gcc/testsuite/gcc.target/riscv/zawrs.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv32g_zacas -mabi=ilp32 -c ./gcc/gcc/testsuite/gcc.target/riscv/zacas32.c
+rg
+rg --help
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv32g_zacas -mabi=ilp32 -c ./gcc/gcc/testsuite/gcc.target/riscv/zacas32.c
+rg -r -H "illegal operands"
+rg --rH "illegal operands"
+rg -H -r "illegal operands"
+rg --help
+rg --help | less
+rg -H "illegal operands"
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv32g_zacas -mabi=ilp32 -c ./gcc/gcc/testsuite/gcc.target/riscv/zacas32.c
+./configure --prefix=$(pwd)/build-toolchain-out
+make clean
+time RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-gcc | tee ./debug/report-gcc-riscv-zacas.log
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv32g_zacas -mabi=ilp32 -c ./gcc/gcc/testsuite/gcc.target/riscv/zacas32.c
+vim /tmp/ccYMtZZb.s
+time RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-gcc | tee ./debug/report-gcc-riscv-zacas.log
+make clean
+time RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-gcc | tee ./debug/report-gcc-riscv-zacas.log
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv32g_zacas -mabi=ilp32 -c ./gcc/gcc/testsuite/gcc.target/riscv/zacas32.c
+ld
+ls
+./build-toolchain-out/bin/riscv64-unknown-elf-objdump -h ./zacas32.o 
+./build-toolchain-out/bin/riscv64-unknown-elf-objdump -d ./zacas32.o 
+./build-toolchain-out/bin/riscv64-unknown-elf-objdump -t ./zacas32.o 
+ls
+./build-toolchain-out/bin/riscv64-unknown-elf-objdump -d ./zacas32.s 
+./build-toolchain-out/bin/riscv64-unknown-elf-objdump -d ./zacas32.o
+./build-toolchain-out/bin/riscv64-unknown-elf-objdump --help
+./build-toolchain-out/bin/riscv64-unknown-elf-objdump --help | les
+./build-toolchain-out/bin/riscv64-unknown-elf-objdump --help | less
+./build-toolchain-out/bin/riscv64-unknown-elf-objdump -s ./zacas32.o
+./build-toolchain-out/bin/riscv64-unknown-elf-objdump -S ./zacas32.o
+./build-toolchain-out/bin/riscv64-unknown-elf-objdump -D ./zacas32.o
+./build-toolchain-out/bin/riscv64-unknown-elf-objdump -d ./zacas32.o
+./build-toolchain-out/bin/riscv64-unknown-elf-objdump -d ./zacas32.o > zacas.sss
+vim ./zacas.sss
+vim ./zacas64.s 
+ls
+vim a.s
+./build-toolchain-out/bin/riscv64-unknown-elf-objdump -d ./a.s
+ls
+vim a.s
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv32g_zacas -mabi=ilp32 -c ./a.s
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -c ./a.s
+ls
+./build-toolchain-out/bin/riscv64-unknown-elf-objdump -d ./a.o
+vim ./a.s 
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv32g_zacas -mabi=ilp32 -c ./a.s
+./build-toolchain-out/bin/riscv64-unknown-elf-objdump -d ./a.o
+grep -H "illegal operands"
+rp -H "illegal operands"
+rg -H "illegal operands"
+tokei .
+make -j$(nproc) report-binutils
+RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-binutils
+RUNTESTFLAGS=riscv.exp=zacas* make -j$(nproc) report-binutils
+rm stamps/check-binutils-newlib 
+RUNTESTFLAGS=riscv.exp=zacas* make -j$(nproc) report-binutils
+ls
+./build-toolchain-out/bin/riscv64-unknown-elf-objdump -d ./a.o
+vim a.s 
+apt-get install bat
+ls
+./build-toolchain-out/bin/riscv64-unknown-elf-objdump -d ./a.o | bat
+bat
+apt-get remove bat
+sudo apt install bat
+apt install bat
+bat
+cd /plct/riscv-gnu-toolchain/
+ls
+time RUNTESTFLAGS=riscv.exp=zacas* make -j$(nproc) report-binutils | tee ./debug/report-binutils-riscv-zacas.log
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv32g_zacas -mabi=ilp32 -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas32.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas64.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+ls
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv32g_zacas -mabi=ilp32 -O2 -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas32.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv32g_zacas -mabi=ilp32 -O1 -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas32.c
+rm stamps/build-gcc-newlib-stage2 
+time RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-gcc | tee ./debug/report-gcc-riscv-zacas.log
+rm stamps/build-gcc-newlib-stage2 
+time RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-gcc | tee ./debug/report-gcc-riscv-zacas.log
+ls
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv32g_zacas -mabi=ilp32 -O2 -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas32.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv32g_zacas -mabi=ilp32 -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas32.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv32g_zacas -mabi=ilp32 -O2 -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas32.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv32g_zacas -mabi=ilp32 -O2 -c ./gcc/gcc/testsuite/gcc.target/riscv/zacas32.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv32g_zacas -mabi=ilp32 -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas32.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -c ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+ls
+./build-toolchain-out/bin/riscv64-unknown-elf-objdump --help
+./build-toolchain-out/bin/riscv64-unknown-elf-objdump -d ./zacas128.o 
+./build-toolchain-out/bin/riscv64-unknown-elf-objdump -D ./zacas128.o 
+./build-toolchain-out/bin/riscv64-unknown-elf-objdump -d ./zacas128.o 
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -c ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -fauto-inc-dec -fbranch-count-reg -fcombine-stack-adjustments -fcompare-elim -fcprop-registers -fdce -fdefer-pop -fdelayed-branch -fdse -fforward-propagate -fguess-branch-probability -fif-conversion -fif-conversion2 -finline-functions-called-once -fipa-modref -fipa-profile -fipa-pure-const -fipa-reference -fipa-reference-addressable -fmerge-constants -fmove-loop-invariants -fmove-loop-stores -fomit-frame-pointer -freorder-blocks -fshrink-wrap -fshrink-wrap-separate -fsplit-wide-types -fssa-backprop -fssa-phiopt -ftree-bit-ccp -ftree-ccp -ftree-ch -ftree-coalesce-vars -ftree-copy-prop -ftree-dce -ftree-dominator-opts -ftree-dse -ftree-forwprop -ftree-fre -ftree-phiprop -ftree-pta -ftree-scev-cprop -ftree-sink -ftree-slsr -ftree-sra -ftree-ter -funit-at-a-time -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+ls
+vim ./zacas128.s 
+rm ./zacas128.s 
+ls
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -fauto-inc-dec -fbranch-count-reg -fcombine-stack-adjustments -fcompare-elim -fcprop-registers -fdce -fdefer-pop -fdelayed-branch -fdse -fforward-propagate -fguess-branch-probability -fif-conversion -fif-conversion2 -finline-functions-called-once -fipa-modref -fipa-profile -fipa-pure-const -fipa-reference -fipa-reference-addressable -fmerge-constants -fmove-loop-invariants -fmove-loop-stores -fomit-frame-pointer -freorder-blocks -fshrink-wrap -fshrink-wrap-separate -fsplit-wide-types -fssa-backprop -fssa-phiopt -ftree-bit-ccp -ftree-ccp -ftree-ch -ftree-coalesce-vars -ftree-copy-prop -ftree-dce -ftree-dominator-opts -ftree-dse -ftree-forwprop -ftree-fre -ftree-phiprop -ftree-pta -ftree-scev-cprop -ftree-sink -ftree-slsr -ftree-sra -ftree-ter -funit-at-a-time -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+ls
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -fauto-inc-dec -fbranch-count-reg -fcombine-stack-adjustments -fcompare-elim -fcprop-registers -fdce -fdefer-pop -fdelayed-branch -fdse -fforward-propagate -fguess-branch-probability -fif-conversion -fif-conversion2 -finline-functions-called-once -fipa-modref -fipa-profile -fipa-pure-const -fipa-reference -fipa-reference-addressable -fmerge-constants -fmove-loop-invariants -fmove-loop-stores -fomit-frame-pointer -freorder-blocks -fshrink-wrap -fshrink-wrap-separate -fsplit-wide-types -fssa-backprop -fssa-phiopt -ftree-bit-ccp -ftree-ccp -ftree-ch -ftree-coalesce-vars -ftree-copy-prop -ftree-dce -ftree-dominator-opts -ftree-dse -ftree-forwprop -ftree-fre -ftree-phiprop -ftree-pta -ftree-scev-cprop -ftree-sink -ftree-slsr -ftree-sra -ftree-ter -funit-at-a-time -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+ls
+vim ./zacas128.s 
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -O1 -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -Q --help=optimizers 
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -O1 -Q --help=optimizers 
+rm stamps/build-gcc-newlib-stage2 
+time RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-gcc | tee ./debug/report-gcc-riscv-zacas.log
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -O1 -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv32g_zacas -mabi=ilp32 -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas32.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv32g_zacas -mabi=ilp32 -O2 -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas32.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -O1 -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -O1 -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas64.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -O2 -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas64.c
+rm stamps/build-gcc-newlib-stage
+rm stamps/build-gcc-newlib-stage2 
+time RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-gcc | tee ./debug/report-gcc-riscv-zacas.log
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -O2 -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas64.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -O2 -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv32g_zacas -mabi=ilp32 -O2 -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas32.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv32g_zacas -mabi=ilp32 -O2 -c ./gcc/gcc/testsuite/gcc.target/riscv/zacas32.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv32g_zacas -mabi=ilp32 -c ./gcc/gcc/testsuite/gcc.target/riscv/zacas32.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -O2 -c ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+time RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-gcc | tee ./debug/report-gcc-riscv-zacas.log
+rm stamps/build-gcc-newlib-stage2 
+time RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-gcc | tee ./debug/report-gcc-riscv-zacas.log
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -O2 -c ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv32g_zacas -mabi=ilp32 -c ./gcc/gcc/testsuite/gcc.target/riscv/zacas32.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv32g_zacas -mabi=ilp32 -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas32.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv32g_zacas -mabi=ilp32 -O2 -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas32.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -O2 -c ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -O2 Sc ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -O2 -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+rm stamps/build-gcc-newlib-stage2 
+time RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-gcc | tee ./debug/report-gcc-riscv-zacas.log
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -O2 -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+make clean
+time RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-gcc | tee ./debug/report-gcc-riscv-zacas.log
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -O1 -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv32g_zacas -mabi=ilp32 -O2 -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas32.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv32g_zacas -mabi=ilp32 -O1 -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas32.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv32g_zacas -mabi=ilp32 -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas32.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv32g_zacas -mabi=ilp32 -S ./gcc/gcc/testsuite/gcc.target/riscv/amo-table-a-6-amo-add-1.c 
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv32g_zacas -mabi=ilp32 -O1 -S ./gcc/gcc/testsuite/gcc.target/riscv/amo-table-a-6-amo-add-1.c 
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv32g_zacas -mabi=ilp32 -O2 -S ./gcc/gcc/testsuite/gcc.target/riscv/amo-table-a-6-amo-add-1.c 
+cd /plct/riscv-gnu-toolchain/
+ls
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv32g_zacas -mabi=ilp32 -O1 -g -S ./gcc/gcc/testsuite/gcc.target/riscv/amo-table-a-6-amo-add-1.c 
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv32g_zacas -mabi=ilp32 -O1 -g -flto -S ./gcc/gcc/testsuite/gcc.target/riscv/amo-table-a-6-amo-add-1.c 
+ls
+vim ./amo-table-a-6-amo-add-1.s 
+ls
+rm amo-table-a-6-amo-add-1.s 
+am a.s 
+am a.o 
+ls
+rm cmo-zicbo*
+ls
+rm a.s 
+ls
+rm a.o 
+ls
+rm zawrs.o 
+ls
+rm zacas*
+ls
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+ls
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -O2 -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -O0 -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -O0 -flto -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -O1 -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -Q --help=optimizers
+diff `./build-toolchain-out/bin/riscv64-unknown-elf-gcc -Q --help=optimizers` `./build-toolchain-out/bin/riscv64-unknown-elf-gcc -O1 -Q --help=optimizers`
+diff $(./build-toolchain-out/bin/riscv64-unknown-elf-gcc -Q --help=optimizers) $(./build-toolchain-out/bin/riscv64-unknown-elf-gcc -O1 -Q --help=optimizers)
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -Q 
+--help=optimizers
+diff $(./build-toolchain-out/bin/riscv64-unknown-elf-gcc -Q   --help=optimizers) $(./build-toolchain-out/bin/riscv64-unknown-elf-gcc -Q --help=optimizers)
+diff -y <(./build-toolchain-out/bin/riscv64-unknown-elf-gcc -Q   --help=optimizers) <(./build-toolchain-out/bin/riscv64-unknown-elf-gcc -Q --help=optimizers)
+diff -y <(./build-toolchain-out/bin/riscv64-unknown-elf-gcc -Q   --help=optimizers) <(./build-toolchain-out/bin/riscv64-unknown-elf- -O1gcc -Q --help=optimizers)
+diff -y <(./build-toolchain-out/bin/riscv64-unknown-elf-gcc -Q   --help=optimizers) <(./build-toolchain-out/bin/riscv64-unknown-elf-gcc -O1 -Q --help=optimizers)
+diff -y -n <(./build-toolchain-out/bin/riscv64-unknown-elf-gcc -Q   --help=optimizers) <(./build-toolchain-out/bin/riscv64-unknown-elf-gcc -O1 -Q --help=optimizers)
+diff -y <(./build-toolchain-out/bin/riscv64-unknown-elf-gcc -Q   --help=optimizers) <(./build-toolchain-out/bin/riscv64-unknown-elf-gcc -O1 -Q --help=optimizers)
+diff -y <(./build-toolchain-out/bin/riscv64-unknown-elf-gcc -Q   --help=optimizers) <(./build-toolchain-out/bin/riscv64-unknown-elf-gcc -O1 -Q --help=optimizers) | rg "disable.*enable"
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -fbranch-count-reg -fcombine-stack-adjustments -fcompare-elim -fcprop-registers -fdefer-pop -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -fbranch-count-reg -fcombine-stack-adjustments -fcompare-elim -fcprop-registers -fdefer-pop -fdse -fforward-propagate  -fguess-branch-probability -fif-conversion -fif-conversion2 -finline -finline-functions-called-once -fipa-modref -fipa-profile -fipa-pure-const -fipa-reference -fipa-reference-addressable -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -fbranch-count-reg -fcombine-stack-adjustments -fcompare-elim -fcprop-registers -fdefer-pop -fdse -fforward-propagate  -fguess-branch-probability -fif-conversion -fif-conversion2 -finline -finline-functions-called-once -fipa-modref -fipa-profile -fipa-pure-const -fipa-reference -fipa-reference-addressable -fmove-loop-invariants -fmove-loop-stores -fomit-frame-pointer -freorder-blocks -fsched-pressure -fsection-anchors -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -fbranch-count-reg -fcombine-stack-adjustments -fcompare-elim -fcprop-registers -fdefer-pop -fdse -fforward-propagate  -fguess-branch-probability -fif-conversion -fif-conversion2 -finline -finline-functions-called-once -fipa-modref -fipa-profile -fipa-pure-const -fipa-reference -fipa-reference-addressable -fmove-loop-invariants -fmove-loop-stores -fomit-frame-pointer -freorder-blocks -fsched-pressure -fsection-anchors -fsplit-wide-types -fssa-phiopt -fthread-jumps -ftoplevel-reorder -ftree-bit-ccp  -ftree-builtin-call-dce -ftree-ccp -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -fbranch-count-reg -fcombine-stack-adjustments -fcompare-elim -fcprop-registers -fdefer-pop -fdse -fforward-propagate  -fguess-branch-probability -fif-conversion -fif-conversion2 -finline -finline-functions-called-once -fipa-modref -fipa-profile -fipa-pure-const -fipa-reference -fipa-reference-addressable -fmove-loop-invariants -fmove-loop-stores -fomit-frame-pointer -freorder-blocks -fsched-pressure -fsection-anchors -fsplit-wide-types -fssa-phiopt -fthread-jumps -ftoplevel-reorder -ftree-bit-ccp  -ftree-builtin-call-dce -ftree-ccp -ftree-ch -ftree-coalesce-vars -ftree-copy-prop -ftree-dce -ftree-dominator-opts -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -fbranch-count-reg -fcombine-stack-adjustments -fcompare-elim -fcprop-registers -fdefer-pop -fdse -fforward-propagate  -fguess-branch-probability -fif-conversion -fif-conversion2 -finline -finline-functions-called-once -fipa-modref -fipa-profile -fipa-pure-const -fipa-reference -fipa-reference-addressable -fmove-loop-invariants -fmove-loop-stores -fomit-frame-pointer -freorder-blocks -fsched-pressure -fsection-anchors -fsplit-wide-types -fssa-phiopt -fthread-jumps -ftoplevel-reorder -ftree-bit-ccp  -ftree-builtin-call-dce -ftree-ccp -ftree-ch -ftree-coalesce-vars -ftree-copy-prop -ftree-dce -ftree-dominator-opts -ftree-dse -ftree-fre -ftree-pta -ftree-sink -ftree-slsr -ftree-sra -ftree-ter -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+diff -y <(./build-toolchain-out/bin/riscv64-unknown-elf-gcc -Q   --help=optimizers) <(./build-toolchain-out/bin/riscv64-unknown-elf-gcc -O1 -Q --help=optimizers) | rg "enable.*disable"
+diff -y <(./build-toolchain-out/bin/riscv64-unknown-elf-gcc -O0 -Q --help=optimizers) <(./build-toolchain-out/bin/riscv64-unknown-elf-gcc -O1 -Q --help=optimizers) | rg "disable.*enable"
+diff -y <(./build-toolchain-out/bin/riscv64-unknown-elf-gcc -O0 -Q --help=optimizers) <(./build-toolchain-out/bin/riscv64-unknown-elf-gcc -O1 -Q --help=optimizers) | rg "enable.*disable"
+diff -y <(./build-toolchain-out/bin/riscv64-unknown-elf-gcc -O0 -Q --help=optimizers) <(./build-toolchain-out/bin/riscv64-unknown-elf-gcc -O1 -Q --help=optimizers)
+diff -y <(./build-toolchain-out/bin/riscv64-unknown-elf-gcc -O0 -Q --help=optimizers) <(./build-toolchain-out/bin/riscv64-unknown-elf-gcc -O1 -Q --help=optimizers) | rg "disable.*enable"
+diff -y <(./build-toolchain-out/bin/riscv64-unknown-elf-gcc -O0 -Q --help=optimizers) <(./build-toolchain-out/bin/riscv64-unknown-elf-gcc -O1 -Q --help=optimizers) | rg "enable.*disable"
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -funreachable-traps -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -funreachable-traps false -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -funreachable-traps -O1 -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -funreachable-traps -O0 -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -O1 -funreachable-traps -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+diff -y <(./build-toolchain-out/bin/riscv64-unknown-elf-gcc -O0 -Q --help=optimizers) <(./build-toolchain-out/bin/riscv64-unknown-elf-gcc -O1 -funreachable-traps -Q --help=optimizers) | rg "disable.*enable"
+diff -y <(./build-toolchain-out/bin/riscv64-unknown-elf-gcc -O0 -Q --help=optimizers) <(./build-toolchain-out/bin/riscv64-unknown-elf-gcc -O1 -funreachable-traps -Q --help=optimizers) | rg "enable.*disable"
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -funreachable-traps -O1 -funreachable-traps -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -fbranch-count-reg -fcombine-stack-adjustments -fcompare-elim -fcprop-registers -fdefer-pop -fdse -fforward-propagate  -fguess-branch-probability -fif-conversion -fif-conversion2 -finline -finline-functions-called-once -fipa-modref -fipa-profile -fipa-pure-const -fipa-reference -fipa-reference-addressable -fmove-loop-invariants -fmove-loop-stores -fomit-frame-pointer -freorder-blocks -fsched-pressure -fsection-anchors -fsplit-wide-types -fssa-phiopt -fthread-jumps -ftoplevel-reorder -ftree-bit-ccp  -ftree-builtin-call-dce -ftree-ccp -ftree-ch -ftree-coalesce-vars -ftree-copy-prop -ftree-dce -ftree-dominator-opts
+diff -y <(./build-toolchain-out/bin/riscv64-unknown-elf-gcc -fbranch-count-reg -fcombine-stack-adjustments -fcompare-elim -fcprop-registers -fdefer-pop -fdse -fforward-propagate  -fguess-branch-probability -fif-conversion -fif-conversion2 -finline -finline-functions-called-once -fipa-modref -fipa-profile -fipa-pure-const -fipa-reference -fipa-reference-addressable -fmove-loop-invariants -fmove-loop-stores -fomit-frame-pointer -freorder-blocks -fsched-pressure -fsection-anchors -fsplit-wide-types -fssa-phiopt -fthread-jumps -ftoplevel-reorder -ftree-bit-ccp  -ftree-builtin-call-dce -ftree-ccp -ftree-ch -ftree-coalesce-vars -ftree-copy-prop -ftree-dce -ftree-dominator-opts -Q --help=optimizers) <(./build-toolchain-out/bin/riscv64-unknown-elf-gcc -O1 -funreachable-traps -Q --help=optimizers) | rg "enable.*disable"
+diff -y <(./build-toolchain-out/bin/riscv64-unknown-elf-gcc -fbranch-count-reg -fcombine-stack-adjustments -fcompare-elim -fcprop-registers -fdefer-pop -fdse -fforward-propagate  -fguess-branch-probability -fif-conversion -fif-conversion2 -finline -finline-functions-called-once -fipa-modref -fipa-profile -fipa-pure-const -fipa-reference -fipa-reference-addressable -fmove-loop-invariants -fmove-loop-stores -fomit-frame-pointer -freorder-blocks -fsched-pressure -fsection-anchors -fsplit-wide-types -fssa-phiopt -fthread-jumps -ftoplevel-reorder -ftree-bit-ccp  -ftree-builtin-call-dce -ftree-ccp -ftree-ch -ftree-coalesce-vars -ftree-copy-prop -ftree-dce -ftree-dominator-opts -Q --help=optimizers) <(./build-toolchain-out/bin/riscv64-unknown-elf-gcc -O1 -funreachable-traps -Q --help=optimizers)
+diff -y <(./build-toolchain-out/bin/riscv64-unknown-elf-gcc -fbranch-count-reg -fcombine-stack-adjustments -fcompare-elim -fcprop-registers -fdefer-pop -fdse -fforward-propagate  -fguess-branch-probability -fif-conversion -fif-conversion2 -finline -finline-functions-called-once -fipa-modref -fipa-profile -fipa-pure-const -fipa-reference -fipa-reference-addressable -fmove-loop-invariants -fmove-loop-stores -fomit-frame-pointer -freorder-blocks -fsched-pressure -fsection-anchors -fsplit-wide-types -fssa-phiopt -fthread-jumps -ftoplevel-reorder -ftree-bit-ccp  -ftree-builtin-call-dce -ftree-ccp -ftree-ch -ftree-coalesce-vars -ftree-copy-prop -ftree-dce -ftree-dominator-opts -Q --help=optimizers) <(./build-toolchain-out/bin/riscv64-unknown-elf-gcc -O1 -funreachable-traps -Q --help=optimizers) | rg "disable.*enable"
+diff -y <(./build-toolchain-out/bin/riscv64-unknown-elf-gcc -fbranch-count-reg -fcombine-stack-adjustments -fcompare-elim -fcprop-registers -fdefer-pop -fdse -fforward-propagate  -fguess-branch-probability -fif-conversion -fif-conversion2 -finline -finline-functions-called-once -fipa-modref -fipa-profile -fipa-pure-const -fipa-reference -fipa-reference-addressable -fmove-loop-invariants -fmove-loop-stores -fomit-frame-pointer -freorder-blocks -fsched-pressure -fsection-anchors -fsplit-wide-types -fssa-phiopt -fthread-jumps -ftoplevel-reorder -ftree-bit-ccp  -ftree-builtin-call-dce -ftree-ccp -ftree-ch -ftree-coalesce-vars -ftree-copy-prop -ftree-dce -ftree-dominator-opts -finline -fshrink-wrap -ftree-dse -ftree-fre -ftree-pta -ftree-sink -ftree-slsr -ftree-sra -ftree-ter -Q --help=optimizers) <(./build-toolchain-out/bin/riscv64-unknown-elf-gcc -O1 -funreachable-traps -Q --help=optimizers) | rg "disable.*enable"
+diff -y <(./build-toolchain-out/bin/riscv64-unknown-elf-gcc -fbranch-count-reg -fcombine-stack-adjustments -fcompare-elim -fcprop-registers -fdefer-pop -fdse -fforward-propagate  -fguess-branch-probability -fif-conversion -fif-conversion2 -finline -finline-functions-called-once -fipa-modref -fipa-profile -fipa-pure-const -fipa-reference -fipa-reference-addressable -fmove-loop-invariants -fmove-loop-stores -fomit-frame-pointer -freorder-blocks -fsched-pressure -fsection-anchors -fsplit-wide-types -fssa-phiopt -fthread-jumps -ftoplevel-reorder -ftree-bit-ccp  -ftree-builtin-call-dce -ftree-ccp -ftree-ch -ftree-coalesce-vars -ftree-copy-prop -ftree-dce -ftree-dominator-opts -finline -fshrink-wrap -ftree-dse -ftree-fre -ftree-pta -ftree-sink -ftree-slsr -ftree-sra -ftree-ter -finline -Q --help=optimizers) <(./build-toolchain-out/bin/riscv64-unknown-elf-gcc -O1 -funreachable-traps -Q --help=optimizers) | rg "disable.*enable"
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -fbranch-count-reg -fcombine-stack-adjustments -fcompare-elim -fcprop-registers -fdefer-pop -fdse -fforward-propagate  -fguess-branch-probability -fif-conversion -fif-conversion2 -finline -finline-functions-called-once -fipa-modref -fipa-profile -fipa-pure-const -fipa-reference -fipa-reference-addressable -fmove-loop-invariants -fmove-loop-stores -fomit-frame-pointer -freorder-blocks -fsched-pressure -fsection-anchors -fsplit-wide-types -fssa-phiopt -fthread-jumps -ftoplevel-reorder -ftree-bit-ccp  -ftree-builtin-call-dce -ftree-ccp -ftree-ch -ftree-coalesce-vars -ftree-copy-prop -ftree-dce -ftree-dominator-opts -finline -fshrink-wrap -ftree-dse -ftree-fre -ftree-pta -ftree-sink -ftree-slsr -ftree-sra -ftree-ter -finline  -march=rv64g_zacas -mabi=lp64d -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -fbranch-count-reg -fcombine-stack-adjustments -fcompare-elim -fcprop-registers -fdefer-pop -fdse -fforward-propagate  -fguess-branch-probability -fif-conversion -fif-conversion2 -finline -finline-functions-called-once -fipa-modref -fipa-profile -fipa-pure-const -fipa-reference -fipa-reference-addressable -fmove-loop-invariants -fmove-loop-stores -fomit-frame-pointer -freorder-blocks -fsched-pressure -fsection-anchors -fsplit-wide-types -fssa-phiopt -fthread-jumps -ftoplevel-reorder -ftree-bit-ccp  -ftree-builtin-call-dce -ftree-ccp -ftree-ch -ftree-coalesce-vars -ftree-copy-prop -ftree-dce -ftree-dominator-opts -finline -fshrink-wrap -ftree-dse -ftree-fre -ftree-pta -ftree-sink -ftree-slsr -ftree-sra -ftree-ter -finline  -march=rv64g_zacas -mabi=lp64d -finline -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+lsdiff -y <(./build-toolchain-out/bin/riscv64-unknown-elf-gcc -fbranch-count-reg -fcombine-stack-adjustments -fcompare-elim -fcprop-registers -fdefer-pop -fdse -fforward-propagate  -fguess-branch-probability -fif-conversion -fif-conversion2 -finline -finline-functions-called-once -fipa-modref -fipa-profile -fipa-pure-const -fipa-reference -fipa-reference-addressable -fmove-loop-invariants -fmove-loop-stores -fomit-frame-pointer -freorder-blocks -fsched-pressure -fsection-anchors -fsplit-wide-types -fssa-phiopt -fthread-jumps -ftoplevel-reorder -ftree-bit-ccp  -ftree-builtin-call-dce -ftree-ccp -ftree-ch -ftree-coalesce-vars -ftree-copy-prop -ftree-dce -ftree-dominator-opts -finline -fshrink-wrap -ftree-dse -ftree-fre -ftree-pta -ftree-sink -ftree-slsr -ftree-sra -ftree-ter -Q --help=optimizers) <(./build-toolchain-out/bin/riscv64-unknown-elf-gcc -O1 -funreachable-traps -Q --help=optimizers)
+diff -y <(./build-toolchain-out/bin/riscv64-unknown-elf-gcc -fbranch-count-reg -fcombine-stack-adjustments -fcompare-elim -fcprop-registers -fdefer-pop -fdse -fforward-propagate  -fguess-branch-probability -fif-conversion -fif-conversion2 -finline -finline-functions-called-once -fipa-modref -fipa-profile -fipa-pure-const -fipa-reference -fipa-reference-addressable -fmove-loop-invariants -fmove-loop-stores -fomit-frame-pointer -freorder-blocks -fsched-pressure -fsection-anchors -fsplit-wide-types -fssa-phiopt -fthread-jumps -ftoplevel-reorder -ftree-bit-ccp  -ftree-builtin-call-dce -ftree-ccp -ftree-ch -ftree-coalesce-vars -ftree-copy-prop -ftree-dce -ftree-dominator-opts -finline -fshrink-wrap -ftree-dse -ftree-fre -ftree-pta -ftree-sink -ftree-slsr -ftree-sra -ftree-ter -Q --help=optimizers) <(./build-toolchain-out/bin/riscv64-unknown-elf-gcc -O1 -funreachable-traps -Q --help=optimizers)
+cd gcc
+ls
+git commit log
+git log
+git commit -m "demo"
+git remote -vv
+git pull upstream master
+git pull upstream master --rebase
+git push -f
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+cd ..
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -O1 -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+diff -y <(./build-toolchain-out/bin/riscv64-unknown-elf-gcc -fbranch-count-reg -fcombine-stack-adjustments -fcompare-elim -fcprop-registers -fdefer-pop -fdse -fforward-propagate  -fguess-branch-probability -fif-conversion -fif-conversion2 -finline -finline-functions-called-once -fipa-modref -fipa-profile -fipa-pure-const -fipa-reference -fipa-reference-addressable -fmove-loop-invariants -fmove-loop-stores -fomit-frame-pointer -freorder-blocks -fsched-pressure -fsection-anchors -fsplit-wide-types -fssa-phiopt -fthread-jumps -ftoplevel-reorder -ftree-bit-ccp  -ftree-builtin-call-dce -ftree-ccp -ftree-ch -ftree-coalesce-vars -ftree-copy-prop -ftree-dce -ftree-dominator-opts -finline -fshrink-wrap -ftree-dse -ftree-fre -ftree-pta -ftree-sink -ftree-slsr -ftree-sra -ftree-ter -Q --help=optimizers) <(./build-toolchain-out/bin/riscv64-unknown-elf-gcc -O1 -funreachable-traps -Q --help=optimizers)
+diff -y <(./build-toolchain-out/bin/riscv64-unknown-elf-gcc -fbranch-count-reg -fcombine-stack-adjustments -fcompare-elim -fcprop-registers -fdefer-pop -fdse -fforward-propagate  -fguess-branch-probability -fif-conversion -fif-conversion2 -finline -finline-functions-called-once -fipa-modref -fipa-profile -fipa-pure-const -fipa-reference -fipa-reference-addressable -fmove-loop-invariants -fmove-loop-stores -fomit-frame-pointer -freorder-blocks -fsched-pressure -fsection-anchors -fsplit-wide-types -fssa-phiopt -fthread-jumps -ftoplevel-reorder -ftree-bit-ccp  -ftree-builtin-call-dce -ftree-ccp -ftree-ch -ftree-coalesce-vars -ftree-copy-prop -ftree-dce -ftree-dominator-opts -finline -fshrink-wrap -ftree-dse -ftree-fre -ftree-pta -ftree-sink -ftree-slsr -ftree-sra -ftree-ter -Q --help=optimizers) <(./build-toolchain-out/bin/riscv64-unknown-elf-gcc -O1 -funreachable-traps -Q --help=optimizers) | |
+diff -y <(./build-toolchain-out/bin/riscv64-unknown-elf-gcc -fbranch-count-reg -fcombine-stack-adjustments -fcompare-elim -fcprop-registers -fdefer-pop -fdse -fforward-propagate  -fguess-branch-probability -fif-conversion -fif-conversion2 -finline -finline-functions-called-once -fipa-modref -fipa-profile -fipa-pure-const -fipa-reference -fipa-reference-addressable -fmove-loop-invariants -fmove-loop-stores -fomit-frame-pointer -freorder-blocks -fsched-pressure -fsection-anchors -fsplit-wide-types -fssa-phiopt -fthread-jumps -ftoplevel-reorder -ftree-bit-ccp  -ftree-builtin-call-dce -ftree-ccp -ftree-ch -ftree-coalesce-vars -ftree-copy-prop -ftree-dce -ftree-dominator-opts -finline -fshrink-wrap -ftree-dse -ftree-fre -ftree-pta -ftree-sink -ftree-slsr -ftree-sra -ftree-ter -Q --help=optimizers) <(./build-toolchain-out/bin/riscv64-unknown-elf-gcc -O1 -funreachable-traps -Q --help=optimizers) | rg |
+diff -y <(./build-toolchain-out/bin/riscv64-unknown-elf-gcc -fbranch-count-reg -fcombine-stack-adjustments -fcompare-elim -fcprop-registers -fdefer-pop -fdse -fforward-propagate  -fguess-branch-probability -fif-conversion -fif-conversion2 -finline -finline-functions-called-once -fipa-modref -fipa-profile -fipa-pure-const -fipa-reference -fipa-reference-addressable -fmove-loop-invariants -fmove-loop-stores -fomit-frame-pointer -freorder-blocks -fsched-pressure -fsection-anchors -fsplit-wide-types -fssa-phiopt -fthread-jumps -ftoplevel-reorder -ftree-bit-ccp  -ftree-builtin-call-dce -ftree-ccp -ftree-ch -ftree-coalesce-vars -ftree-copy-prop -ftree-dce -ftree-dominator-opts -finline -fshrink-wrap -ftree-dse -ftree-fre -ftree-pta -ftree-sink -ftree-slsr -ftree-sra -ftree-ter -Q --help=optimizers) <(./build-toolchain-out/bin/riscv64-unknown-elf-gcc -O1 -funreachable-traps -Q --help=optimizers) | rg "|"
+diff -y <(./build-toolchain-out/bin/riscv64-unknown-elf-gcc -fbranch-count-reg -fcombine-stack-adjustments -fcompare-elim -fcprop-registers -fdefer-pop -fdse -fforward-propagate  -fguess-branch-probability -fif-conversion -fif-conversion2 -finline -finline-functions-called-once -fipa-modref -fipa-profile -fipa-pure-const -fipa-reference -fipa-reference-addressable -fmove-loop-invariants -fmove-loop-stores -fomit-frame-pointer -freorder-blocks -fsched-pressure -fsection-anchors -fsplit-wide-types -fssa-phiopt -fthread-jumps -ftoplevel-reorder -ftree-bit-ccp  -ftree-builtin-call-dce -ftree-ccp -ftree-ch -ftree-coalesce-vars -ftree-copy-prop -ftree-dce -ftree-dominator-opts -finline -fshrink-wrap -ftree-dse -ftree-fre -ftree-pta -ftree-sink -ftree-slsr -ftree-sra -ftree-ter -Q --help=optimizers) <(./build-toolchain-out/bin/riscv64-unknown-elf-gcc -O1 -funreachable-traps -Q --help=optimizers) | rg "enable.*disable"
+diff -y <(./build-toolchain-out/bin/riscv64-unknown-elf-gcc -fbranch-count-reg -fcombine-stack-adjustments -fcompare-elim -fcprop-registers -fdefer-pop -fdse -fforward-propagate  -fguess-branch-probability -fif-conversion -fif-conversion2 -finline -finline-functions-called-once -fipa-modref -fipa-profile -fipa-pure-const -fipa-reference -fipa-reference-addressable -fmove-loop-invariants -fmove-loop-stores -fomit-frame-pointer -freorder-blocks -fsched-pressure -fsection-anchors -fsplit-wide-types -fssa-phiopt -fthread-jumps -ftoplevel-reorder -ftree-bit-ccp  -ftree-builtin-call-dce -ftree-ccp -ftree-ch -ftree-coalesce-vars -ftree-copy-prop -ftree-dce -ftree-dominator-opts -finline -fshrink-wrap -ftree-dse -ftree-fre -ftree-pta -ftree-sink -ftree-slsr -ftree-sra -ftree-ter -Q --help=optimizers) <(./build-toolchain-out/bin/riscv64-unknown-elf-gcc -O1 -funreachable-traps -Q --help=optimizers) | rg "|"
+diff -y <(./build-toolchain-out/bin/riscv64-unknown-elf-gcc -fbranch-count-reg -fcombine-stack-adjustments -fcompare-elim -fcprop-registers -fdefer-pop -fdse -fforward-propagate  -fguess-branch-probability -fif-conversion -fif-conversion2 -finline -finline-functions-called-once -fipa-modref -fipa-profile -fipa-pure-const -fipa-reference -fipa-reference-addressable -fmove-loop-invariants -fmove-loop-stores -fomit-frame-pointer -freorder-blocks -fsched-pressure -fsection-anchors -fsplit-wide-types -fssa-phiopt -fthread-jumps -ftoplevel-reorder -ftree-bit-ccp  -ftree-builtin-call-dce -ftree-ccp -ftree-ch -ftree-coalesce-vars -ftree-copy-prop -ftree-dce -ftree-dominator-opts -finline -fshrink-wrap -ftree-dse -ftree-fre -ftree-pta -ftree-sink -ftree-slsr -ftree-sra -ftree-ter -Q --help=optimizers) <(./build-toolchain-out/bin/riscv64-unknown-elf-gcc -O1 -funreachable-traps -Q --help=optimizers) | grep "|"
+diff -y <(./build-toolchain-out/bin/riscv64-unknown-elf-gcc -fbranch-count-reg -fcombine-stack-adjustments -fcompare-elim -fcprop-registers -fdefer-pop -fdse -fforward-propagate  -fguess-branch-probability -fif-conversion -fif-conversion2 -finline -finline-functions-called-once -fipa-modref -fipa-profile -fipa-pure-const -fipa-reference -fipa-reference-addressable -fmove-loop-invariants -fmove-loop-stores -fomit-frame-pointer -freorder-blocks -fsched-pressure -fsection-anchors -fsplit-wide-types -fssa-phiopt -fthread-jumps -ftoplevel-reorder -ftree-bit-ccp  -ftree-builtin-call-dce -ftree-ccp -ftree-ch -ftree-coalesce-vars -ftree-copy-prop -ftree-dce -ftree-dominator-opts -finline -fshrink-wrap -ftree-dse -ftree-fre -ftree-pta -ftree-sink -ftree-slsr -ftree-sra -ftree-ter -Q --help=optimizers) <(./build-toolchain-out/bin/riscv64-unknown-elf-gcc -O1 -funreachable-traps -Q --help=optimizers) | rg "[.*] *| *.*["
+diff -y <(./build-toolchain-out/bin/riscv64-unknown-elf-gcc -fbranch-count-reg -fcombine-stack-adjustments -fcompare-elim -fcprop-registers -fdefer-pop -fdse -fforward-propagate  -fguess-branch-probability -fif-conversion -fif-conversion2 -finline -finline-functions-called-once -fipa-modref -fipa-profile -fipa-pure-const -fipa-reference -fipa-reference-addressable -fmove-loop-invariants -fmove-loop-stores -fomit-frame-pointer -freorder-blocks -fsched-pressure -fsection-anchors -fsplit-wide-types -fssa-phiopt -fthread-jumps -ftoplevel-reorder -ftree-bit-ccp  -ftree-builtin-call-dce -ftree-ccp -ftree-ch -ftree-coalesce-vars -ftree-copy-prop -ftree-dce -ftree-dominator-opts -finline -fshrink-wrap -ftree-dse -ftree-fre -ftree-pta -ftree-sink -ftree-slsr -ftree-sra -ftree-ter -Q --help=optimizers) <(./build-toolchain-out/bin/riscv64-unknown-elf-gcc -O1 -funreachable-traps -Q --help=optimizers) | rg "[.*] *| *.*\["
+diff -y <(./build-toolchain-out/bin/riscv64-unknown-elf-gcc -fbranch-count-reg -fcombine-stack-adjustments -fcompare-elim -fcprop-registers -fdefer-pop -fdse -fforward-propagate  -fguess-branch-probability -fif-conversion -fif-conversion2 -finline -finline-functions-called-once -fipa-modref -fipa-profile -fipa-pure-const -fipa-reference -fipa-reference-addressable -fmove-loop-invariants -fmove-loop-stores -fomit-frame-pointer -freorder-blocks -fsched-pressure -fsection-anchors -fsplit-wide-types -fssa-phiopt -fthread-jumps -ftoplevel-reorder -ftree-bit-ccp  -ftree-builtin-call-dce -ftree-ccp -ftree-ch -ftree-coalesce-vars -ftree-copy-prop -ftree-dce -ftree-dominator-opts -finline -fshrink-wrap -ftree-dse -ftree-fre -ftree-pta -ftree-sink -ftree-slsr -ftree-sra -ftree-ter -Q --help=optimizers) <(./build-toolchain-out/bin/riscv64-unknown-elf-gcc -O1 -funreachable-traps -Q --help=optimizers) | rg "[.*] *\| *.*\["
+diff -y <(./build-toolchain-out/bin/riscv64-unknown-elf-gcc -fbranch-count-reg -fcombine-stack-adjustments -fcompare-elim -fcprop-registers -fdefer-pop -fdse -fforward-propagate  -fguess-branch-probability -fif-conversion -fif-conversion2 -finline -finline-functions-called-once -fipa-modref -fipa-profile -fipa-pure-const -fipa-reference -fipa-reference-addressable -fmove-loop-invariants -fmove-loop-stores -fomit-frame-pointer -freorder-blocks -fsched-pressure -fsection-anchors -fsplit-wide-types -fssa-phiopt -fthread-jumps -ftoplevel-reorder -ftree-bit-ccp  -ftree-builtin-call-dce -ftree-ccp -ftree-ch -ftree-coalesce-vars -ftree-copy-prop -ftree-dce -ftree-dominator-opts -finline -fshrink-wrap -ftree-dse -ftree-fre -ftree-pta -ftree-sink -ftree-slsr -ftree-sra -ftree-ter -Q --help=optimizers) <(./build-toolchain-out/bin/riscv64-unknown-elf-gcc -O1 -funreachable-traps -Q --help=optimizers) | rg "|"
+diff -y <(./build-toolchain-out/bin/riscv64-unknown-elf-gcc -fbranch-count-reg -fcombine-stack-adjustments -fcompare-elim -fcprop-registers -fdefer-pop -fdse -fforward-propagate  -fguess-branch-probability -fif-conversion -fif-conversion2 -finline -finline-functions-called-once -fipa-modref -fipa-profile -fipa-pure-const -fipa-reference -fipa-reference-addressable -fmove-loop-invariants -fmove-loop-stores -fomit-frame-pointer -freorder-blocks -fsched-pressure -fsection-anchors -fsplit-wide-types -fssa-phiopt -fthread-jumps -ftoplevel-reorder -ftree-bit-ccp  -ftree-builtin-call-dce -ftree-ccp -ftree-ch -ftree-coalesce-vars -ftree-copy-prop -ftree-dce -ftree-dominator-opts -finline -fshrink-wrap -ftree-dse -ftree-fre -ftree-pta -ftree-sink -ftree-slsr -ftree-sra -ftree-ter -Q --help=optimizers) <(./build-toolchain-out/bin/riscv64-unknown-elf-gcc -O1 -funreachable-traps -Q --help=optimizers) | rg "\|"
+diff -y <(./build-toolchain-out/bin/riscv64-unknown-elf-gcc -fbranch-count-reg -fcombine-stack-adjustments -fcompare-elim -fcprop-registers -fdefer-pop -fdse -fforward-propagate  -fguess-branch-probability -fif-conversion -fif-conversion2 -finline -finline-functions-called-once -fipa-modref -fipa-profile -fipa-pure-const -fipa-reference -fipa-reference-addressable -fmove-loop-invariants -fmove-loop-stores -fomit-frame-pointer -freorder-blocks -fsched-pressure -fsection-anchors -fsplit-wide-types -fssa-phiopt -fthread-jumps -ftoplevel-reorder -ftree-bit-ccp  -ftree-builtin-call-dce -ftree-ccp -ftree-ch -ftree-coalesce-vars -ftree-copy-prop -ftree-dce -ftree-dominator-opts -finline -fshrink-wrap -ftree-dse -ftree-fre -ftree-pta -ftree-sink -ftree-slsr -ftree-sra -ftree-ter -Q --help=optimizers) <(./build-toolchain-out/bin/riscv64-unknown-elf-gcc -O1 -funreachable-traps -Q --help=optimizers) | rg     "].*\|.*["
+diff -y <(./build-toolchain-out/bin/riscv64-unknown-elf-gcc -fbranch-count-reg -fcombine-stack-adjustments -fcompare-elim -fcprop-registers -fdefer-pop -fdse -fforward-propagate  -fguess-branch-probability -fif-conversion -fif-conversion2 -finline -finline-functions-called-once -fipa-modref -fipa-profile -fipa-pure-const -fipa-reference -fipa-reference-addressable -fmove-loop-invariants -fmove-loop-stores -fomit-frame-pointer -freorder-blocks -fsched-pressure -fsection-anchors -fsplit-wide-types -fssa-phiopt -fthread-jumps -ftoplevel-reorder -ftree-bit-ccp  -ftree-builtin-call-dce -ftree-ccp -ftree-ch -ftree-coalesce-vars -ftree-copy-prop -ftree-dce -ftree-dominator-opts -finline -fshrink-wrap -ftree-dse -ftree-fre -ftree-pta -ftree-sink -ftree-slsr -ftree-sra -ftree-ter -Q --help=optimizers) <(./build-toolchain-out/bin/riscv64-unknown-elf-gcc -O1 -funreachable-traps -Q --help=optimizers) | rg     "\].*\|.*\["
+diff -y <(./build-toolchain-out/bin/riscv64-unknown-elf-gcc -fbranch-count-reg -fcombine-stack-adjustments -fcompare-elim -fcprop-registers -fdefer-pop -fdse -fforward-propagate  -fguess-branch-probability -fif-conversion -fif-conversion2 -finline -finline-functions-called-once -fipa-modref -fipa-profile -fipa-pure-const -fipa-reference -fipa-reference-addressable -fmove-loop-invariants -fmove-loop-stores -fomit-frame-pointer -freorder-blocks -fsched-pressure -fsection-anchors -fsplit-wide-types -fssa-phiopt -fthread-jumps -ftoplevel-reorder -ftree-bit-ccp  -ftree-builtin-call-dce -ftree-ccp -ftree-ch -ftree-coalesce-vars -ftree-copy-prop -ftree-dce -ftree-dominator-opts -finline -fshrink-wrap -ftree-dse -ftree-fre -ftree-pta -ftree-sink -ftree-slsr -ftree-sra -ftree-ter -Q --help=optimizers) <(./build-toolchain-out/bin/riscv64-unknown-elf-gcc -O1 -funreachable-traps -Q --help=optimizers) | rg     "\[.*\].*\|.*\[.*\]"
+diff -y <(./build-toolchain-out/bin/riscv64-unknown-elf-gcc -fbranch-count-reg -fcombine-stack-adjustments -fcompare-elim -fcprop-registers -fdefer-pop -fdse -fforward-propagate  -fguess-branch-probability -fif-conversion -fif-conversion2 -finline -finline-functions-called-once -fipa-modref -fipa-profile -fipa-pure-const -fipa-reference -fipa-reference-addressable -fmove-loop-invariants -fmove-loop-stores -fomit-frame-pointer -freorder-blocks -fsched-pressure -fsection-anchors -fsplit-wide-types -fssa-phiopt -fthread-jumps -ftoplevel-reorder -ftree-bit-ccp  -ftree-builtin-call-dce -ftree-ccp -ftree-ch -ftree-coalesce-vars -ftree-copy-prop -ftree-dce -ftree-dominator-opts -finline -fshrink-wrap -ftree-dse -ftree-fre -ftree-pta -ftree-sink -ftree-slsr -ftree-sra -ftree-ter -Q --help=optimizers) <(./build-toolchain-out/bin/riscv64-unknown-elf-gcc -O1 -funreachable-traps -Q --help=optimizers) | rg     "\[.*\].*\| *%s+\[.*\]"
+diff -y <(./build-toolchain-out/bin/riscv64-unknown-elf-gcc -fbranch-count-reg -fcombine-stack-adjustments -fcompare-elim -fcprop-registers -fdefer-pop -fdse -fforward-propagate  -fguess-branch-probability -fif-conversion -fif-conversion2 -finline -finline-functions-called-once -fipa-modref -fipa-profile -fipa-pure-const -fipa-reference -fipa-reference-addressable -fmove-loop-invariants -fmove-loop-stores -fomit-frame-pointer -freorder-blocks -fsched-pressure -fsection-anchors -fsplit-wide-types -fssa-phiopt -fthread-jumps -ftoplevel-reorder -ftree-bit-ccp  -ftree-builtin-call-dce -ftree-ccp -ftree-ch -ftree-coalesce-vars -ftree-copy-prop -ftree-dce -ftree-dominator-opts -finline -fshrink-wrap -ftree-dse -ftree-fre -ftree-pta -ftree-sink -ftree-slsr -ftree-sra -ftree-ter -Q --help=optimizers) <(./build-toolchain-out/bin/riscv64-unknown-elf-gcc -O1 -funreachable-traps -Q --help=optimizers) | rg     "\[.*\].*\| *%S+\[.*\]"
+diff -y <(./build-toolchain-out/bin/riscv64-unknown-elf-gcc -fbranch-count-reg -fcombine-stack-adjustments -fcompare-elim -fcprop-registers -fdefer-pop -fdse -fforward-propagate  -fguess-branch-probability -fif-conversion -fif-conversion2 -finline -finline-functions-called-once -fipa-modref -fipa-profile -fipa-pure-const -fipa-reference -fipa-reference-addressable -fmove-loop-invariants -fmove-loop-stores -fomit-frame-pointer -freorder-blocks -fsched-pressure -fsection-anchors -fsplit-wide-types -fssa-phiopt -fthread-jumps -ftoplevel-reorder -ftree-bit-ccp  -ftree-builtin-call-dce -ftree-ccp -ftree-ch -ftree-coalesce-vars -ftree-copy-prop -ftree-dce -ftree-dominator-opts -finline -fshrink-wrap -ftree-dse -ftree-fre -ftree-pta -ftree-sink -ftree-slsr -ftree-sra -ftree-ter -Q --help=optimizers) <(./build-toolchain-out/bin/riscv64-unknown-elf-gcc -O1 -funreachable-traps -Q --help=optimizers) | rg     "\[.*\].*\|.*\[.*\]"
+cd gcc
+git reset --soft HEAD~1
+ls
+cd ..
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -O2 -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+git log
+cd gcc/
+ls
+git log
+git add .
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -O2 -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+cd ..
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -O2 -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+vim ./gcc/gcc/testsuite/gcc.^Crget/riscv/zacas128.c
+vim ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -O2 -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -O2 -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -O2 -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -O2 -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -O2 -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+time RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-gcc | tee ./debug/report-gcc-riscv-zacas.log
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -S -O2 ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -S -O2 ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+time RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-gcc | tee ./debug/report-gcc-riscv-zacas.log
+rm stamps/build-gcc-newlib-stage2 
+time RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-gcc | tee ./debug/report-gcc-riscv-zacas.log
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -S -O2 ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+rm stamps/build-gcc-newlib-stage2 
+time RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-gcc | tee ./debug/report-gcc-riscv-zacas.log
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+rm stamps/build-gcc-newlib-stage2 
+time RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-gcc | tee ./debug/report-gcc-riscv-zacas.log
+cd /plct/riscv-gnu-toolchain/
+time RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-gcc | tee ./debug/report-gcc-riscv-zacas.log
+ls
+rm stamps/build-gcc-newlib-stage2 
+rm stamps/check-gcc-newlib 
+time RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-gcc | tee ./debug/report-gcc-riscv-zacas.log
+cd /plct/riscv-gnu-toolchain/
+ls
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv32g_zacas -mabi=ilp32 -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas32.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+time RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-gcc | tee ./debug/report-gcc-riscv-zacas.log
+rm stamps/build-gcc-newlib-stage1 
+make clean
+time RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-gcc | tee ./debug/report-gcc-riscv-zacas.log
+make clean
+time RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-gcc | tee ./debug/report-gcc-riscv-zacas.log
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+make clean
+time RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-gcc | tee ./debug/report-gcc-riscv-zacas.log
+make clean
+ls
+time RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-gcc | tee ./debug/report-gcc-riscv-zacas.log
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+ls
+vim ./zacas128.s 
+make clean
+time RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-gcc | tee ./debug/report-gcc-riscv-zacas.log
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas64.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv32g_zacas -mabi=ilp32 -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas32.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas64.c
+ls
+vim ./zacas64.s
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas64.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv32g_zacas -mabi=ilp32 -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas32.c
+ls
+make clean
+time RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-gcc | tee ./debug/report-gcc-riscv-zacas.log
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv32g_zacas -mabi=ilp32 -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas32.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas64.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas64.c
+time RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-gcc | tee ./debug/report-gcc-riscv-zacas.log
+rm stamps/check-gcc-newlib 
+rm stamps/build-gcc-newlib-stage2 
+time RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-gcc | tee ./debug/report-gcc-riscv-zacas.log
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas64.c
+rm stamps/build-gcc-newlib-stage2 
+time RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-gcc | tee ./debug/report-gcc-riscv-zacas.log
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas64.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv32g_zacas -mabi=ilp32 -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas32.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas64.c
+rm stamps/build-gcc-newlib-stage2 
+time RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-gcc | tee ./debug/report-gcc-riscv-zacas.log
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas64.c
+time RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-gcc | tee ./debug/report-gcc-riscv-zacas.log
+rm stamps/build-gcc-newlib-stage2 
+time RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-gcc | tee ./debug/report-gcc-riscv-zacas.log
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas64.c
+time RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-gcc | tee ./debug/report-gcc-riscv-zacas.log
+rm stamps/build-gcc-newlib-stage2 
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas64.c
+time RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-gcc | tee ./debug/report-gcc-riscv-zacas.log
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas64.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv32g_zacas -mabi=ilp32 -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas32.c
+time RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-gcc | tee ./debug/report-gcc-riscv-zacas.log
+rm stamps/build-gcc-newlib-stage2 
+time RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-gcc | tee ./debug/report-gcc-riscv-zacas.log
+rg -H "gen_riscv_inval_" ./build-gcc-newlib-stage1/
+less build-gcc-newlib-stage1/gcc/insn-flags.h
+less ./build-gcc-newlib-stage1/gcc/insn-emit-1.cc
+rm stamps/build-gcc-newlib-stage1 
+time RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-gcc | tee ./debug/report-gcc-riscv-zacas.log
+rm stamps/build-gcc-newlib-stage1 
+time RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-gcc | tee ./debug/report-gcc-riscv-zacas.log
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas64.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv32g_zacas -mabi=ilp32 -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas32.c
+make clean
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv32g_zacas -mabi=ilp32 -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas32.c
+time RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-gcc | tee ./debug/report-gcc-riscv-zacas.log
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv32g_zacas -mabi=ilp32 -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas32.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas64.c
+ls
+vim ./zacas32.s 
+vim ./zacas64.s 
+rg "zacas32" ./build-gcc-newlib-stage2/gcc/testsuite/**/*.log
+rg "zaca1282" ./build-gcc-newlib-stage2/gcc/testsuite/**/*.log
+rg "zaca128" ./build-gcc-newlib-stage2/gcc/testsuite/**/*.log
+rg "zaca32" ./build-gcc-newlib-stage2/gcc/testsuite/**/*.log
+rg "zacas128" ./build-gcc-newlib-stage2/gcc/testsuite/**/*.log
+rm stamps/check-gcc-newlib 
+time RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-gcc | tee ./debug/report-gcc-riscv-zacas.log
+rg "zacas128" ./build-gcc-newlib-stage2/gcc/testsuite/**/*.log
+ls
+rm stamps/build-binutils-newlib 
+time RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-gcc | tee ./debug/report-gcc-riscv-zacas.log
+ls
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv32g_zacas -mabi=ilp32 -c ./gcc/gcc/testsuite/gcc.target/riscv/zacas32.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -c ./gcc/gcc/testsuite/gcc.target/riscv/zacas64.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -c ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+ls
+rm -f ./zacas32.s ./zacas32.o
+rm -f ./zacas64.s ./zacas64.o
+rm -f ./zacas128.s ./zacas128.o
+ls
+rm ./zawrs.o 
+rm zacas.sss 
+ls
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv32g_zacas -mabi=ilp32 -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas32.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas64.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv32g_zacas -mabi=ilp32 -c ./gcc/gcc/testsuite/gcc.target/riscv/zacas32.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -c ./gcc/gcc/testsuite/gcc.target/riscv/zacas64.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -c ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+ls
+time RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-binutils | tee ./debug/report-binutils-riscv-zacas.log
+time RUNTESTFLAGS=riscv.exp=zacas* make -j$(nproc) report-binutils | tee ./debug/report-binutils-riscv-zacas.log
+rm stamps/check-binutils-newlib 
+time RUNTESTFLAGS=riscv.exp=zacas* make -j$(nproc) report-binutils | tee ./debug/report-binutils-riscv-zacas.log
+rm stamps/check-gcc-newlib 
+time RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-gcc | tee ./debug/report-gcc-riscv-zacas.log
+ls
+vim zacas128.
+vim zacas128.s 
+ls 
+time RUNTESTFLAGS=riscv.exp=zacas128.c make -j$(nproc) report-gcc | tee ./debug/report-gcc-riscv-zacas.log
+rm stamps/check-gcc-newlib 
+time RUNTESTFLAGS=riscv.exp=zacas128.c make -j$(nproc) report-gcc | tee ./debug/report-gcc-riscv-zacas.log
+ls
+rg "zacas128" ./build-gcc-newlib-stage2/gcc/testsuite/
+/plct/riscv-gnu-toolchain/build-gcc-newlib-stage2/gcc/xgcc -B/plct/riscv-gnu-toolchain/build-gcc-newlib-stage2/gcc/  /plct/riscv-gnu-toolchain/gcc/gcc/testsuite/gcc.target/riscv/zacas128.c  -march=rv64imafdc -mabi=lp64d -mcmodel=medlow   -fdiagnostics-plain-output  -O2 -flto -fno-use-linker-plugin -flto-partition=none -march=rv64g_zacas -mabi=lp64d -ffat-lto-objects -fno-ident -S   -o zacas128.s
+/plct/riscv-gnu-toolchain/build-toolchain-out/bin/riscv64-unknown-elf-gcc  /plct/riscv-gnu-toolchain/gcc/gcc/testsuite/gcc.target/riscv/zacas128.c  -march=rv64imafdc -mabi=lp64d -mcmodel=medlow   -fdiagnostics-plain-output  -O2 -flto -fno-use-linker-plugin -flto-partition=none -march=rv64g_zacas -mabi=lp64d -ffat-lto-objects -fno-ident -S   -o zacas128.s
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+/plct/riscv-gnu-toolchain/build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+/plct/riscv-gnu-toolchain/build-toolchain-out/bin/riscv64-unknown-elf-gcc  /plct/riscv-gnu-toolchain/gcc/gcc/testsuite/gcc.target/riscv/zacas128.c   -march=rv64g_zacas -mabi=lp64d -ffat-lto-objects -fno-ident -S   -o zacas128.s
+ls
+vim ./zacas128.s 
+/plct/riscv-gnu-toolchain/build-toolchain-out/bin/riscv64-unknown-elf-gcc -O2 -flto -fno-use-linker-plugin -flto-partition=none /plct/riscv-gnu-toolchain/gcc/gcc/testsuite/gcc.target/riscv/zacas128.c   -march=rv64g_zacas -mabi=lp64d -ffat-lto-objects -fno-ident -S   -o zacas128.s
+/plct/riscv-gnu-toolchain/build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64imafdc -mabi=lp64d -mcmodel=medlow  /plct/riscv-gnu-toolchain/gcc/gcc/testsuite/gcc.target/riscv/zacas128.c   -march=rv64g_zacas -mabi=lp64d -ffat-lto-objects -fno-ident -S   -o zacas128.s
+vim ./zacas128.s 
+/plct/riscv-gnu-toolchain/build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64imafdc -mabi=lp64d -mcmodel=medlow -fdiagnostics-plain-output /plct/riscv-gnu-toolchain/gcc/gcc/testsuite/gcc.target/riscv/zacas128.c   -march=rv64g_zacas -mabi=lp64d -ffat-lto-objects -fno-ident -S   -o zacas128.s
+/plct/riscv-gnu-toolchain/build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64imafdc -mabi=lp64d -mcmodel=medlow -fdiagnostics-plain-output -O2 /plct/riscv-gnu-toolchain/gcc/gcc/testsuite/gcc.target/riscv/zacas128.c   -march=rv64g_zacas -mabi=lp64d -ffat-lto-objects -fno-ident -S   -o zacas128.s
+/plct/riscv-gnu-toolchain/build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64imafdc -mabi=lp64d -mcmodel=medlow -fdiagnostics-plain-output -flto -fno-use-linker-plugin /plct/riscv-gnu-toolchain/gcc/gcc/testsuite/gcc.target/riscv/zacas128.c   -march=rv64g_zacas -mabi=lp64d -ffat-lto-objects -fno-ident -S   -o zacas128.s
+/plct/riscv-gnu-toolchain/build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64imafdc -mabi=lp64d -mcmodel=medlow -fdiagnostics-plain-output -flto -fno-use-linker-plugin -flto-partition=none /plct/riscv-gnu-toolchain/gcc/gcc/testsuite/gcc.target/riscv/zacas128.c   -march=rv64g_zacas -mabi=lp64d -ffat-lto-objects -fno-ident -S   -o zacas128.s
+vim ./zacas128.s 
+/plct/riscv-gnu-toolchain/build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64imafdc -mabi=lp64d -mcmodel=medlow -fdiagnostics-plain-output -O2 -flto -fno-use-linker-plugin -flto-partition=none /plct/riscv-gnu-toolchain/gcc/gcc/testsuite/gcc.target/riscv/zacas128.c   -march=rv64g_zacas -mabi=lp64d -ffat-lto-objects -fno-ident -S   -o zacas128.s
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv32g_zacas -mabi=ilp32 -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas32.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv32g_zacas -mabi=ilp32 -O1 -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas32.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv32g_zacas -mabi=ilp32 -O2 -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas32.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv32g_zacas -mabi=ilp32 -O3 -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas32.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv32g_zacas -mabi=ilp32 -O -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas32.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv32g_zacas -mabi=ilp32 -O0 -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas32.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv32g_zacas -mabi=ilp32 -O1 -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas32.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64gc_zawrs -O2 -c ./gcc/gcc/testsuite/gcc.target/riscv/zawrs.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64gc_zicbom -mabi=lp64 -c ./gcc/gcc/testsuite/gcc.target/riscv/cmo-zicbom-1.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64gc_zicbom -mabi=lp64 -O2 -c ./gcc/gcc/testsuite/gcc.target/riscv/cmo-zicbom-1.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -c ./gcc/gcc/testsuite/gcc.target/riscv/zacas64.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -O2 -c ./gcc/gcc/testsuite/gcc.target/riscv/zacas64.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -O1 -c ./gcc/gcc/testsuite/gcc.target/riscv/zacas64.c
+cd gcc
+git reflog
+git add .
+ls
+make clean
+cd ..
+make clean
+ls
+time RUNTESTFLAGS=riscv.exp=zacas* make -j$(nproc) report-binutils | tee ./debug/report-binutils-riscv-zacas.log
+cd /plct/riscv-gnu-toolchain/
+ls
+make clean
+time RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-gcc | tee ./debug/report-gcc-riscv-zacas.log
+git log
+cd gcc
+git log
+make clean
+cd ..
+make clean
+time RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-gcc | tee ./debug/report-gcc-riscv-zacas.log
+cd gcc
+git reset --soft HEAD~1
+cd ..
+time RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-gcc | tee ./debug/report-gcc-riscv-zacas.log
+cd gcc
+git commit -m "v1"
+git config --global user.email "trdthg47@gmail.com"
+git config --global user.name "trdthg"
+git commit -m "v1"
+git add .
+git commit -m "v2"
+cd ..
+time RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-gcc | tee ./debug/report-gcc-riscv-zacas.log
+git reset --soft HEAD~`
+git reset --soft HEAD~1
+cd gcc
+git reset --soft HEAD~1
+time RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-gcc | tee ./debug/report-gcc-riscv-zacas.log
+cd ..
+time RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-gcc | tee ./debug/report-gcc-riscv-zacas.log
+ls
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv32g_zacas -mabi=ilp32 -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas32.c
+rm stamps/check-gcc-newlib 
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv32g_zacas -mabi=ilp32 -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas32.c
+time RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-gcc | tee ./debug/report-gcc-riscv-zacas.log
+ls
+rm stamps/check-gcc-newlib 
+rm stamps/build-gcc-newlib-stage2 
+time RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-gcc | tee ./debug/report-gcc-riscv-zacas.log
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv32g_zacas -mabi=ilp32 -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas32.c
+rm stamps/build-gcc-newlib-stage2 
+time RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-gcc | tee ./debug/report-gcc-riscv-zacas.log
+ls
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv32g_zacas -mabi=ilp32 -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas32.c
+ls
+code ./debug/report-gcc-riscv-zacas.log 
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv32g_zacas -mabi=ilp32 -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas32.c
+ls
+vim ./zacas32.s 
+ls
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv32g_zacas -mabi=ilp32 -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas32.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas64.c
+ls
+vim ./zacas64.s 
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+time RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-gcc | tee ./debug/report-gcc-riscv-zacas.log
+rm stamps/check-gcc-newlib 
+time RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-gcc | tee ./debug/report-gcc-riscv-zacas.log
+rm stamps/check-gcc-newlib 
+rm stamps/build-gcc-newlib-stage
+rm stamps/build-gcc-newlib-stage2
+time RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-gcc | tee ./debug/report-gcc-riscv-zacas.log
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas64.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv32g_zacas -mabi=ilp32 -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas32.c
+rm stamps/build-gcc-newlib-stage2
+time RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-gcc | tee ./debug/report-gcc-riscv-zacas.log
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv32g_zacas -mabi=ilp32 -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas32.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas64.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv32g_zacas -mabi=ilp32 -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas64.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+make clean
+time RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-gcc | tee ./debug/report-gcc-riscv-zacas.log
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv32g_zacas -mabi=ilp32 -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas32.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv32g_zacas -mabi=ilp32 -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas32.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas64.c
+ls
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas64.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv32g_zacas -mabi=ilp32 -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas32.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas64.c
+ls
+vim zacas64.s 
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv32g_zacas -mabi=ilp32 -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas32.c
+ls
+vim zacas32.s
+rg -H "zacas32" ./build-gcc-newlib-stage2/gcc/testsuite/*
+rg -H "zacas32" ./build-gcc-newlib-stage2/gcc/testsuite/*.log
+rg -H "zacas32" ./build-gcc-newlib-stage2/gcc/testsuite/**/*.log
+clear
+rg -H "zacas32" ./build-gcc-newlib-stage2/gcc/testsuite/**/*.log
+ls
+cd /plct/riscv-gnu-toolchain/
+RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-gcc | tee ./debug/report-gcc-riscv-zacas.log
+ls
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv32gc_zacas -mabi=ilp32 -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas32.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64gc_zacas -mabi=lp64d -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas64.c
+vim zacas32.s 
+vim zacas364.s 
+vim zacas64.s 
+time RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-gcc | tee ./debug/report-gcc-riscv-zacas.log
+cd /plct/riscv-gnu-toolchain/
+bat
+apt install bat
+bat
+batcat
+./build-toolchain-out/bin/riscv64-unknown-elf-objdump -d ./a.o | batcat
+./build-toolchain-out/bin/riscv64-unknown-elf-objdump -d ./a.o | batcat -A
+./build-toolchain-out/bin/riscv64-unknown-elf-objdump -d ./a.o | batcat
+./build-toolchain-out/bin/riscv64-unknown-elf-objdump -d ./a.o | cat
+./build-toolchain-out/bin/riscv64-unknown-elf-objdump -d ./a.o
+cat -A
+cat -A ./a.s
+./build-toolchain-out/bin/riscv64-unknown-elf-objdump -d ./a.o | batcat -A
+./build-toolchain-out/bin/riscv64-unknown-elf-objdump -d ./a.o | cat -A
+RUNTESTFLAGS=riscv.exp=zacas* make -j$(nproc) report-binutils
+rm stamps/check-binutils-newlib 
+RUNTESTFLAGS=riscv.exp=zacas* make -j$(nproc) report-binutils
+rm stamps/check-binutils-newlib 
+RUNTESTFLAGS=riscv.exp=zacas* make -j$(nproc) report-binutils
+rm stamps/check-binutils-newlib 
+RUNTESTFLAGS=riscv.exp=zacas* make -j$(nproc) report-binutils
+rm stamps/check-binutils-newlib 
+RUNTESTFLAGS=riscv.exp=zacas* make -j$(nproc) report-binutils
+rm stamps/check-binutils-newlib 
+RUNTESTFLAGS=riscv.exp=zacas* make -j$(nproc) report-binutils
+./build-toolchain-out/bin/riscv64-unknown-elf-objdump -d ./a.o | batcat -A
+ls
+vim zacas32.s
+rm stamps/check-binutils-newlib 
+RUNTESTFLAGS=riscv.exp=zacas* make -j$(nproc) report-binutils
+rm stamps/check-binutils-newlib 
+RUNTESTFLAGS=riscv.exp=zacas* make -j$(nproc) report-binutils
+rg "zacas" ./build-binutils-newlib/
+rm stamps/check-binutils-newlib 
+RUNTESTFLAGS=riscv.exp=zacas* make -j$(nproc) report-binutils
+rm stamps/check-binutils-newlib 
+RUNTESTFLAGS=riscv.exp=zacas* make -j$(nproc) report-binutils
+rm stamps/check-binutils-newlib 
+RUNTESTFLAGS=riscv.exp=zacas* make -j$(nproc) report-binutils
+rm stamps/check-binutils-newlib 
+RUNTESTFLAGS=riscv.exp=zacas* make -j$(nproc) report-binutils
+./build-toolchain-out/bin/riscv64-unknown-elf-objdump -d ./a.o | batcat -A
+rm stamps/check-binutils-newlib 
+RUNTESTFLAGS=riscv.exp=zacas* make -j$(nproc) report-binutils
+rg -H "unspec_volatile"
+rg -H "unspec_volatile" | less
+rg -H "unspec_volatile" --with-color | less
+rg -H "unspec_volatile" --colors | less
+rg -H "unspec_volatile" --color=always | less
+rg -H "unspec_volatile" --color=always | less --color=always
+rg -H "unspec_volatile" --color=always | less -R
+less -h | less
+man less
+less -h\
+less -h
+less --help
+rg -H "unspec_volatile" --color=always | less -R
+cd /plct/riscv-gnu-toolchain/
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv32g_zacas -mabi=ilp32 -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas32.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas64.c
+ls
+btm
+cd /plct/riscv-gnu-toolchain/
+ls
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv32g_zacas -mabi=ilp32 -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas32.c
+ls
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv32g_zacas -mabi=ilp32 -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas32.c
+ls
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv32g_zacas -mabi=ilp32 -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas32.c
+rm ./stamps/build-gcc-newlib-stage2 
+RUNTESTFLAGS=riscv.exp=zacas* make -j$(nproc) report-binutils
+time RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-gcc | tee ./debug/report-gcc-riscv-zacas.log
+cd /plct/riscv-gnu-toolchain/
+ls
+time RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-gcc | tee ./debug/report-gcc-riscv-zacas.log
+ll
+ll ./build-toolchain-out/bin/
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -S -O2 ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -S -O1 ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+cd gcc/gcc
+ls
+cd ../..
+cd binutils/
+git remote -vv
+git config --global --add safe.directory /plct/riscv-gnu-toolchain/binutils
+git remote -vv
+cd ../
+ls
+ime RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-gcc | tee ./debug/report-gcc-riscv-zacas.log
+rm stamps/build-gcc-newlib-stage2 
+ime RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-gcc | tee ./debug/report-gcc-riscv-zacas.log
+time RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-gcc | tee ./debug/report-gcc-riscv-zacas.log
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -S -O2 ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+mkdir aa
+cd aa
+../build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -S -O2 ../gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+ls
+../build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -S ../gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+ls
+../build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -fdump-rtl-all  -S ../gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+ls
+vim zacas128.c.346r.dfinish 
+ls ./zacas128.c.346r.dfinish 
+pwd ./zacas128.c.346r.dfinish 
+ls -d ./zacas128.c.346r.dfinish 
+ls `pwd`./zacas128.c.346r.dfinish 
+ls `pwd`/zacas128.c.346r.dfinish 
+ls
+rm ./*
+../build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -fdump-rtl-all  -S ../gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+ls
+../build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -fdump-rtl-all  -S -O1 ../gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+ls
+rm ./*
+../build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -fdump-rtl-all  -S -O1 ../gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+ls
+ls `pwd`/zacas128.c.262r.expand
+rm ./*
+../build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -fdump-rtl-all  -S -O1 ../gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+ls
+ls `pwd`/zacas128.c.262r.expand
+../build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -fdump-rtl-all  -S ../gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+ls
+../build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -fdump-rtl-all -S ../gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+ls
+../build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -fdump-rtl-all -S ../ -O1gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+ls
+../build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -fdump-rtl-all -S -O1 ../gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+../build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -fdump-rtl-all -S ../gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+ls
+rm ./*
+../build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -fdump-rtl-all -S ../gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+ls
+../build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -fdump-rtl-all -S ../gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+../build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -fdump-rtl-all -O2 -S ../gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+../build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -fdump-rtl-all -S ../gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+../build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -fdump-rtl-all -O1 -S ../gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+../build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -fdump-rtl-all -S ../gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+../build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -fdump-rtl-all -O1 -S ../gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+../build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -fdump-rtl-all -S ../gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+../build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -fdump-rtl-all -O1 -S ../gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+../build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -fdump-rtl-all -S ../gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+../build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -fdump-rtl-all -O1 -S ../gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+../build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -fdump-rtl-all -S ../gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+../build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -fdump-rtl-all -O1 -S ../gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+../build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -fdump-rtl-all -fbranch-count-reg -fcombine-stack-adjustments -fcompare-elim -fcprop-registers -fdefer-pop -fdse -fforward-propagate  -fguess-branch-probability -fif-conversion -fif-conversion2 -finline -finline-functions-called-once -fipa-modref -fipa-profile -fipa-pure-const -fipa-reference -fipa-reference-addressable -fmove-loop-invariants -fmove-loop-stores -fomit-frame-pointer -freorder-blocks -fsched-pressure -fsection-anchors -fsplit-wide-types -fssa-phiopt -fthread-jumps -ftoplevel-reorder -ftree-bit-ccp  -ftree-builtin-call-dce -ftree-ccp -ftree-ch -ftree-coalesce-vars -ftree-copy-prop -ftree-dce -ftree-dominator-opts -S ../gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+../build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -fdump-rtl-all -fbranch-count-reg -fcombine-stack-adjustments -fcompare-elim -fcprop-registers -fdefer-pop -fdse -fforward-propagate  -fguess-branch-probability -fif-conversion -fif-conversion2 -finline -finline-functions-called-once -fipa-modref -fipa-profile -fipa-pure-const -fipa-reference -fipa-reference-addressable -fmove-loop-invariants -fmove-loop-stores -fomit-frame-pointer -freorder-blocks -fsched-pressure -fsection-anchors -fsplit-wide-types -fssa-phiopt -fthread-jumps -ftoplevel-reorder -ftree-bit-ccp  -ftree-builtin-call-dce -ftree-ccp -ftree-ch -ftree-coalesce-vars -ftree-copy-prop -ftree-dce -ftree-dominator-opts -O1 -S ../gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+ls
+cd ../..
+ls
+rm -f ./zacas32.s ./zacas32.o
+rm -f ./zacas64.s ./zacas64.o
+rm -f ./zacas128.s ./zacas128.o
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv32g_zacas -mabi=ilp32 -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas32.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas64.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -O2 -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+ls
+git log
+git remote -vv
+git branch -vv
+git log
+git switch zacas
+git status
+git log
+cd /plct/riscv-gnu-toolchain/
+rm -rf ./zacas128.c.* ./zawrs.c.* ./cmo-zicbop-1.c.* ./cmo-zicbom-1.c.* ./amo-table-a-6-load-1.c.* && ./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas_zicbom_zawrs -mabi=lp64d -S -fdump-rtl-all -fdump-tree-all -O1 ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c; ll ./*.expand
+ls
+cd gcc/gcc
+ls ../..
+cd ../..
+rm -rf ./zacas128.c.* ./zawrs.c.* ./cmo-zicbop-1.c.* ./cmo-zicbom-1.c.* ./amo-table-a-6-load-1.c.* && ./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas_zicbom_zawrs -mabi=lp64d -S -fdump-rtl-all -fdump-tree-all -O0 ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c; ll ./*.expand
+rm -rf ./zacas128.c.* ./zawrs.c.* ./cmo-zicbop-1.c.* ./cmo-zicbom-1.c.* ./amo-table-a-6-load-1.c.* && ./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas_zicbom_zawrs -mabi=lp64d -S -fdump-rtl-all -fdump-tree-all -O1 ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c; ll ./*.expand
+rm -rf ./zacas128.c.* ./zawrs.c.* ./cmo-zicbop-1.c.* ./cmo-zicbom-1.c.* ./amo-table-a-6-load-1.c.* && ./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas_zicbom_zawrs -mabi=lp64d -S -fdump-rtl-all -fdump-tree-all -O0 ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c; ll ./*.expand
+rm -rf ./zacas128.c.* ./zawrs.c.* ./cmo-zicbop-1.c.* ./cmo-zicbom-1.c.* ./amo-table-a-6-load-1.c.* && ./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas_zicbom_zawrs -mabi=lp64d -S -fdump-rtl-all -fdump-tree-all -O1 ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c; ll ./*.expand
+cd /plct/riscv-gnu-toolchain/
+rm -rf ./zacas128.c.* ./zawrs.c.* ./cmo-zicbop-1.c.* ./cmo-zicbom-1.c.* ./amo-table-a-6-load-1.c.* ./demo.c.* && ./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas_zicbom_zawrs -mabi=lp64d -S -fdump-rtl-all -fdump-tree-all -O1 ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c; ll ./*.expand
+ls
+make clean
+./configure --prefix=$(pwd)/build-toolchain-out
+ls ./stamps
+time RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-gcc | tee ./debug/report-gcc-riscv-zacas.log
+ls
+ll ./build-toolchain-out/bin/
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+make clean
+ls
+time RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-gcc | tee ./debug/report-gcc-riscv-zacas.log
+ls
+vim ./config.log 
+ls
+rm -rf ./zacas128.c.* ./zawrs.c.* ./cmo-zicbop-1.c.* ./cmo-zicbom-1.c.* ./amo-table-a-6-load-1.c.* ./demo.c.* && ./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas_zicbom_zawrs -mabi=lp64d -S -fdump-rtl-all -fdump-tree-all -O1 ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c; ll ./*.expand
+ls
+rm -rf ./zacas128.c.* ./zawrs.c.* ./cmo-zicbop-1.c.* ./cmo-zicbom-1.c.* ./amo-table-a-6-load-1.c.* ./demo.c.* && ./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas_zicbom_zawrs -mabi=lp64d -S -fdump-rtl-all -fdump-tree-all -O0 ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c; ll ./*.expand
+ls
+rm -rf ./aa/
+ls
+rm -rf ./zacas128.c.* ./zawrs.c.* ./cmo-zicbop-1.c.* ./cmo-zicbom-1.c.* ./amo-table-a-6-load-1.c.* ./demo.c.* && ./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas_zicbom_zawrs -mabi=lp64d -S -fdump-rtl-all -fdump-tree-all -O0 ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c; ll ./*.expand
+rm -rf ./zacas128.c.* ./zawrs.c.* ./cmo-zicbop-1.c.* ./cmo-zicbom-1.c.* ./amo-table-a-6-load-1.c.* ./demo.c.* && ./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas_zicbom_zawrs -mabi=lp64d -S -fdump-rtl-all -fdump-tree-all -O1 ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c; ll ./*.expand
+rm -rf ./zacas128.c.* ./zawrs.c.* ./cmo-zicbop-1.c.* ./cmo-zicbom-1.c.* ./amo-table-a-6-load-1.c.* ./demo.c.* && ./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas_zicbom_zawrs -mabi=lp64d -S -fdump-rtl-all -fdump-tree-all -O0 ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c; ll ./*.expand
+ls
+rm -rf ./zacas128.c.* ./zawrs.c.* ./cmo-zicbop-1.c.* ./cmo-zicbom-1.c.* ./amo-table-a-6-load-1.c.* ./demo.c.* && ./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas_zicbom_zawrs -mabi=lp64d -S -fdump-rtl-all -fdump-tree-all -O0 ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c; ll ./*.expand
+git log
+time RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-gcc | tee ./debug/report-gcc-riscv-zacas.log
+rm stamps/build-binutils-newlib 
+time RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-gcc | tee ./debug/report-gcc-riscv-zacas.log
+rm stamps/build-binutils-newlib 
+time RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-gcc | tee ./debug/report-gcc-riscv-zacas.log
+rm -rf ./zacas128.c.* ./zawrs.c.* ./cmo-zicbop-1.c.* ./cmo-zicbom-1.c.* ./amo-table-a-6-load-1.c.* ./demo.c.* && ./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas_zicbom_zawrs -mabi=lp64d -S -fdump-rtl-all -fdump-tree-all -O0 ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c; ll ./*.expand
+rm -rf ./zacas128.c.* ./zawrs.c.* ./cmo-zicbop-1.c.* ./cmo-zicbom-1.c.* ./amo-table-a-6-load-1.c.* ./demo.c.* && ./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas_zicbom_zawrs -mabi=lp64d -S -fdump-rtl-all -fdump-tree-all -O1 ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c; ll ./*.expand
+rm -rf ./zacas128.c.* ./zawrs.c.* ./cmo-zicbop-1.c.* ./cmo-zicbom-1.c.* ./amo-table-a-6-load-1.c.* ./demo.c.* && ./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas_zicbom_zawrs -mabi=lp64d -S -fdump-rtl-all -fdump-tree-all -O0 ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c; ll ./*.expand
+rm -rf ./zacas128.c.* ./zawrs.c.* ./cmo-zicbop-1.c.* ./cmo-zicbom-1.c.* ./amo-table-a-6-load-1.c.* ./demo.c.* && ./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas_zicbom_zawrs -mabi=lp64d -S -fdump-rtl-all -fdump-tree-all -O1 ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c; ll ./*.expand
+rm -rf ./zacas128.c.* ./zawrs.c.* ./cmo-zicbop-1.c.* ./cmo-zicbom-1.c.* ./amo-table-a-6-load-1.c.* ./demo.c.* && ./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas_zicbom_zawrs -mabi=lp64d -S -fdump-rtl-all -fdump-tree-all -O0 ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c; ll ./*.expand
+rm -rf ./zacas128.c.* ./zawrs.c.* ./cmo-zicbop-1.c.* ./cmo-zicbom-1.c.* ./amo-table-a-6-load-1.c.* ./demo.c.* && ./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas_zicbom_zawrs -mabi=lp64d -S -fdump-rtl-all -fdump-tree-all -O1 ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c; ll ./*.expand
+time RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-gcc | tee ./debug/report-gcc-riscv-zacas.log
+rm stamps/build-gcc-newlib-stage2 
+time RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-gcc | tee ./debug/report-gcc-riscv-zacas.log
+rm -rf ./zacas128.c.* ./zawrs.c.* ./cmo-zicbop-1.c.* ./cmo-zicbom-1.c.* ./amo-table-a-6-load-1.c.* ./demo.c.* && ./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas_zicbom_zawrs -mabi=lp64d -S -fdump-rtl-all -fdump-tree-all -O0 ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c; ll ./*.expand
+ll
+rm -rf ./zacas128.c.* ./zawrs.c.* ./cmo-zicbop-1.c.* ./cmo-zicbom-1.c.* ./amo-table-a-6-load-1.c.* ./demo.c.* && ./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas_zicbom_zawrs -mabi=lp64d -S -fdump-rtl-all -fdump-tree-all -O1 ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c; ll ./*.expand
+ls
+rm -rf ./zacas128.c.* ./zawrs.c.* ./cmo-zicbop-1.c.* ./cmo-zicbom-1.c.* ./amo-table-a-6-load-1.c.* ./demo.c.* && ./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas_zicbom_zawrs -mabi=lp64d -S -fdump-rtl-all -fdump-tree-all -O1 ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c; ll ./*.expand
+ls
+rm ./zacas128.c.*
+ls
+rm -rf ./zacas128.c.* ./zawrs.c.* ./cmo-zicbop-1.c.* ./cmo-zicbom-1.c.* ./amo-table-a-6-load-1.c.* ./demo.c.* && ./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas_zicbom_zawrs -mabi=lp64d -S -fdump-rtl-all -fdump-tree-all -O1 ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c; ll ./*.expand
+cd /plct/riscv-gnu-toolchain/
+ls
+rm -rf ./zacas128.c.* ./zawrs.c.* ./cmo-zicbop-1.c.* ./cmo-zicbom-1.c.* ./amo-table-a-6-load-1.c.* && ./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas_zicbom_zawrs -mabi=lp64d -S -fdump-rtl-all -O1 ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c; ll ./*.expand
+ls
+rm -rf ./zacas128.c.* ./zawrs.c.* ./cmo-zicbop-1.c.* ./cmo-zicbom-1.c.* ./amo-table-a-6-load-1.c.* && ./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas_zicbom_zawrs -mabi=lp64d -S -fdump-rtl-all ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c; ll ./*.expand
+rm -rf ./zacas128.c.* ./zawrs.c.* ./cmo-zicbop-1.c.* ./cmo-zicbom-1.c.* ./amo-table-a-6-load-1.c.* && ./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas_zicbom_zawrs -mabi=lp64d -S -fdump-rtl-all -O1 ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c; ll ./*.expand
+rm -rf ./zacas128.c.* ./zawrs.c.* ./cmo-zicbop-1.c.* ./cmo-zicbom-1.c.* ./amo-table-a-6-load-1.c.* && ./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas_zicbom_zawrs -mabi=lp64d -S -fdump-rtl-all ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c; ll ./*.expand
+rm -rf ./zacas128.c.* ./zawrs.c.* ./cmo-zicbop-1.c.* ./cmo-zicbom-1.c.* ./amo-table-a-6-load-1.c.* && ./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas_zicbom_zawrs -mabi=lp64d -S -fdump-rtl-all -O1 ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c; ll ./*.expand
+ls
+rm -rf ./zacas128.c.* ./zawrs.c.* ./cmo-zicbop-1.c.* ./cmo-zicbom-1.c.* ./amo-table-a-6-load-1.c.* && ./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas_zicbom_zawrs -mabi=lp64d -S -fdump-rtl-all -O1 ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c; ll ./*.expand
+ls
+cd /plct/riscv-gnu-toolchain/
+ls
+rm -rf ./zacas128.c.* ./zawrs.c.* ./cmo-zicbop-1.c.* ./cmo-zicbom-1.c.* ./amo-table-a-6-load-1.c.* ./demo.c.* && ./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas_zicbom_zawrs -mabi=lp64d -S -fdump-rtl-all -fdump-tree-all -O1 ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c; ll ./*.expand
+ls
+rm -rf ./zacas128.c.* ./zawrs.c.* ./cmo-zicbop-1.c.* ./cmo-zicbom-1.c.* ./amo-table-a-6-load-1.c.* ./demo.c.* && ./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas_zicbom_zawrs -mabi=lp64d -S -fdump-rtl-all -fdump-tree-all -O1 ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c; ll ./*.expand
+rm -rf ./zacas128.c.* ./zawrs.c.* ./cmo-zicbop-1.c.* ./cmo-zicbom-1.c.* ./amo-table-a-6-load-1.c.* ./demo.c.* && ./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas_zicbom_zawrs -mabi=lp64d -S -fdump-rtl-all -fdump-tree-all -O0 ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c; ll ./*.expand
+rm -rf ./zacas128.c.* ./zawrs.c.* ./cmo-zicbop-1.c.* ./cmo-zicbom-1.c.* ./amo-table-a-6-load-1.c.* ./demo.c.* && ./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas_zicbom_zawrs -mabi=lp64d -S -fdump-rtl-all -fdump-tree-all -O1 ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c; ll ./*.expand
+ls
+rm -rf ./zacas128.c.* ./zawrs.c.* ./cmo-zicbop-1.c.* ./cmo-zicbom-1.c.* ./amo-table-a-6-load-1.c.* ./demo.c.* && ./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas_zicbom_zawrs -mabi=lp64d -S -fdump-rtl-all -fdump-tree-all -O0 ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c; ll ./*.expand
+rm -rf ./zacas128.c.* ./zawrs.c.* ./cmo-zicbop-1.c.* ./cmo-zicbom-1.c.* ./amo-table-a-6-load-1.c.* ./demo.c.* && ./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas_zicbom_zawrs -mabi=lp64d -S -fdump-rtl-all -fdump-tree-all -O1 ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c; ll ./*.expand
+rm -rf ./zacas128.c.* ./zawrs.c.* ./cmo-zicbop-1.c.* ./cmo-zicbom-1.c.* ./amo-table-a-6-load-1.c.* ./demo.c.* && ./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas_zicbom_zawrs -mabi=lp64d -S -fdump-rtl-all -fdump-tree-all -O0 ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c; ll ./*.expand
+rm -rf ./zacas128.c.* ./zawrs.c.* ./cmo-zicbop-1.c.* ./cmo-zicbom-1.c.* ./amo-table-a-6-load-1.c.* ./demo.c.* && ./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas_zicbom_zawrs -mabi=lp64d -S -fdump-rtl-all -fdump-tree-all -O1 ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c; ll ./*.expand
+rm -rf ./zacas128.c.* ./zawrs.c.* ./cmo-zicbop-1.c.* ./cmo-zicbom-1.c.* ./amo-table-a-6-load-1.c.* ./demo.c.* && ./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas_zicbom_zawrs -mabi=lp64d -S -fdump-rtl-all -fdump-tree-all -O0 ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c; ll ./*.expand
+rm -rf ./zacas128.c.* ./zawrs.c.* ./cmo-zicbop-1.c.* ./cmo-zicbom-1.c.* ./amo-table-a-6-load-1.c.* ./demo.c.* && ./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas_zicbom_zawrs -mabi=lp64d -S -fdump-rtl-all -fdump-tree-all -O1 ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c; ll ./*.expand
+rm -rf ./zacas128.c.* ./zawrs.c.* ./cmo-zicbop-1.c.* ./cmo-zicbom-1.c.* ./amo-table-a-6-load-1.c.* ./demo.c.* && ./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas_zicbom_zawrs -mabi=lp64d -S -fdump-rtl-all -fdump-tree-all -O0 ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c; ll ./*.expand
+rm -rf ./zacas128.c.* ./zawrs.c.* ./cmo-zicbop-1.c.* ./cmo-zicbom-1.c.* ./amo-table-a-6-load-1.c.* ./demo.c.* && ./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas_zicbom_zawrs -mabi=lp64d -S -fdump-rtl-all -fdump-tree-all -O1 ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c; ll ./*.expand
+rm -rf ./zacas128.c.* ./zawrs.c.* ./cmo-zicbop-1.c.* ./cmo-zicbom-1.c.* ./amo-table-a-6-load-1.c.* ./demo.c.* && ./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas_zicbom_zawrs -mabi=lp64d -S -fdump-rtl-all -fdump-tree-all -O0 ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c; ll ./*.expand
+rm -rf ./zacas128.c.* ./zawrs.c.* ./cmo-zicbop-1.c.* ./cmo-zicbom-1.c.* ./amo-table-a-6-load-1.c.* ./demo.c.* && ./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas_zicbom_zawrs -mabi=lp64d -S -fdump-rtl-all -fdump-tree-all -O1 ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c; ll ./*.expand
+rm -rf ./zacas128.c.* ./zawrs.c.* ./cmo-zicbop-1.c.* ./cmo-zicbom-1.c.* ./amo-table-a-6-load-1.c.* ./demo.c.* && ./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas_zicbom_zawrs -mabi=lp64d -S -fdump-rtl-all -fdump-tree-all -O0 ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c; ll ./*.expand
+rm -rf ./zacas128.c.* ./zawrs.c.* ./cmo-zicbop-1.c.* ./cmo-zicbom-1.c.* ./amo-table-a-6-load-1.c.* ./demo.c.* && ./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas_zicbom_zawrs -mabi=lp64d -S -fdump-rtl-all -fdump-tree-all -O1 ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c; ll ./*.expand
+cd /plct/riscv-gnu-toolchain/
+rm -rf ./zacas128.c.* ./zawrs.c.* ./cmo-zicbop-1.c.* ./cmo-zicbom-1.c.* ./amo-table-a-6-load-1.c.* && ./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas_zicbom_zawrs -mabi=lp64d -S -fdump-rtl-all -O1 ./gcc/gcc/testsuite/gcc.target/riscv/demo.c; ll ./*.expand
+ls
+rm -rf ./zacas128.c.* ./zawrs.c.* ./cmo-zicbop-1.c.* ./cmo-zicbom-1.c.* ./amo-table-a-6-load-1.c.* && ./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas_zicbom_zawrs -mabi=lp64d -S -fdump-rtl-all -O1 ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c; ll ./*.expand
+rm -rf ./zacas128.c.* ./zawrs.c.* ./cmo-zicbop-1.c.* ./cmo-zicbom-1.c.* ./amo-table-a-6-load-1.c.* && ./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas_zicbom_zawrs -mabi=lp64d -S -fdump-rtl-all -O0 ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c; ll ./*.expand
+rm gimple-before-expand 
+rm -rf ./zacas128.c.* ./zawrs.c.* ./cmo-zicbop-1.c.* ./cmo-zicbom-1.c.* ./amo-table-a-6-load-1.c.* && ./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas_zicbom_zawrs -mabi=lp64d -S -fdump-rtl-all -O0 ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c; ll ./*.expand
+rm -rf ./zacas128.c.* ./zawrs.c.* ./cmo-zicbop-1.c.* ./cmo-zicbom-1.c.* ./amo-table-a-6-load-1.c.* && ./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas_zicbom_zawrs -mabi=lp64d -S -fdump-rtl-all -O0 ./gcc/gcc/testsuite/gcc.target/riscv/demo.c; ll ./*.expand
+rm -rf ./zacas128.c.* ./zawrs.c.* ./cmo-zicbop-1.c.* ./cmo-zicbom-1.c.* ./amo-table-a-6-load-1.c.* && ./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas_zicbom_zawrs -mabi=lp64d -S -fdump-rtl-all -O0 ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c; ll ./*.expand
+rm -rf ./zacas128.c.* ./zawrs.c.* ./cmo-zicbop-1.c.* ./cmo-zicbom-1.c.* ./amo-table-a-6-load-1.c.* && ./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas_zicbom_zawrs -mabi=lp64d -S -fdump-rtl-all -O1 ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c; ll ./*.expand
+rm gimple-before-expand 
+rm -rf ./zacas128.c.* ./zawrs.c.* ./cmo-zicbop-1.c.* ./cmo-zicbom-1.c.* ./amo-table-a-6-load-1.c.* && ./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas_zicbom_zawrs -mabi=lp64d -S -fdump-rtl-all -O1 ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c; ll ./*.expand
+rm -rf ./zacas128.c.* ./zawrs.c.* ./cmo-zicbop-1.c.* ./cmo-zicbom-1.c.* ./amo-table-a-6-load-1.c.* && ./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas_zicbom_zawrs -mabi=lp64d -S -fdump-rtl-all -O1 ./gcc/gcc/testsuite/gcc.target/riscv/demo.c; ll ./*.expand
+rm -rf ./zacas128.c.* ./zawrs.c.* ./cmo-zicbop-1.c.* ./cmo-zicbom-1.c.* ./amo-table-a-6-load-1.c.* && ./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas_zicbom_zawrs -mabi=lp64d -S -fdump-rtl-all -O0 ./gcc/gcc/testsuite/gcc.target/riscv/demo.c; ll ./*.expand
+rm -rf ./zacas128.c.* ./zawrs.c.* ./cmo-zicbop-1.c.* ./cmo-zicbom-1.c.* ./amo-table-a-6-load-1.c.* && ./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas_zicbom_zawrs -mabi=lp64d -S -fdump-rtl-all -O1 ./gcc/gcc/testsuite/gcc.target/riscv/demo.c; ll ./*.expand
+rm -rf ./zacas128.c.* ./zawrs.c.* ./cmo-zicbop-1.c.* ./cmo-zicbom-1.c.* ./amo-table-a-6-load-1.c.* && ./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas_zicbom_zawrs -mabi=lp64d -S -fdump-rtl-all -O0 ./gcc/gcc/testsuite/gcc.target/riscv/demo.c; ll ./*.expand
+rm -rf ./zacas128.c.* ./zawrs.c.* ./cmo-zicbop-1.c.* ./cmo-zicbom-1.c.* ./amo-table-a-6-load-1.c.* && ./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas_zicbom_zawrs -mabi=lp64d -S -fdump-rtl-all -O1 ./gcc/gcc/testsuite/gcc.target/riscv/demo.c; ll ./*.expand
+rm -rf ./zacas128.c.* ./zawrs.c.* ./cmo-zicbop-1.c.* ./cmo-zicbom-1.c.* ./amo-table-a-6-load-1.c.* && ./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas_zicbom_zawrs -mabi=lp64d -S -fdump-rtl-all -O1 ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c; ll ./*.expand
+rm -rf ./zacas128.c.* ./zawrs.c.* ./cmo-zicbop-1.c.* ./cmo-zicbom-1.c.* ./amo-table-a-6-load-1.c.* && ./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas_zicbom_zawrs -mabi=lp64d -S -fdump-rtl-all -O1 ./gcc/gcc/testsuite/gcc.target/riscv/cmo-zicbom-1.c; ll ./*.expand
+rm -rf ./zacas128.c.* ./zawrs.c.* ./cmo-zicbop-1.c.* ./cmo-zicbom-1.c.* ./amo-table-a-6-load-1.c.* && ./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas_zicbom_zawrs -mabi=lp64d -S -fdump-rtl-all -O1 ./gcc/gcc/testsuite/gcc.target/riscv/amo-table-a-6-load-1.c; ll ./*.expand
+cd /plct/riscv-gnu-toolchain/
+ls
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -O2 -S ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -S -fdump-rtl-all ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+ls
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -S -fdump-rtl-all ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -S -fdump-rtl-all -O2 ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -S -fdump-rtl-all ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -S -fdump-rtl-all -O2 ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -S -fdump-rtl-all ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -S -fdump-rtl-all -O2 ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -S -fdump-rtl-all ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -S -fdump-rtl-all ./gcc/gcc/testsuite/gcc.target/riscv/cmo-zicbom-1.c 
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas_zicbom -mabi=lp64d -S -fdump-rtl-all ./gcc/gcc/testsuite/gcc.target/riscv/cmo-zicbom-1.c 
+ls
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -S -fdump-rtl-all ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -S -fdump-rtl-all -O ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -S -fdump-rtl-all -O1 ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -S -fdump-rtl-all -O2 ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -O2 -S -fdump-rtl-all ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -O3 -S -fdump-rtl-all ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+ls
+ls *.expand
+ll
+rm ./zacas128.c.*
+ls *.expand
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -O3 -S -fdump-rtl-all ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+ls
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -S -fdump-rtl-all ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -S -O1 -fdump-rtl-all ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -S -O1 -fdump-rtl-all ./gcc/gcc/testsuite/gcc.target/riscv/cmo-zicbom-1.c 
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas_zicbom -mabi=lp64d -S -O1 -fdump-rtl-all ./gcc/gcc/testsuite/gcc.target/riscv/cmo-zicbom-1.c 
+ls
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas_zicbom -mabi=lp64d -S -fdump-rtl-all ./gcc/gcc/testsuite/gcc.target/riscv/cmo-zicbom-1.c 
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas_zicbom -mabi=lp64d -S -O1 -fdump-rtl-all ./gcc/gcc/testsuite/gcc.target/riscv/cmo-zicbom-1.c 
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas_zicbom -mabi=lp64d -S -O1 -fdump-rtl-all ./gcc/gcc/testsuite/gcc.target/riscv/zawrs.c 
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas_zicbom_zawrs -mabi=lp64d -S -O1 -fdump-rtl-all ./gcc/gcc/testsuite/gcc.target/riscv/zawrs.c 
+ls
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas_zicbom_zawrs -mabi=lp64d -S -fdump-rtl-all ./gcc/gcc/testsuite/gcc.target/riscv/zawrs.c 
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -S -O1 -fdump-rtl-all ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+ls
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -S -fdump-rtl-all ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -S -O1 -fdump-rtl-all ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+ls *.expand
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -S -fdump-rtl-all ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+ls *.expand
+rm ./zacas128.c.262r.expand 
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -S -fdump-rtl-all ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+rm ./zacas128.c.262r.expand 
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -S -fdump-rtl-all ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+rm ./zacas128.c.262r.expand 
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -S -fdump-rtl-all ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+ls *.expand
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -S -fdump-rtl-all -O1 ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+ls *.expand
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -S -fdump-rtl-all -O1 ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -S -fdump-rtl-all ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+ls *.expand
+rm zacas128.c.262r.expand 
+ls *.expand
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -S -fdump-rtl-all ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+ls *.expand
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas -mabi=lp64d -S -fdump-rtl-all -O1 ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c
+ls *.expand
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas_zicbom_zawrs -mabi=lp64d -S -fdump-rtl-all ./gcc/gcc/testsuite/gcc.target/riscv/zawrs.c 
+ls
+ls *.expand
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas_zicbom_zawrs -mabi=lp64d -S -fdump-rtl-all -O1 ./gcc/gcc/testsuite/gcc.target/riscv/zawrs.c 
+ls *.expand
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas_zicbom_zawrs -mabi=lp64d -S -fdump-rtl-all -O1 ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c 
+rm -rf ./*.expand && ./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas_zicbom_zawrs -mabi=lp64d -S -fdump-rtl-all -O1 ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c && ls ./*.expand
+rm -rf ./*.expand && ./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas_zicbom_zawrs -mabi=lp64d -S -fdump-rtl-all -O1 ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c; ls ./*.expand
+rm -rf ./*.expand && ./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas_zicbom_zawrs -mabi=lp64d -S -fdump-rtl-all -O0 ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c; ls ./*.expand
+ls
+rm -rf ./*.expand && ./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas_zicbom_zawrs -mabi=lp64d -S -fdump-rtl-all -O0 ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c; ls ./*.expand
+rm -rf ./*.expand && ./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas_zicbom_zawrs -mabi=lp64d -S -fdump-rtl-all -O1 ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c; ls ./*.expand
+rm -rf ./*.expand && ./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas_zicbom_zawrs -mabi=lp64d -S -fdump-rtl-all -O1 ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c; ll ./*.expand
+rm -rf ./*.expand && ./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas_zicbom_zawrs -mabi=lp64d -S -fdump-rtl-all ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c; ll ./*.expand
+rm -rf ./*.expand && ./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas_zicbom_zawrs -mabi=lp64d -S -fdump-rtl-all -O1 ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c; ll ./*.expand
+ls
+rm -rf ./zacas128.c.* ./zawrs.c.* ./cmo-zicbop-1.c.* && ./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas_zicbom_zawrs -mabi=lp64d -S -fdump-rtl-all -O1 ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c; ll ./*.expand
+ls
+rm -rf ./zacas128.c.* ./zawrs.c.* ./cmo-zicbop-1.c.* && ./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas_zicbom_zawrs -mabi=lp64d -S -fdump-rtl-all -O1 ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c; ll ./*.expand
+ls
+rm -rf ./zacas128.c.*
+ls
+rm -rf ./zacas128.c. ./zawrs.c.* ./cmo-zicbop-1.c.* 
+ls
+rm -rf ./zacas128.c. ./zawrs.c.* ./cmo-zicbop-1.c.* ./cmo-zicbom-1.c.*
+ls
+rm -rf ./zacas128.c. ./zawrs.c.* ./cmo-zicbop-1.c.* ./cmo-zicbom-1.c.* ./amo-table-a-6-load-1.c.*
+ls
+rm -rf ./zacas128.c. ./zawrs.c.* ./cmo-zicbop-1.c.* ./cmo-zicbom-1.c.* ./amo-table-a-6-load-1.c.* && ./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas_zicbom_zawrs -mabi=lp64d -S -fdump-rtl-all -O1 ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c; ll ./*.expand
+ls
+rm -rf ./zacas128.c. ./zawrs.c.* ./cmo-zicbop-1.c.* ./cmo-zicbom-1.c.* ./amo-table-a-6-load-1.c.* && ./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas_zicbom_zawrs -mabi=lp64d -S -fdump-rtl-all-O01 ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c; ll ./*.expand
+ls
+rm -rf ./zacas128.c. ./zawrs.c.* ./cmo-zicbop-1.c.* ./cmo-zicbom-1.c.* ./amo-table-a-6-load-1.c.* && ./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas_zicbom_zawrs -mabi=lp64d -S -fdump-rtl-all -O0 ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c; ll ./*.expand
+rm -rf ./zacas128.c. ./zawrs.c.* ./cmo-zicbop-1.c.* ./cmo-zicbom-1.c.* ./amo-table-a-6-load-1.c.* && ./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas_zicbom_zawrs -mabi=lp64d -S -fdump-rtl-all -O1 ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c; ll ./*.expand
+ls
+rm -rf ./zacas128.c. ./zawrs.c.* ./cmo-zicbop-1.c.* ./cmo-zicbom-1.c.* ./amo-table-a-6-load-1.c.* && ./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas_zicbom_zawrs -mabi=lp64d -S -fdump-rtl-all -O1 ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c; ll ./*.expand
+rm -rf ./zacas128.c. ./zawrs.c.* ./cmo-zicbop-1.c.* ./cmo-zicbom-1.c.* ./amo-table-a-6-load-1.c.* && ./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas_zicbom_zawrs -mabi=lp64d -S -fdump-rtl-all -O0 ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c; ll ./*.expand
+ls
+rm -rf ./zacas128.c. ./zawrs.c.* ./cmo-zicbop-1.c.* ./cmo-zicbom-1.c.* ./amo-table-a-6-load-1.c.* 
+ls
+rm -rf ./zacas128.c.* ./zawrs.c.* ./cmo-zicbop-1.c.* ./cmo-zicbom-1.c.* ./amo-table-a-6-load-1.c.* 
+;s
+ls
+rm -rf ./zacas128.c. ./zawrs.c.* ./cmo-zicbop-1.c.* ./cmo-zicbom-1.c.* ./amo-table-a-6-load-1.c.* && ./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas_zicbom_zawrs -mabi=lp64d -S -fdump-rtl-all -O0 ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c; ll ./*.expand
+ls
+rm -rf ./zacas128.c. ./zawrs.c.* ./cmo-zicbop-1.c.* ./cmo-zicbom-1.c.* ./amo-table-a-6-load-1.c.* && ./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas_zicbom_zawrs -mabi=lp64d -S -fdump-rtl-all -O0 ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c; ll ./*.expand
+rm -rf ./zacas128.c. ./zawrs.c.* ./cmo-zicbop-1.c.* ./cmo-zicbom-1.c.* ./amo-table-a-6-load-1.c.* && ./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas_zicbom_zawrs -mabi=lp64d -S -fdump-rtl-all -O1 ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c; ll ./*.expand
+rm -rf ./zacas128.c.* ./zawrs.c.* ./cmo-zicbop-1.c.* ./cmo-zicbom-1.c.* ./amo-table-a-6-load-1.c.* && ./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas_zicbom_zawrs -mabi=lp64d -S -fdump-rtl-all -O0 ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c; ll ./*.expand
+ls
+rm -rf ./zacas128.c.* ./zawrs.c.* ./cmo-zicbop-1.c.* ./cmo-zicbom-1.c.* ./amo-table-a-6-load-1.c.* && ./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas_zicbom_zawrs -mabi=lp64d -S -fdump-rtl-all -O0 ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c; ll ./*.expand
+ls
+rm -rf ./zacas128.c.* ./zawrs.c.* ./cmo-zicbop-1.c.* ./cmo-zicbom-1.c.* ./amo-table-a-6-load-1.c.* && ./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas_zicbom_zawrs -mabi=lp64d -S -fdump-rtl-all -O1 ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c; ll ./*.expand
+ls
+rm -rf ./zacas128.c.* ./zawrs.c.* ./cmo-zicbop-1.c.* ./cmo-zicbom-1.c.* ./amo-table-a-6-load-1.c.* && ./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas_zicbom_zawrs -mabi=lp64d -S -fdump-rtl-all -O1 ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c; ll ./*.expand
+rm -rf ./zacas128.c.* ./zawrs.c.* ./cmo-zicbop-1.c.* ./cmo-zicbom-1.c.* ./amo-table-a-6-load-1.c.* && ./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas_zicbom_zawrs -mabi=lp64d -S -fdump-rtl-all -O0 ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c; ll ./*.expand
+rm -rf ./zacas128.c.* ./zawrs.c.* ./cmo-zicbop-1.c.* ./cmo-zicbom-1.c.* ./amo-table-a-6-load-1.c.* && ./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas_zicbom_zawrs -mabi=lp64d -S -fdump-rtl-all -O1 ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c; ll ./*.expand
+ls
+rm -rf ./zacas128.c.* ./zawrs.c.* ./cmo-zicbop-1.c.* ./cmo-zicbom-1.c.* ./amo-table-a-6-load-1.c.* && ./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas_zicbom_zawrs -mabi=lp64d -S -fdump-rtl-all -O1 ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c; ll ./*.expand
+ls
+rm zacas128.c.262r.expand 
+ls
+rm -rf ./zacas128.c.* ./zawrs.c.* ./cmo-zicbop-1.c.* ./cmo-zicbom-1.c.* ./amo-table-a-6-load-1.c.* && ./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas_zicbom_zawrs -mabi=lp64d -S -fdump-rtl-all -O1 ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c; ll ./*.expand
+ls
+rm -rf ./zacas128.c.* ./zawrs.c.* ./cmo-zicbop-1.c.* ./cmo-zicbom-1.c.* ./amo-table-a-6-load-1.c.* && ./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas_zicbom_zawrs -mabi=lp64d -S -fdump-rtl-all -O2 ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c; ll ./*.expand
+rm -rf ./zacas128.c.* ./zawrs.c.* ./cmo-zicbop-1.c.* ./cmo-zicbom-1.c.* ./amo-table-a-6-load-1.c.* && ./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas_zicbom_zawrs -mabi=lp64d -S -fdump-rtl-all -O1 ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c; ll ./*.expand
+rm -rf ./zacas128.c.* ./zawrs.c.* ./cmo-zicbop-1.c.* ./cmo-zicbom-1.c.* ./amo-table-a-6-load-1.c.* && ./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas_zicbom_zawrs -mabi=lp64d -S -fdump-rtl-all -O0 ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c; ll ./*.expand
+rm -rf ./zacas128.c.* ./zawrs.c.* ./cmo-zicbop-1.c.* ./cmo-zicbom-1.c.* ./amo-table-a-6-load-1.c.* && ./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas_zicbom_zawrs -mabi=lp64d -S -fdump-rtl-all -O0 -finline ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c; ll ./*.expand
+rm -rf ./zacas128.c.* ./zawrs.c.* ./cmo-zicbop-1.c.* ./cmo-zicbom-1.c.* ./amo-table-a-6-load-1.c.* && ./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas_zicbom_zawrs -mabi=lp64d -S -fdump-rtl-all -O0 -finline-functions ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c; ll ./*.expand
+rm -rf ./zacas128.c.* ./zawrs.c.* ./cmo-zicbop-1.c.* ./cmo-zicbom-1.c.* ./amo-table-a-6-load-1.c.* && ./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas_zicbom_zawrs -mabi=lp64d -S -fdump-rtl-all -O0 -fauto-inc-dec -fbranch-count-reg -fcombine-stack-adjustments -fcompare-elim -fcprop-registers -fdce -fdefer-pop -fdelayed-branch -fdse -fforward-propagate -fguess-branch-probability -fif-conversion -fif-conversion2 -finline-functions-called-once -fipa-modref -fipa-profile -fipa-pure-const -fipa-reference -fipa-reference-addressable -fmerge-constants -fmove-loop-invariants -fmove-loop-stores -fomit-frame-pointer -freorder-blocks -fshrink-wrap -fshrink-wrap-separate -fsplit-wide-types -fssa-backprop -fssa-phiopt -ftree-bit-ccp -ftree-ccp -ftree-ch -ftree-coalesce-vars -ftree-copy-prop -ftree-dce -ftree-dominator-opts -ftree-dse -ftree-forwprop -ftree-fre -ftree-phiprop -ftree-pta -ftree-scev-cprop -ftree-sink -ftree-slsr -ftree-sra -ftree-ter -funit-at-a-time -finline-functions ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c; ll ./*.expand
+./build-toolchain-out/bin/riscv64-unknown-elf-gcc -Q --help=optimizers
+diff -y <(./build-toolchain-out/bin/riscv64-unknown-elf-gcc -fbranch-count-reg -fcombine-stack-adjustments -fcompare-elim -fcprop-registers -fdefer-pop -fdse -fforward-propagate  -fguess-branch-probability -fif-conversion -fif-conversion2 -finline -finline-functions-called-once -fipa-modref -fipa-profile -fipa-pure-const -fipa-reference -fipa-reference-addressable -fmove-loop-invariants -fmove-loop-stores -fomit-frame-pointer -freorder-blocks -fsched-pressure -fsection-anchors -fsplit-wide-types -fssa-phiopt -fthread-jumps -ftoplevel-reorder -ftree-bit-ccp  -ftree-builtin-call-dce -ftree-ccp -ftree-ch -ftree-coalesce-vars -ftree-copy-prop -ftree-dce -ftree-dominator-opts -Q --help=optimizers) <(./build-toolchain-out/bin/riscv64-unknown-elf-gcc -O1 -funreachable-traps -Q --help=optimizers) | rg "enable.*disable"
+diff -y <(./build-toolchain-out/bin/riscv64-unknown-elf-gcc -fbranch-count-reg -fcombine-stack-adjustments -fcompare-elim -fcprop-registers -fdefer-pop -fdse -fforward-propagate  -fguess-branch-probability -fif-conversion -fif-conversion2 -finline -finline-functions-called-once -fipa-modref -fipa-profile -fipa-pure-const -fipa-reference -fipa-reference-addressable -fmove-loop-invariants -fmove-loop-stores -fomit-frame-pointer -freorder-blocks -fsched-pressure -fsection-anchors -fsplit-wide-types -fssa-phiopt -fthread-jumps -ftoplevel-reorder -ftree-bit-ccp  -ftree-builtin-call-dce -ftree-ccp -ftree-ch -ftree-coalesce-vars -ftree-copy-prop -ftree-dce -ftree-dominator-opts -Q --help=optimizers) <(./build-toolchain-out/bin/riscv64-unknown-elf-gcc -O1 -funreachable-traps -Q --help=optimi
+
+diff -y <(./build-toolchain-out/bin/riscv64-unknown-elf-gcc -fbranch-count-reg -fcombine-stack-adjustments -fcompare-elim -fcprop-registers -fdefer-pop -fdse -fforward-propagate  -fguess-branch-probability -fif-conversion -fif-conversion2 -finline -finline-functions-called-once -fipa-modref -fipa-profile -fipa-pure-const -fipa-reference -fipa-reference-addressable -fmove-loop-invariants -fmove-loop-stores -fomit-frame-pointer -freorder-blocks -fsched-pressure -fsection-anchors -fsplit-wide-types -fssa-phiopt -fthread-jumps -ftoplevel-reorder -ftree-bit-ccp  -ftree-builtin-call-dce -ftree-ccp -ftree-ch -ftree-coalesce-vars -ftree-copy-prop -ftree-dce -ftree-dominator-opts -Q --help=optimizers) <(./build-toolchain-out/bin/riscv64-unknown-elf-gcc -O1 -funreachable-traps -Q --help=optimizers) | less
+diff -y <(./build-toolchain-out/bin/riscv64-unknown-elf-gcc -fbranch-count-reg -fcombine-stack-adjustments -fcompare-elim -fcprop-registers -fdefer-pop -fdse -fforward-propagate  -fguess-branch-probability -fif-conversion -fif-conversion2 -finline -finline-functions-called-once -fipa-modref -fipa-profile -fipa-pure-const -fipa-reference -fipa-reference-addressable -fmove-loop-invariants -fmove-loop-stores -fomit-frame-pointer -freorder-blocks -fsched-pressure -fsection-anchors -fsplit-wide-types -fssa-phiopt -fthread-jumps -ftoplevel-reorder -ftree-bit-ccp  -ftree-builtin-call-dce -ftree-ccp -ftree-ch -ftree-coalesce-vars -ftree-copy-prop -ftree-dce -ftree-dominator-opts -Q --help=optimizers) <(./build-toolchain-out/bin/riscv64-unknown-elf-gcc -O1 -funreachable-traps -Q --help=optimizers) | rg "enable.*disable"
+diff -y <(./build-toolchain-out/bin/riscv64-unknown-elf-gcc -fbranch-count-reg -fcombine-stack-adjustments -fcompare-elim -fcprop-registers -fdefer-pop -fdse -fforward-propagate  -fguess-branch-probability -fif-conversion -fif-conversion2 -finline -finline-functions-called-once -fipa-modref -fipa-profile -fipa-pure-const -fipa-reference -fipa-reference-addressable -fmove-loop-invariants -fmove-loop-stores -fomit-frame-pointer -freorder-blocks -fsched-pressure -fsection-anchors -fsplit-wide-types -fssa-phiopt -fthread-jumps -ftoplevel-reorder -ftree-bit-ccp  -ftree-builtin-call-dce -ftree-ccp -ftree-ch -ftree-coalesce-vars -ftree-copy-prop -ftree-dce -ftree-dominator-opts -Q --help=optimizers) <(./build-toolchain-out/bin/riscv64-unknown-elf-gcc -O1 -funreachable-traps -Q --help=optimizers) | grep "enable.*disable"
+diff -y <(./build-toolchain-out/bin/riscv64-unknown-elf-gcc -fbranch-count-reg -fcombine-stack-adjustments -fcompare-elim -fcprop-registers -fdefer-pop -fdse -fforward-propagate  -fguess-branch-probability -fif-conversion -fif-conversion2 -finline -finline-functions-called-once -fipa-modref -fipa-profile -fipa-pure-const -fipa-reference -fipa-reference-addressable -fmove-loop-invariants -fmove-loop-stores -fomit-frame-pointer -freorder-blocks -fsched-pressure -fsection-anchors -fsplit-wide-types -fssa-phiopt -fthread-jumps -ftoplevel-reorder -ftree-bit-ccp  -ftree-builtin-call-dce -ftree-ccp -ftree-ch -ftree-coalesce-vars -ftree-copy-prop -ftree-dce -ftree-dominator-opts -Q --help=optimizers) <(./build-toolchain-out/bin/riscv64-unknown-elf-gcc -O1 -funreachable-traps -Q --help=optimizers)
+diff -y <(./build-toolchain-out/bin/riscv64-unknown-elf-gcc -fauto-inc-dec -fbranch-count-reg -fcombine-stack-adjustments -fcompare-elim -fcprop-registers -fdce -fdefer-pop -fdelayed-branch -fdse -fforward-propagate -fguess-branch-probability -fif-conversion -fif-conversion2 -finline-functions-called-once -fipa-modref -fipa-profile -fipa-pure-const -fipa-reference -fipa-reference-addressable -fmerge-constants -fmove-loop-invariants -fmove-loop-stores -fomit-frame-pointer -freorder-blocks -fshrink-wrap -fshrink-wrap-separate -fsplit-wide-types -fssa-backprop -fssa-phiopt -ftree-bit-ccp -ftree-ccp -ftree-ch -ftree-coalesce-vars -ftree-copy-prop -ftree-dce -ftree-dominator-opts -ftree-dse -ftree-forwprop -ftree-fre -ftree-phiprop -ftree-pta -ftree-scev-cprop -ftree-sink -ftree-slsr -ftree-sra -ftree-ter -funit-at-a-time -Q --help=optimizers) <(./build-toolchain-out/bin/riscv64-unknown-elf-gcc -O1 -funreachable-traps -Q --help=optimizers)
+diff -y <(./build-toolchain-out/bin/riscv64-unknown-elf-gcc -fthread-jumps -ftoplevel-reorder -ftree-builtin-call-dce -fsection-anchors -fsched-pressure -finline -fauto-inc-dec -fbranch-count-reg -fcombine-stack-adjustments -fcompare-elim -fcprop-registers -fdce -fdefer-pop -fdelayed-branch -fdse -fforward-propagate -fguess-branch-probability -fif-conversion -fif-conversion2 -finline-functions-called-once -fipa-modref -fipa-profile -fipa-pure-const -fipa-reference -fipa-reference-addressable -fmerge-constants -fmove-loop-invariants -fmove-loop-stores -fomit-frame-pointer -freorder-blocks -fshrink-wrap -fshrink-wrap-separate -fsplit-wide-types -fssa-backprop -fssa-phiopt -ftree-bit-ccp -ftree-ccp -ftree-ch -ftree-coalesce-vars -ftree-copy-prop -ftree-dce -ftree-dominator-opts -ftree-dse -ftree-forwprop -ftree-fre -ftree-phiprop -ftree-pta -ftree-scev-cprop -ftree-sink -ftree-slsr -ftree-sra -ftree-ter -funit-at-a-time -Q --help=optimizers) <(./build-toolchain-out/bin/riscv64-unknown-elf-gcc -O1 -funreachable-traps -Q --help=optimizers) | rg "enable.*disable"
+diff -y <(./build-toolchain-out/bin/riscv64-unknown-elf-gcc -fthread-jumps -ftoplevel-reorder -ftree-builtin-call-dce -fsection-anchors -fsched-pressure -finline -fauto-inc-dec -fbranch-count-reg -fcombine-stack-adjustments -fcompare-elim -fcprop-registers -fdce -fdefer-pop -fdelayed-branch -fdse -fforward-propagate -fguess-branch-probability -fif-conversion -fif-conversion2 -finline-functions-called-once -fipa-modref -fipa-profile -fipa-pure-const -fipa-reference -fipa-reference-addressable -fmerge-constants -fmove-loop-invariants -fmove-loop-stores -fomit-frame-pointer -freorder-blocks -fshrink-wrap -fshrink-wrap-separate -fsplit-wide-types -fssa-backprop -fssa-phiopt -ftree-bit-ccp -ftree-ccp -ftree-ch -ftree-coalesce-vars -ftree-copy-prop -ftree-dce -ftree-dominator-opts -ftree-dse -ftree-forwprop -ftree-fre -ftree-phiprop -ftree-pta -ftree-scev-cprop -ftree-sink -ftree-slsr -ftree-sra -ftree-ter -funit-at-a-time -Q --help=optimizers) <(./build-toolchain-out/bin/riscv64-unknown-elf-gcc -O1 -funreachable-traps -Q --help=optimizers)
+diff -y <(./build-toolchain-out/bin/riscv64-unknown-elf-gcc -fthread-jumps -ftoplevel-reorder -ftree-builtin-call-dce -fsection-anchors -fsched-pressure -finline -fnodelayed-branch -fauto-inc-dec -fbranch-count-reg -fcombine-stack-adjustments -fcompare-elim -fcprop-registers -fdce -fdefer-pop -fdelayed-branch -fdse -fforward-propagate -fguess-branch-probability -fif-conversion -fif-conversion2 -finline-functions-called-once -fipa-modref -fipa-profile -fipa-pure-const -fipa-reference -fipa-reference-addressable -fmerge-constants -fmove-loop-invariants -fmove-loop-stores -fomit-frame-pointer -freorder-blocks -fshrink-wrap -fshrink-wrap-separate -fsplit-wide-types -fssa-backprop -fssa-phiopt -ftree-bit-ccp -ftree-ccp -ftree-ch -ftree-coalesce-vars -ftree-copy-prop -ftree-dce -ftree-dominator-opts -ftree-dse -ftree-forwprop -ftree-fre -ftree-phiprop -ftree-pta -ftree-scev-cprop -ftree-sink -ftree-slsr -ftree-sra -ftree-ter -funit-at-a-time -Q --help=optimizers) <(./build-toolchain-out/bin/riscv64-unknown-elf-gcc -O1 -funreachable-traps -Q --help=optimizers) | rg "enable.*disable"
+diff -y <(./build-toolchain-out/bin/riscv64-unknown-elf-gcc -fthread-jumps -ftoplevel-reorder -ftree-builtin-call-dce -fsection-anchors -fsched-pressure -finline -fno-delayed-branch -fauto-inc-dec -fbranch-count-reg -fcombine-stack-adjustments -fcompare-elim -fcprop-registers -fdce -fdefer-pop -fdelayed-branch -fdse -fforward-propagate -fguess-branch-probability -fif-conversion -fif-conversion2 -finline-functions-called-once -fipa-modref -fipa-profile -fipa-pure-const -fipa-reference -fipa-reference-addressable -fmerge-constants -fmove-loop-invariants -fmove-loop-stores -fomit-frame-pointer -freorder-blocks -fshrink-wrap -fshrink-wrap-separate -fsplit-wide-types -fssa-backprop -fssa-phiopt -ftree-bit-ccp -ftree-ccp -ftree-ch -ftree-coalesce-vars -ftree-copy-prop -ftree-dce -ftree-dominator-opts -ftree-dse -ftree-forwprop -ftree-fre -ftree-phiprop -ftree-pta -ftree-scev-cprop -ftree-sink -ftree-slsr -ftree-sra -ftree-ter -funit-at-a-time -Q --help=optimizers) <(./build-toolchain-out/bin/riscv64-unknown-elf-gcc -O1 -funreachable-traps -Q --help=optimizers) | rg "enable.*disable"
+diff -y <(./build-toolchain-out/bin/riscv64-unknown-elf-gcc -fthread-jumps -ftoplevel-reorder -ftree-builtin-call-dce -fsection-anchors -fsched-pressure -finline -fno-delayed-branch -fauto-inc-dec -fbranch-count-reg -fcombine-stack-adjustments -fcompare-elim -fcprop-registers -fdce -fdefer-pop -fdelayed-branch -fdse -fforward-propagate -fguess-branch-probability -fif-conversion -fif-conversion2 -finline-functions-called-once -fipa-modref -fipa-profile -fipa-pure-const -fipa-reference -fipa-reference-addressable -fmerge-constants -fmove-loop-invariants -fmove-loop-stores -fomit-frame-pointer -freorder-blocks -fshrink-wrap -fshrink-wrap-separate -fsplit-wide-types -fssa-backprop -fssa-phiopt -ftree-bit-ccp -ftree-ccp -ftree-ch -ftree-coalesce-vars -ftree-copy-prop -ftree-dce -ftree-dominator-opts -ftree-dse -ftree-forwprop -ftree-fre -ftree-phiprop -ftree-pta -ftree-scev-cprop -ftree-sink -ftree-slsr -ftree-sra -ftree-ter -funit-at-a-time -Q --help=optimizers) <(./build-toolchain-out/bin/riscv64-unknown-elf-gcc -O1 -funreachable-traps -Q --help=optimizers)
+diff -y <(./build-toolchain-out/bin/riscv64-unknown-elf-gcc -fthread-jumps -ftoplevel-reorder -ftree-builtin-call-dce -fsection-anchors -fsched-pressure -finline -fno-delayed-branch -fauto-inc-dec -fbranch-count-reg -fcombine-stack-adjustments -fcompare-elim -fcprop-registers -fdce -fdefer-pop -fdse -fforward-propagate -fguess-branch-probability -fif-conversion -fif-conversion2 -finline-functions-called-once -fipa-modref -fipa-profile -fipa-pure-const -fipa-reference -fipa-reference-addressable -fmerge-constants -fmove-loop-invariants -fmove-loop-stores -fomit-frame-pointer -freorder-blocks -fshrink-wrap -fshrink-wrap-separate -fsplit-wide-types -fssa-backprop -fssa-phiopt -ftree-bit-ccp -ftree-ccp -ftree-ch -ftree-coalesce-vars -ftree-copy-prop -ftree-dce -ftree-dominator-opts -ftree-dse -ftree-forwprop -ftree-fre -ftree-phiprop -ftree-pta -ftree-scev-cprop -ftree-sink -ftree-slsr -ftree-sra -ftree-ter -funit-at-a-time -Q --help=optimizers) <(./build-toolchain-out/bin/riscv64-unknown-elf-gcc -O1 -funreachable-traps -Q --help=optimizers) | rg "enable.*disable"
+diff -y <(./build-toolchain-out/bin/riscv64-unknown-elf-gcc -fthread-jumps -ftoplevel-reorder -ftree-builtin-call-dce -fsection-anchors -fsched-pressure -finline -fno-delayed-branch -fauto-inc-dec -fbranch-count-reg -fcombine-stack-adjustments -fcompare-elim -fcprop-registers -fdce -fdefer-pop -fdse -fforward-propagate -fguess-branch-probability -fif-conversion -fif-conversion2 -finline-functions-called-once -fipa-modref -fipa-profile -fipa-pure-const -fipa-reference -fipa-reference-addressable -fmerge-constants -fmove-loop-invariants -fmove-loop-stores -fomit-frame-pointer -freorder-blocks -fshrink-wrap -fshrink-wrap-separate -fsplit-wide-types -fssa-backprop -fssa-phiopt -ftree-bit-ccp -ftree-ccp -ftree-ch -ftree-coalesce-vars -ftree-copy-prop -ftree-dce -ftree-dominator-opts -ftree-dse -ftree-forwprop -ftree-fre -ftree-phiprop -ftree-pta -ftree-scev-cprop -ftree-sink -ftree-slsr -ftree-sra -ftree-ter -funit-at-a-time -Q --help=optimizers) <(./build-toolchain-out/bin/riscv64-unknown-elf-gcc -O1 -funreachable-traps -Q --help=optimizers) 
+diff -y <(./build-toolchain-out/bin/riscv64-unknown-elf-gcc -fthread-jumps -ftoplevel-reorder -ftree-builtin-call-dce -fsection-anchors -fsched-pressure -finline -fno-delayed-branch -fauto-inc-dec -fbranch-count-reg -fcombine-stack-adjustments -fcompare-elim -fcprop-registers -fdce -fdefer-pop -fdse -fforward-propagate -fguess-branch-probability -fif-conversion -fif-conversion2 -finline-functions-called-once -fipa-modref -fipa-profile -fipa-pure-const -fipa-reference -fipa-reference-addressable -fmerge-constants -fmove-loop-invariants -fmove-loop-stores -fomit-frame-pointer -freorder-blocks -fshrink-wrap -fshrink-wrap-separate -fsplit-wide-types -fssa-backprop -fssa-phiopt -ftree-bit-ccp -ftree-ccp -ftree-ch -ftree-coalesce-vars -ftree-copy-prop -ftree-dce -ftree-dominator-opts -ftree-dse -ftree-forwprop -ftree-fre -ftree-phiprop -ftree-pta -ftree-scev-cprop -ftree-sink -ftree-slsr -ftree-sra -ftree-ter -funit-at-a-time -finline -Q --help=optimizers) <(./build-toolchain-out/bin/riscv64-unknown-elf-gcc -O1 -funreachable-traps -Q --help=optimizers) | rg "enable.*disable"
+diff -y <(./build-toolchain-out/bin/riscv64-unknown-elf-gcc -fthread-jumps -ftoplevel-reorder -ftree-builtin-call-dce -fsection-anchors -fsched-pressure -finline -fno-delayed-branch -fauto-inc-dec -fbranch-count-reg -fcombine-stack-adjustments -fcompare-elim -fcprop-registers -fdce -fdefer-pop -fdse -fforward-propagate -fguess-branch-probability -fif-conversion -fif-conversion2 -finline-functions-called-once -fipa-modref -fipa-profile -fipa-pure-const -fipa-reference -fipa-reference-addressable -fmerge-constants -fmove-loop-invariants -fmove-loop-stores -fomit-frame-pointer -freorder-blocks -fshrink-wrap -fshrink-wrap-separate -fsplit-wide-types -fssa-backprop -fssa-phiopt -ftree-bit-ccp -ftree-ccp -ftree-ch -ftree-coalesce-vars -ftree-copy-prop -ftree-dce -ftree-dominator-opts -ftree-dse -ftree-forwprop -ftree-fre -ftree-phiprop -ftree-pta -ftree-scev-cprop -ftree-sink -ftree-slsr -ftree-sra -ftree-ter -funit-at-a-time -finline -Q --help=optimizers) <(./build-toolchain-out/bin/riscv64-unknown-elf-gcc -O1 -funreachable-traps -Q --help=optimizers)
+diff -y <(./build-toolchain-out/bin/riscv64-unknown-elf-gcc -fthread-jumps -ftoplevel-reorder -ftree-builtin-call-dce -fsection-anchors -fsched-pressure -finline -fno-delayed-branch -fauto-inc-dec -fbranch-count-reg -fcombine-stack-adjustments -fcompare-elim -fcprop-registers -fdce -fdefer-pop -fdse -fforward-propagate -fguess-branch-probability -fif-conversion -fif-conversion2 -finline-functions-called-once -fipa-modref -fipa-profile -fipa-pure-const -fipa-reference -fipa-reference-addressable -fmerge-constants -fmove-loop-invariants -fmove-loop-stores -fomit-frame-pointer -freorder-blocks -fshrink-wrap -fshrink-wrap-separate -fsplit-wide-types -fssa-backprop -fssa-phiopt -ftree-bit-ccp -ftree-ccp -ftree-ch -ftree-coalesce-vars -ftree-copy-prop -ftree-dce -ftree-dominator-opts -ftree-dse -ftree-forwprop -ftree-fre -ftree-phiprop -ftree-pta -ftree-scev-cprop -ftree-sink -ftree-slsr -ftree-sra -ftree-ter -funit-at-a-time -finline -Q --help=optimizers) <(./build-toolchain-out/bin/riscv64-unknown-elf-gcc -O1 -funreachable-traps -Q --help=optimizers) | rg "disable.*enable"
+rm -rf ./zacas128.c.* ./zawrs.c.* ./cmo-zicbop-1.c.* ./cmo-zicbom-1.c.* ./amo-table-a-6-load-1.c.* && ./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas_zicbom_zawrs -mabi=lp64d -S -fdump-rtl-all -O0 ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c; ll ./*.expand
+rm -rf ./zacas128.c.* ./zawrs.c.* ./cmo-zicbop-1.c.* ./cmo-zicbom-1.c.* ./amo-table-a-6-load-1.c.* && ./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas_zicbom_zawrs -mabi=lp64d -S -fdump-rtl-all -O0 -fthread-jumps -ftoplevel-reorder -ftree-builtin-call-dce -fsection-anchors -fsched-pressure -finline -fno-delayed-branch -fauto-inc-dec -fbranch-count-reg -fcombine-stack-adjustments -fcompare-elim -fcprop-registers -fdce -fdefer-pop -fdse -fforward-propagate -fguess-branch-probability -fif-conversion -fif-conversion2 -finline-functions-called-once -fipa-modref -fipa-profile -fipa-pure-const -fipa-reference -fipa-reference-addressable -fmerge-constants -fmove-loop-invariants -fmove-loop-stores -fomit-frame-pointer -freorder-blocks -fshrink-wrap -fshrink-wrap-separate -fsplit-wide-types -fssa-backprop -fssa-phiopt -ftree-bit-ccp -ftree-ccp -ftree-ch -ftree-coalesce-vars -ftree-copy-prop -ftree-dce -ftree-dominator-opts -ftree-dse -ftree-forwprop -ftree-fre -ftree-phiprop -ftree-pta -ftree-scev-cprop -ftree-sink -ftree-slsr -ftree-sra -ftree-ter -funit-at-a-time -finline ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c; ll ./*.expand
+rm -rf ./zacas128.c.* ./zawrs.c.* ./cmo-zicbop-1.c.* ./cmo-zicbom-1.c.* ./amo-table-a-6-load-1.c.* && ./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas_zicbom_zawrs -mabi=lp64d -S -fdump-rtl-all -O0 -fthread-jumps -ftoplevel-reorder -ftree-builtin-call-dce -fsection-anchors -fsched-pressure -finline -fno-delayed-branch -fauto-inc-dec -fbranch-count-reg -fcombine-stack-adjustments -fcompare-elim -fcprop-registers -fdce -fdefer-pop -fdse -fforward-propagate -fguess-branch-probability -fif-conversion -fif-conversion2 -finline-functions-called-once -fipa-modref -fipa-profile -fipa-pure-const -fipa-reference -fipa-reference-addressable -fmerge-constants -fmove-loop-invariants -fmove-loop-stores -fomit-frame-pointer -freorder-blocks -fshrink-wrap -fshrink-wrap-separate -fsplit-wide-types -fssa-backprop -fssa-phiopt -ftree-bit-ccp -ftree-ccp -ftree-ch -ftree-coalesce-vars -ftree-copy-prop -ftree-dce -ftree-dominator-opts -ftree-dse -ftree-forwprop -ftree-fre -ftree-phiprop -ftree-pta -ftree-scev-cprop -ftree-sink -ftree-slsr -ftree-sra -ftree-ter -funit-at-a-time -finline -O1 ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c; ll ./*.expand
+rm -rf ./zacas128.c.* ./zawrs.c.* ./cmo-zicbop-1.c.* ./cmo-zicbom-1.c.* ./amo-table-a-6-load-1.c.* && ./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas_zicbom_zawrs -mab
+i=lp64d -S -fdump-rtl-all -O1 ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c; ll ./*.expand
+rm -rf ./zacas128.c.* ./zawrs.c.* ./cmo-zicbop-1.c.* ./cmo-zicbom-1.c.* ./amo-table-a-6-load-1.c.* && ./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas_zicbom_zawrs -mabi=lp64d -S -fdump-rtl-all -O1 ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c; ll ./*.expand
+rm -rf ./zacas128.c.* ./zawrs.c.* ./cmo-zicbop-1.c.* ./cmo-zicbom-1.c.* ./amo-table-a-6-load-1.c.* && ./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas_zicbom_zawrs -mabi=lp64d -S -fdump-rtl-all -O0 ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c; ll ./*.expand
+rm -rf ./zacas128.c.* ./zawrs.c.* ./cmo-zicbop-1.c.* ./cmo-zicbom-1.c.* ./amo-table-a-6-load-1.c.* && ./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas_zicbom_zawrs -mabi=lp64d -S -fdump-rtl-all -O1 ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c; ll ./*.expand
+rm -rf ./zacas128.c.* ./zawrs.c.* ./cmo-zicbop-1.c.* ./cmo-zicbom-1.c.* ./amo-table-a-6-load-1.c.* && ./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas_zicbom_zawrs -mabi=lp64d -S -fdump-rtl-all -O0 ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c; ll ./*.expand
+rm -rf ./zacas128.c.* ./zawrs.c.* ./cmo-zicbop-1.c.* ./cmo-zicbom-1.c.* ./amo-table-a-6-load-1.c.* && ./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas_zicbom_zawrs -mabi=lp64d -S -fdump-rtl-all -O1 ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c; ll ./*.expand
+rm -rf ./zacas128.c.* ./zawrs.c.* ./cmo-zicbop-1.c.* ./cmo-zicbom-1.c.* ./amo-table-a-6-load-1.c.* && ./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas_zicbom_zawrs -mabi=lp64d -S -fdump-rtl-all -O0 ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c; ll ./*.expand
+rm -rf ./zacas128.c.* ./zawrs.c.* ./cmo-zicbop-1.c.* ./cmo-zicbom-1.c.* ./amo-table-a-6-load-1.c.* && ./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas_zicbom_zawrs -mabi=lp64d -S -fdump-rtl-all -O1 ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c; ll ./*.expand
+rm -rf ./zacas128.c.* ./zawrs.c.* ./cmo-zicbop-1.c.* ./cmo-zicbom-1.c.* ./amo-table-a-6-load-1.c.* && ./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas_zicbom_zawrs -mabi=lp64d -S -fdump-rtl-all -O0 ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c; ll ./*.expand
+rm -rf ./zacas128.c.* ./zawrs.c.* ./cmo-zicbop-1.c.* ./cmo-zicbom-1.c.* ./amo-table-a-6-load-1.c.* && ./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas_zicbom_zawrs -mabi=lp64d -S -fdump-rtl-all -O1 ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c; ll ./*.expand
+rm -rf ./zacas128.c.* ./zawrs.c.* ./cmo-zicbop-1.c.* ./cmo-zicbom-1.c.* ./amo-table-a-6-load-1.c.* && ./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas_zicbom_zawrs -mabi=lp64d -S -fdump-rtl-all -O0 ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c; ll ./*.expand
+rm -rf ./zacas128.c.* ./zawrs.c.* ./cmo-zicbop-1.c.* ./cmo-zicbom-1.c.* ./amo-table-a-6-load-1.c.* && ./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas_zicbom_zawrs -mabi=lp64d -S -fdump-rtl-all -O1 ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c; ll ./*.expand
+rm -rf ./zacas128.c.* ./zawrs.c.* ./cmo-zicbop-1.c.* ./cmo-zicbom-1.c.* ./amo-table-a-6-load-1.c.* && ./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas_zicbom_zawrs -mabi=lp64d -S -fdump-rtl-all -O0 ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c; ll ./*.expand
+rm stamps/check-gcc-newlib
+rm build-gcc-newlib-stage2
+ls
+rm stamps/build-gcc-newlib-stage2
+rm stamps/build-gcc-newlib-stage1 
+time RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-gcc | tee ./debug/report-gcc-riscv-zacas.log
+./configure --prefix=$(pwd)/build-toolchain-out
+time RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-gcc | tee ./debug/report-gcc-riscv-zacas.log
+vim config.log 
+ls
+./configure clear
+./configure --help
+ls
+./configure --prefix=$(pwd)/build-toolchain-out
+ls
+vim config.status 
+ls
+mv configure.ac configure.ac.bak
+ls
+./configure --prefix=$(pwd)/build-toolchain-out
+ls
+mv configure.ac.bak configure.ac
+ls
+vim configure
+./configure --prefix=$(pwd)/build-toolchain-out
+ls
+rm config.log 
+./configure --prefix=$(pwd)/build-toolchain-out
+ls
+vim config.log 
+time RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-gcc | tee ./debug/report-gcc-riscv-zacas.log
+vim config.log 
+gcc -V
+vim config.log 
+vim configure
+vim config.log 
+ls
+make clean
+./configure --prefix=$(pwd)/build-toolchain-out
+time RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-gcc | tee ./debug/report-gcc-riscv-zacas.log
+nohup time RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-gcc | tee ./debug/report-gcc-riscv-zacas.log &
+nohup RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-gcc | tee ./debug/report-gcc-riscv-zacas.log &
+nohup bash -c 'time RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-gcc | tee ./debug/report-gcc-riscv-zacas.log' &
+ls
+vim ./debug/report-gcc-riscv-zacas.log 
+code ./debug/report-gcc-riscv-zacas.log 
+cd /plct/riscv-gnu-toolchain/
+ls
+rm -rf ./zacas128.c.* ./zawrs.c.* ./cmo-zicbop-1.c.* ./cmo-zicbom-1.c.* ./amo-table-a-6-load-1.c.* && ./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas_zicbom_zawrs -mabi=lp64d -S -fdump-rtl-all -O1 ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c; ll ./*.expand
+rm stamps/build-gcc-newlib-stage2 
+time RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-gcc | tee ./debug/report-gcc-riscv-zacas.log
+rm -rf ./zacas128.c.* ./zawrs.c.* ./cmo-zicbop-1.c.* ./cmo-zicbom-1.c.* ./amo-table-a-6-load-1.c.* && ./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas_zicbom_zawrs -mabi=lp64d -S -fdump-rtl-all -O1 ./gcc/gcc/testsuite/gcc.target/riscv/zacas128.c; ll ./*.expand
+ls
+vim ./zacas128.s 
+rm -rf ./zacas128.c.* ./zawrs.c.* ./cmo-zicbop-1.c.* ./cmo-zicbom-1.c.* ./amo-table-a-6-load-1.c.* && ./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas_zicbom_zawrs -mabi=lp64d -S -fdump-rtl-all -O1 ./gcc/gcc/testsuite/gcc.target/riscv/zacas64.c; ll ./*.expand
+ls
+vim ./zacas64.s 
+rm -rf ./zacas128.c.* ./zawrs.c.* ./cmo-zicbop-1.c.* ./cmo-zicbom-1.c.* ./amo-table-a-6-load-1.c.* && ./build-toolchain-out/bin/riscv64-unknown-elf-gcc -march=rv64g_zacas_zicbom_zawrs -mabi=lp64d -S -fdump-rtl-all -O0 ./gcc/gcc/testsuite/gcc.target/riscv/zacas64.c; ll ./*.expand
+vim ./zacas64.s 
+rm stamps/build-gcc-newlib-stage2 
+time RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-gcc | tee ./debug/report-gcc-riscv-zacas.log
+rm stamps/check-gcc-newlib 
+time RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-gcc | tee ./debug/report-gcc-riscv-zacas.log
+ls
+rm stamps/check-gcc-newlib 
+time RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-gcc | tee ./debug/report-gcc-riscv-zacas.log
+rm stamps/check-gcc-newlib 
+time RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-gcc | tee ./debug/report-gcc-riscv-zacas.log
+rm stamps/check-gcc-newlib 
+time RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-gcc | tee ./debug/report-gcc-riscv-zacas.log
+ls
+rm stamps/build-gcc-newlib-stage2 
+time RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-gcc | tee ./debug/report-gcc-riscv-zacas.log
+cd gcc/
+cd gcc
+git log
+git status
+git log
+git status
+git reset --hard HEAD~1
+git log
+git status
+git switch zacas
+git clean -f -q -- /home/trdthg/plct/riscv-gnu-toolchain/gcc/gcc/config/aarch64/tuning_models/a64fx.h /home/trdthg/plct/riscv-gnu-toolchain/gcc/gcc/config/aarch64/tuning_models/ampere1.h /home/trdthg/plct/riscv-gnu-toolchain/gcc/gcc/config/aarch64/tuning_models/ampere1a.h /home/trdthg/plct/riscv-gnu-toolchain/gcc/gcc/config/aarch64/tuning_models/cortexa35.h /home/trdthg/plct/riscv-gnu-toolchain/gcc/gcc/config/aarch64/tuning_models/cortexa53.h /home/trdthg/plct/riscv-gnu-toolchain/gcc/gcc/config/aarch64/tuning_models/cortexa57.h /home/trdthg/plct/riscv-gnu-toolchain/gcc/gcc/config/aarch64/tuning_models/cortexa72.h /home/trdthg/plct/riscv-gnu-toolchain/gcc/gcc/config/aarch64/tuning_models/cortexa73.h /home/trdthg/plct/riscv-gnu-toolchain/gcc/gcc/config/aarch64/tuning_models/emag.h /home/trdthg/plct/riscv-gnu-toolchain/gcc/gcc/config/aarch64/tuning_models/exynosm1.h /home/trdthg/plct/riscv-gnu-toolchain/gcc/gcc/config/aarch64/tuning_models/generic.h /home/trdthg/plct/riscv-gnu-toolchain/gcc/gcc/config/aarch64/tuning_models/generic_armv8_a.h /home/trdthg/plct/riscv-gnu-toolchain/gcc/gcc/config/aarch64/tuning_models/generic_armv9_a.h /home/trdthg/plct/riscv-gnu-toolchain/gcc/gcc/config/aarch64/tuning_models/neoverse512tvb.h /home/trdthg/plct/riscv-gnu-toolchain/gcc/gcc/config/aarch64/tuning_models/neoversen1.h /home/trdthg/plct/riscv-gnu-toolchain/gcc/gcc/config/aarch64/tuning_models/neoversen2.h /home/trdthg/plct/riscv-gnu-toolchain/gcc/gcc/config/aarch64/tuning_models/neoversev1.h /home/trdthg/plct/riscv-gnu-toolchain/gcc/gcc/config/aarch64/tuning_models/neoversev2.h /home/trdthg/plct/riscv-gnu-toolchain/gcc/gcc/config/aarch64/tuning_models/qdf24xx.h /home/trdthg/plct/riscv-gnu-toolchain/gcc/gcc/config/aarch64/tuning_models/saphira.h /home/trdthg/plct/riscv-gnu-toolchain/gcc/gcc/config/aarch64/tuning_models/thunderx.h /home/trdthg/plct/riscv-gnu-toolchain/gcc/gcc/config/aarch64/tuning_models/thunderx2t99.h /home/trdthg/plct/riscv-gnu-toolchain/gcc/gcc/config/aarch64/tuning_models/thunderx3t110.h /home/trdthg/plct/riscv-gnu-toolchain/gcc/gcc/config/aarch64/tuning_models/thunderxt88.h /home/trdthg/plct/riscv-gnu-toolchain/gcc/gcc/config/aarch64/tuning_models/tsv110.h /home/trdthg/plct/riscv-gnu-toolchain/gcc/gcc/config/aarch64/tuning_models/xgene1.h
+git clean -f -q -- /plct/riscv-gnu-toolchain/gcc/gcc/config/aarch64/tuning_models/a64fx.h /plct/riscv-gnu-toolchain/gcc/gcc/config/aarch64/tuning_models/ampere1.h /plct/riscv-gnu-toolchain/gcc/gcc/config/aarch64/tuning_models/ampere1a.h /plct/riscv-gnu-toolchain/gcc/gcc/config/aarch64/tuning_models/cortexa35.h /plct/riscv-gnu-toolchain/gcc/gcc/config/aarch64/tuning_models/cortexa53.h /plct/riscv-gnu-toolchain/gcc/gcc/config/aarch64/tuning_models/cortexa57.h /plct/riscv-gnu-toolchain/gcc/gcc/config/aarch64/tuning_models/cortexa72.h /plct/riscv-gnu-toolchain/gcc/gcc/config/aarch64/tuning_models/cortexa73.h /plct/riscv-gnu-toolchain/gcc/gcc/config/aarch64/tuning_models/emag.h /plct/riscv-gnu-toolchain/gcc/gcc/config/aarch64/tuning_models/exynosm1.h /plct/riscv-gnu-toolchain/gcc/gcc/config/aarch64/tuning_models/generic.h /plct/riscv-gnu-toolchain/gcc/gcc/config/aarch64/tuning_models/generic_armv8_a.h /plct/riscv-gnu-toolchain/gcc/gcc/config/aarch64/tuning_models/generic_armv9_a.h /plct/riscv-gnu-toolchain/gcc/gcc/config/aarch64/tuning_models/neoverse512tvb.h /plct/riscv-gnu-toolchain/gcc/gcc/config/aarch64/tuning_models/neoversen1.h /plct/riscv-gnu-toolchain/gcc/gcc/config/aarch64/tuning_models/neoversen2.h /plct/riscv-gnu-toolchain/gcc/gcc/config/aarch64/tuning_models/neoversev1.h /plct/riscv-gnu-toolchain/gcc/gcc/config/aarch64/tuning_models/neoversev2.h /plct/riscv-gnu-toolchain/gcc/gcc/config/aarch64/tuning_models/qdf24xx.h /plct/riscv-gnu-toolchain/gcc/gcc/config/aarch64/tuning_models/saphira.h /plct/riscv-gnu-toolchain/gcc/gcc/config/aarch64/tuning_models/thunderx.h /plct/riscv-gnu-toolchain/gcc/gcc/config/aarch64/tuning_models/thunderx2t99.h /plct/riscv-gnu-toolchain/gcc/gcc/config/aarch64/tuning_models/thunderx3t110.h /plct/riscv-gnu-toolchain/gcc/gcc/config/aarch64/tuning_models/thunderxt88.h /plct/riscv-gnu-toolchain/gcc/gcc/config/aarch64/tuning_models/tsv110.h /plct/riscv-gnu-toolchain/gcc/gcc/config/aarch64/tuning_models/xgene1.h
+git log
+git pull upstream master
+git log
+git status
+cd ..
+git reset --hard HEAD~1
+git status
+git status | less
+git clean -f
+git log
+git status | less
+git clean -f -d
+git status | less
+git pull upstream master
+ll
+git log
+cd gcc
+time RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-gcc | tee ./debug/report-gcc-riscv-zacas.log
+cd ../..
+time RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-gcc | tee ./debug/report-gcc-riscv-zacas.log
+git log
+git branch -vv
+cd gcc/gcc/
+ls
+git log
+cd ../..
+time RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-gcc | tee ./debug/report-gcc-riscv-zacas.log
+make clean
+time RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-gcc | tee ./debug/report-gcc-riscv-zacas.log
+git log
+ls
+cd binutils/
+git log
+cd ../gcc
+mv ./.gitignore ..
+cd ..
+vim ./.gitignore 
+ls
+cd binutils/
+ls
+git add .
+ll
+cd ..
+time RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-gcc | tee ./debug/report-gcc-riscv-zacas.log
+make clean
+time RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-gcc | tee ./debug/report-gcc-riscv-zacas.log
+cd newlib/
+git remote -v
+git remote -vv
+time RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-gcc | tee ./debug/report-gcc-riscv-zacas.log
+cd ..
+time RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-gcc | tee ./debug/report-gcc-riscv-zacas.log
+cd /plct/riscv-gnu-toolchain/
+rm stamps/build-gcc-newlib-stage2 
+time RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-gcc | tee ./debug/report-gcc-riscv-zacas.log
+cd /plct/riscv-gnu-toolchain/
+make clean
+time RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-gcc | tee ./debug/report-gcc-riscv-zacas.log
+cd /plct/riscv-gnu-toolchain/
+ll stamps/
+time RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-gcc | tee ./debug/report-gcc-riscv-zacas.log
+time RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-binutils | tee ./debug/report-binutils-riscv-zacas.log
+rm stamps/check-binutils-newlib 
+time RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-binutils | tee ./debug/report-binutils-riscv-zacas.log
+pwd
+/home/plct/riscv-gnu-toolchain/build-toolchain-out/bin/riscv64-unknown-elf-ac -march=rv64gc_zawrs -S /home/plct/riscv-gnu-toolchain/binutils/gas/testsuite/gas/riscv/zacas-64.s
+/home/plct/riscv-gnu-toolchain/build-toolchain-out/bin/riscv64-unknown-elf-as -march=rv64gc_zawrs -S /home/plct/riscv-gnu-toolchain/binutils/gas/testsuite/gas/riscv/zacas-64.s
+/plct/riscv-gnu-toolchain/build-toolchain-out/bin/riscv64-unknown-elf-ac -march=rv64gc_zawrs -S /plct/riscv-gnu-toolchain/binutils/gas/testsuite/gas/riscv/zacas-64.s
+/plct/riscv-gnu-toolchain/build-toolchain-out/bin/riscv64-unknown-elf-as -march=rv64gc_zawrs -S /plct/riscv-gnu-toolchain/binutils/gas/testsuite/gas/riscv/zacas-64.s
+/plct/riscv-gnu-toolchain/build-toolchain-out/bin/riscv64-unknown-elf-as -march=rv64gc_zawrs /plct/riscv-gnu-toolchain/binutils/gas/testsuite/gas/riscv/zacas-64.s
+/plct/riscv-gnu-toolchain/build-toolchain-out/bin/riscv64-unknown-elf-as -march=rv64gc_zacas /plct/riscv-gnu-toolchain/binutils/gas/testsuite/gas/riscv/zacas-64.s
+ls
+vim zacas
+/plct/riscv-gnu-toolchain/build-toolchain-out/bin/riscv64-unknown-elf-as -dr ./a.out
+/plct/riscv-gnu-toolchain/build-toolchain-out/bin/riscv64-unknown-elf-objdump -dr ./a.out
+/plct/riscv-gnu-toolchain/build-toolchain-out/bin/riscv64-unknown-elf-as -march=rv32gc_zacas /plct/riscv-gnu-toolchain/binutils/gas/testsuite/gas/riscv/zacas-32.s
+/plct/riscv-gnu-toolchain/build-toolchain-out/bin/riscv64-unknown-elf-as -dr ./a.out
+/plct/riscv-gnu-toolchain/build-toolchain-out/bin/riscv64-unknown-elf-objdump -dr ./a.out
+/plct/riscv-gnu-toolchain/build-toolchain-out/bin/riscv64-unknown-elf-as -march=rv64gc_zacas /plct/riscv-gnu-toolchain/binutils/gas/testsuite/gas/riscv/zacas-128.s
+/plct/riscv-gnu-toolchain/build-toolchain-out/bin/riscv64-unknown-elf-objdump -dr ./a.out
+time RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-binutils | tee ./debug/report-binutils-riscv-zacas.log
+rm stamps/check-binutils-newlib 
+time RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-binutils | tee ./debug/report-binutils-riscv-zacas.log
+rm stamps/check-binutils-newlib 
+time RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-binutils | tee ./debug/report-binutils-riscv-zacas.log
+/plct/riscv-gnu-toolchain/build-toolchain-out/bin/riscv64-unknown-elf-as -march=rv64gc_zacas /plct/riscv-gnu-toolchain/binutils/gas/testsuite/gas/riscv/zacas-64.s
+/plct/riscv-gnu-toolchain/build-toolchain-out/bin/riscv64-unknown-elf-as -march=rv64i_zacas /plct/riscv-gnu-toolchain/binutils/gas/testsuite/gas/riscv/zacas-128.s
+ls
+rm a.out 
+/plct/riscv-gnu-toolchain/build-toolchain-out/bin/riscv64-unknown-elf-as -march=rv64i_zacas /plct/riscv-gnu-toolchain/binutils/gas/testsuite/gas/riscv/zacas-128.s
+/plct/riscv-gnu-toolchain/build-toolchain-out/bin/riscv64-unknown-elf-objdump -d ./a.out
+rm stamps/check-binutils-newlib 
+time RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-binutils | tee ./debug/report-binutils-riscv-zacas.log
+rm stamps/build-gcc-newlib-stage2 
+time RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-binutils | tee ./debug/report-binutils-riscv-zacas.log
+time RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-gcc | tee ./debug/report-gcc-riscv-zacas.log
+rm stamps/check-gcc-newlib 
+time RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-gcc | tee ./debug/report-gcc-riscv-zacas.log
+rm stamps/check-binutils-newlib 
+time RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-binutils | tee ./debug/report-binutils-riscv-zacas.log
+rm stamps/check-binutils-newlib 
+time RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-binutils | tee ./debug/report-binutils-riscv-zacas.log
+rm stamps/check-binutils-newlib 
+time RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-binutils | tee ./debug/report-binutils-riscv-zacas.log
+rm stamps/check-binutils-newlib 
+time RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-binutils | tee ./debug/report-binutils-riscv-zacas.log
+rm stamps/check-binutils-newlib 
+time RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-binutils | tee ./debug/report-binutils-riscv-zacas.log
+rm stamps/check-binutils-newlib 
+time RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-binutils | tee ./debug/report-binutils-riscv-zacas.log
+rm stamps/check-binutils-newlib 
+time RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-binutils | tee ./debug/report-binutils-riscv-zacas.log
+rm stamps/check-binutils-newlib 
+time RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-binutils | tee ./debug/report-binutils-riscv-zacas.log
+rm stamps/check-binutils-newlib 
+time RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-binutils | tee ./debug/report-binutils-riscv-zacas.log
+rm stamps/check-binutils-newlib 
+time RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-binutils | tee ./debug/report-binutils-riscv-zacas.log
+rm stamps/check-binutils-newlib 
+time RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-binutils | tee ./debug/report-binutils-riscv-zacas.log
+rm stamps/check-binutils-newlib 
+time RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-binutils | tee ./debug/report-binutils-riscv-zacas.log
+rm stamps/check-binutils-newlib 
+time RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-binutils | tee ./debug/report-binutils-riscv-zacas.log
+rm stamps/check-binutils-newlib 
+time RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-binutils | tee ./debug/report-binutils-riscv-zacas.log
+/plct/riscv-gnu-toolchain/build-toolchain-out/bin/riscv64-unknown-elf-as -march=rv64i_zacas /plct/riscv-gnu-toolchain/binutils/gas/testsuite/gas/riscv/zacas-128.s
+/plct/riscv-gnu-toolchain/build-toolchain-out/bin/riscv64-unknown-elf-objdump -dr ./a.out
+rm stamps/check-binutils-newlib 
+time RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-binutils | tee ./debug/report-binutils-riscv-zacas.log
+/plct/riscv-gnu-toolchain/build-toolchain-out/bin/riscv64-unknown-elf-as -march=rv64i_zacas /plct/riscv-gnu-toolchain/binutils/gas/testsuite/gas/riscv/zacas-64.s
+/plct/riscv-gnu-toolchain/build-toolchain-out/bin/riscv64-unknown-elf-objdump -dr ./a.out
+rm stamps/check-binutils-newlib 
+/plct/riscv-gnu-toolchain/build-toolchain-out/bin/riscv64-unknown-elf-objdump -dr ./a.out
+time RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-binutils | tee ./debug/report-binutils-riscv-zacas.log
+make clean
+time RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-gcc | tee ./debug/report-gcc-riscv-zacas.log
+time RUNTESTFLAGS=riscv.exp=zacas*.c make -j14 report-gcc | tee ./debug/report-gcc-riscv-zacas.log
+time RUNTESTFLAGS=riscv.exp=zacas*.c make -j$(nproc) report-binutils | tee ./debug/report-binutils-riscv-zacas.log
+git log
+ls
+./patch_tester.sh 
+./patch_tester.sh  --help

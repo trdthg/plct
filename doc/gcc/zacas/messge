@@ -1,0 +1,34 @@
+Author: trdthg <trdthg47@gmail.com>
+Date:   Wed Jan 3 02:12:29 2024 +0800
+
+    RISC-V: Implement ZACAS extensions
+    
+    This patch supports Zacas extension.
+    It includes instruction's machine description and built-in functions.
+    
+    gcc/ChangeLog:
+    
+            * common/config/riscv/riscv-common.cc
+            (riscv_implied_info): Add zacas extensions.
+            (riscv_ext_version_table): Likewise.
+            * config/riscv/arch-canonicalize
+            (IMPLIED_EXT): Add zacas extensions.
+            * config/riscv/iterators.md
+            (SIDI): New iterator.
+            (SIDITI): Likewise.
+            (amocas): New attribute.
+            * config/riscv/riscv-builtins.cc
+            (AVAIL): Add new.
+            * config/riscv/riscv-ftypes.def: Add new type for zacas instructions.
+            * config/riscv/riscv-zacas.def: Add ZACAS extension's built-in function file.
+            * config/riscv/riscv.md: Add new type for zacas instructions.
+            * config/riscv/riscv.opt: Add introduction of riscv_zacas_subext.
+            * config/riscv/zacas.md: Add ZACAS extension's machine description file.
+    
+    gcc/testsuite/ChangeLog:
+    
+            * gcc.target/riscv/zacas32.c: New test.
+            * gcc.target/riscv/zacas64.c: New test.
+            * gcc.target/riscv/zacas128.c: New test.
+    
+    Signed-off-by: trdthg <trdthg47@gmail.com>

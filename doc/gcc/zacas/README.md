@@ -680,8 +680,8 @@ gen_riscv_amocas_di (rtx operand0 ATTRIBUTE_UNUSED,
 /* ../.././gcc/gcc/config/riscv/sync.md:59 */
 rtx
 gen_atomic_loadsi (rtx operand0,
-	rtx operand1,
-	rtx operand2)
+ rtx operand1,
+ rtx operand2)
 {
   rtx_insn *_val = 0;
   start_sequence ();
@@ -696,10 +696,10 @@ gen_atomic_loadsi (rtx operand0,
 {
     if (TARGET_ZTSO)
       emit_insn (gen_atomic_load_ztsosi (operands[0], operands[1],
-					     operands[2]));
+          operands[2]));
     else
       emit_insn (gen_atomic_load_rvwmosi (operands[0], operands[1],
-					      operands[2]));
+           operands[2]));
     DONE;
   }
 #undef DONE
@@ -722,15 +722,15 @@ gen_atomic_loadsi (rtx operand0,
 /* ../.././gcc/gcc/config/riscv/sync-rvwmo.md:49 */
 rtx
 gen_atomic_load_rvwmosi (rtx operand0 ATTRIBUTE_UNUSED,
-	rtx operand1 ATTRIBUTE_UNUSED,
-	rtx operand2 ATTRIBUTE_UNUSED)
+ rtx operand1 ATTRIBUTE_UNUSED,
+ rtx operand2 ATTRIBUTE_UNUSED)
 {
   return gen_rtx_SET (operand0,
-	gen_rtx_UNSPEC_VOLATILE (SImode,
-	gen_rtvec (2,
-		operand1,
-		operand2),
-	75));
+ gen_rtx_UNSPEC_VOLATILE (SImode,
+ gen_rtvec (2,
+  operand1,
+  operand2),
+ 75));
 }
 
 ```
@@ -887,4 +887,75 @@ gcc/testsuite/ChangeLog:
         * gcc.target/riscv/zacas32.c: New test.
         * gcc.target/riscv/zacas64.c: New test.
         * gcc.target/riscv/zacas128.c: New test.
+```
+
+## patch 提交步骤
+
+```bash
+cd /plct/riscv-gnu-toolchain/gcc/
+
+# mklog
+pip install unidiff requests
+./contrib/mklog.py
+
+# idk
+./contrib/gcc-git-customization.sh
+# check commit
+apt install python3-git
+python3 ./contrib/gcc-changelog/git_check_commit.py
+python3 contrib/gcc-changelog/test_patches.txt 
+# 
+vim ./contrib/gcc-git-customization.sh 
+# 
+mkdir patches
+./contrib/prepare_patch.sh .
+./contrib/prepare_patch.sh .
+
+# 
+cd maintainer-scripts/
+ls
+cd ..
+cd contrib/
+ls
+./prepare_patch.sh
+./prepare_patch.sh .
+cd ..
+./contrib/prepare_patch.sh .
+ll contrib/
+ls
+cd contrib/
+ls
+cd gcc-changelog/
+ls
+cd ..
+ls
+vim gcc-git-customization.sh 
+cd ..
+git format-patch
+git log
+ls
+cd patches/
+ls
+cd ..
+ls
+git format-patch
+git format-patch --hel
+git format-patch --help
+ls
+git format-patch .
+git for
+git format-
+git format-patch
+git log
+git format-patch -1 886a17ed80088a42af0d50f87fb06a328be5dce9
+ls
+vim 0001-RISC-V-Implement-ZACAS-extensions.patch 
+git send-email
+ls
+cd contrib/
+ls
+cd ..
+ls
+cd contrib/
+ls
 ```
