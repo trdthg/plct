@@ -792,6 +792,12 @@ ifn = replacement_internal_fn
         expand_ifn_atomic_compare_exchange
 ```
 
+## QA
+
+### 为什么 builtin_type 不用之前的 DIRECT_BUILTIN?
+
+TODO
+
 ## 运行测试
 
 ```bash
