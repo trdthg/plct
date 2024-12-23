@@ -20,7 +20,7 @@
   - riscof 文档 <https://riscof.readthedocs.io>
   - [贡献指南](https://github.com/riscv-non-isa/riscv-arch-test/blob/dev/CONTRIBUTION.md)，同时注意 github pr 模板的内容
   - [riscv 指令集参考官网](https://riscv.org/technical/specifications/)
-  - [riscv 工具链]
+  - [riscv 工具链](https://github.com/riscv-collab/riscv-gnu-toolchain/releases)
 - 其他
   - [公开报告](https://space.bilibili.com/296494084/search/video?keyword=act)
   - [旧公开报告，可能已过时](https://www.bilibili.com/video/BV12Z4y1c74c?spm_id_from=333.788.videopod.episodes&vd_source=ca52b9789e5bf99cb693669e740b5c5d&p=14)
