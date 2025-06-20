@@ -10,8 +10,7 @@
     title: [Pydrofoil 分享],
     subtitle: [PyPy meta-tracing JIT],
     author: [Mingzhu Yan],
-    // date: datetime.today(),
-    date: "2025-06-25",
+    date: datetime.today(),
     institution: [PLCT Lab],
   ),
 )
@@ -187,7 +186,7 @@ PyPy 的 traceing JIT 是不寻常的，因为它不是应用于用户程序，�
 
     对于 tracing interpreter 来说，最常见的热点循环是 *bytecode dispatch loop*
 
-    对一些简单的解释起来说， 这甚至可能是唯一的热点循环
+    对一些简单的解释器来说， 这甚至可能是唯一的热点循环
   ],
 )
 
