@@ -25,19 +25,59 @@
 
 = 介绍
 
-== 摘要
+== Pydrofoil
 
-#image("image-1.png")
+#grid(
+  rows: (1.8fr, 1fr),
+  [
+    #image("image-7.png")
+  ],
+  [
+    #grid(
+      columns: (1fr, 1fr),
+      [
+        #image("image-10.png")
+      ],
+      [
+        #image("image-11.png")
+      ],
+    )
+  ],
+)
 
-- *目标* 在 PyPy 项目（一种 Python 语言实现）中针对一些动态语言（包括 Python) 的解释器程序引入 JIT 编译技术
+== Pydrofoil
 
-  > _从普通解释器生成自带 JIT 的解释器_
+#grid(
+  rows: (1fr, 1fr),
+  [
+    #image("image-9.png")
+  ],
+  [
+    #image("image-8.png")
+  ],
+)
 
-- *要解决的问题* tracing JIT 可以加速热点代码，但是将 tracing JIT 直接应用于一个字节码解释器程序，会导致非常有限的加速甚至完全*没有加速*
+== PyPy meta-tracing JIT
 
-- *方法* 展开字节码调度循环引导 tracing JIT 编译器提高字节码解释器的速度
+#grid(
+  rows: (1fr, 2fr),
+  [
+    #image("image-14.png")
+  ],
+  [
 
-  > _需要编写一个解释器, 并且依赖作者的少量提示_
+    - *目标* 在 PyPy 项目（一种 Python 语言实现）中针对一些动态语言（包括 Python) 的解释器程序引入 JIT 编译技术
+
+      > _从普通解释器生成自带 JIT 的解释器_
+
+    - *要解决的问题* tracing JIT 可以加速热点代码，但是将 tracing JIT 直接应用于一个字节码解释器程序，会导致非常有限的加速甚至完全*没有加速*
+
+    - *方法* 展开字节码调度循环引导 tracing JIT 编译器提高字节码解释器的速度
+
+      > _需要编写一个解释器, 并且依赖作者的少量提示_
+
+  ],
+)
 
 = PYPY 项目
 
@@ -61,11 +101,17 @@
 
 == PYPY 项目
 
+#image("image-13.png")
+
+#image("image-12.png")
+
+== PYPY 项目
+
 - PyPy 项目是一个可以编写动态语言灵活实现的环境。要使用 PyPy 实现动态语言，*必须用 RPython 编写该语言的解释器*
 
 - RPython ("Restricted Python") 是 Python 的一个子集，特点是可以进行类型推断
 
-  - 使用 RPython 编写的解释器可以借助 PyPy 的 translation toolchain 转换为各种目标环境，如 C/Posix、CLI 和 JVM
+  - 使用 RPython 编写的解释器可以借助 PyPy 的 translation toolchain 转换为各种目标环境，如 C/Posix、JVM 等
 
   - 通过用高级语言编写虚拟机，使语言的实现不受内存管理策略、线程模型或对象布局等低级细节的影响。这些特性在翻译过程中会自动添加
 
@@ -77,7 +123,7 @@
 
 - 然后经过一系列中间表示转换，最终得到可执行文件
 
-  - 第一个转换步骤使 Python 对象模型的细节在中间表示中显式化
+  - 第一个转换步骤使 Python 对象模型的细节转换为中间表示
 
   - 后续步骤引入垃圾收集和其他低级细节
 
@@ -93,7 +139,7 @@
 
 - 该技术也被 Mozilla 的 TraceMonkey JavaScript 虚拟机使用，并已尝试用于 Adobe 的 Tamarin ActionScript 虚拟机
 
-== tracing JIT 介绍
+== tracing JIT 特点
 
 - tracing JIT 建立在以下基本假设之上：
 
@@ -129,8 +175,10 @@
 == tracing JIT 示例
 
 #grid(
-  columns: (1fr, 1fr), // 创建两列，每列宽度为1fr（即等宽）
-  column-gutter: 1em, // 设置列间距为1em
+  columns: (1fr, 1fr),
+  // 创建两列，每列宽度为1fr（即等宽）
+  column-gutter: 1em,
+  // 设置列间距为1em
   [
     #image("image.png", width: 100%) // 插入图片，宽度设置为100%
   ],
@@ -139,7 +187,7 @@
       - `strange_sum` 循环
       - `f` 分支
     ]
-  ]
+  ],
 )
 
 == trace 示例
@@ -147,14 +195,16 @@
 首先是解释执行，当性能分析器发现 strange_sum 中的 while 循环被频繁执行时，tracing JIT 将开始追踪该循环的执行，形成 trace
 
 #grid(
-  columns: (1fr, 1fr), // 创建两列，每列宽度为1fr（即等宽）
-  column-gutter: 1em, // 设置列间距为1em
+  columns: (1fr, 1fr),
+  // 创建两列，每列宽度为1fr（即等宽）
+  column-gutter: 1em,
+  // 设置列间距为1em
   [
     #image("image.png") // 插入图片，宽度设置为100%
   ],
   [
     #image("image (1).png")
-  ]
+  ],
 )
 
 
@@ -167,7 +217,7 @@ PyPy 的 traceing JIT 是不寻常的，因为它不是应用于用户程序，�
 
 
 - language interpreter（使用 RPython 编写的语言解释器）
-- tracing interpreter（追踪语言解释器的解释器）
+- tracing interpreter（追踪语言解释器的解释器，PyPy 框架）
 - user program （用户程序）
 - user loops（用户程序中的循环）
 - interpreter loops (语言解释器中的解释执行循环)
@@ -177,11 +227,14 @@ PyPy 的 traceing JIT 是不寻常的，因为它不是应用于用户程序，�
 == tracing interpreter 示例
 
 #grid(
-  columns: (1fr, 1fr), // 创建两列，每列宽度为1fr（即等宽）
-  column-gutter: 1em, // 设置列间距为1em
+  columns: (1fr, 1fr),
+  // 创建两列，每列宽度为1fr（即等宽）
+  column-gutter: 1em,
+  // 设置列间距为1em
   [
     #image("image (2).png")
-  ], [
+  ],
+  [
     > 一个简单的字节码解释器（带有一些寄存器和一个 a）
 
     对于 tracing interpreter 来说，最常见的热点循环是 *bytecode dispatch loop*
@@ -194,14 +247,18 @@ PyPy 的 traceing JIT 是不寻常的，因为它不是应用于用户程序，�
 
 #grid(
   rows: (8fr, 1fr),
-  column-gutter: 1em, // 设置列间距为1em
+  column-gutter: 1em,
+  // 设置列间距为1em
   [
     #grid(
-      columns: (3fr, 1fr, 3fr), // 创建两列，每列宽度为1fr（即等宽）
-      column-gutter: 1em, // 设置列间距为1em
+      columns: (3fr, 1fr, 3fr),
+      // 创建两列，每列宽度为1fr（即等宽）
+      column-gutter: 1em,
+      // 设置列间距为1em
       [
         #image("image (2).png")
-      ], [
+      ],
+      [
         ```
         DECR_A
         DECR_A
@@ -210,7 +267,8 @@ PyPy 的 traceing JIT 是不寻常的，因为它不是应用于用户程序，�
         DECR_A
         ```
 
-      ], [
+      ],
+      [
 
         ```
         while true {
@@ -224,27 +282,33 @@ PyPy 的 traceing JIT 是不寻常的，因为它不是应用于用户程序，�
         循环分支断言分支几乎每次都成功
       ],
     )
-  ], [
+  ],
+  [
 
-  ]
+  ],
 )
 
 == 字节码解释执行示例
 
 #grid(
   rows: (8fr, 1fr),
-  column-gutter: 1em, // 设置列间距为1em
+  column-gutter: 1em,
+  // 设置列间距为1em
   [
     #grid(
-      columns: (1fr, 1fr, 1fr), // 创建两列，每列宽度为1fr（即等宽）
-      column-gutter: 1em, // 设置列间距为1em
+      columns: (1fr, 1fr, 1fr),
+      // 创建两列，每列宽度为1fr（即等宽）
+      column-gutter: 1em,
+      // 设置列间距为1em
       [
         #image("image (2).png")
-      ], [
+      ],
+      [
         #image("image (3).png")
 
         计算 a 的平方
-      ], [
+      ],
+      [
         ```
         function (a) {
           i = a;
@@ -258,11 +322,12 @@ PyPy 的 traceing JIT 是不寻常的，因为它不是应用于用户程序，�
         #image("image (4).png")
 
         循环分支断言分支几乎每次都失败
-      ]
+      ],
     )
-  ], [
+  ],
+  [
 
-  ]
+  ],
 )
 
 == meta-tracing JIT 的优化
@@ -274,25 +339,32 @@ PyPy 的 traceing JIT 是不寻常的，因为它不是应用于用户程序，�
 == 按照 PC 展开 user loop
 
 #grid(
-  columns: (1fr, 1fr, 1fr), // 创建两列，每列宽度为1fr（即等宽）
-  column-gutter: 1em, // 设置列间距为1em
+  columns: (1fr, 1fr, 1fr),
+  // 创建两列，每列宽度为1fr（即等宽）
+  column-gutter: 1em,
+  // 设置列间距为1em
   [
     #image("image-4.png")
-  ], [
+  ],
+  [
     #image("image-3.png")
-  ], [
+  ],
+  [
     不再按照 opcode 分支判断热点，而是按照 PC 的变化追踪整个循环运行的所有字节码
-  ]
+  ],
 )
 
 == 标记 PC
 
 #grid(
-  columns: (1fr, 1fr), // 创建两列，每列宽度为1fr（即等宽）
-  column-gutter: 1em, // 设置列间距为1em
+  columns: (1fr, 1fr),
+  // 创建两列，每列宽度为1fr（即等宽）
+  column-gutter: 1em,
+  // 设置列间距为1em
   [
     #image("image-2.png")
-  ], [
+  ],
+  [
     对变量的分类
     - greens 为 PC 相关的值
     - reds 为其他
@@ -349,15 +421,15 @@ PyPy 的 traceing JIT 是不寻常的，因为它不是应用于用户程序，�
 = 相关工作
 
 == 相关工作
-- DynamoRIO 实现了同样的解释器循环展开, 但是 tracing 是基于汇编的, 因此受到了诸多限制
+
+- DynamoRIO 实现了同样的解释器循环展开, 但是它的 tracing 是基于汇编的, 因此受到了诸多限制
   - 无法获得解释器的高级信息
-  - 需要更多的提示信息, 汇编层级无法获得字符串不可辨等信息
+  - 需要更多的提示信息, 汇编层级无法辨别字符串等信息
   - 无法实现分配移除等高级优化
 
 - 将解释器片段组合在一起, 将热点机器代码序列拼接在一起, 可以大大减轻调度开销 (这里 PyPy 通过内联 + 常量折叠已经大幅优化了调度开销)
 
-- dynamic partial
-evaluation
+- dynamic partial evaluation
 
 = 总结
 
