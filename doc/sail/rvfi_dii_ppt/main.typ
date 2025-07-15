@@ -109,49 +109,54 @@
 
 1. RVI E-Trace ("Efficient Trace") From RVI; ratified
 
-https://github.com/riscv-non-isa/riscv-trace-spec
+  https://github.com/riscv-non-isa/riscv-trace-spec
 
-- 重点在于实现高效/高压缩比的控制流追踪
-- 依赖于解码器能够访问原始的 ELF 文件 (用于映射到源代码, 或者分析未追踪的指令序列)
-- 不适合自修改代码/JIT, 因为没有 ELF 文件
-- 不捕获架构状态更新(GPRs, FPRs, CSRs) E-Trace 有一个捕获内存更新的部分
+  - 重点在于实现高效/高压缩比的控制流追踪
+  - 依赖于解码器能够访问原始的 ELF 文件 (用于映射到源代码, 或者分析未追踪的指令序列)
+  - 不适合自修改代码/JIT, 因为没有 ELF 文件
+  - 不捕获架构状态更新(GPRs, FPRs, CSRs) E-Trace 有一个捕获内存更新的部分
 
 == N-Trace
 
 2. RVI N-Trace ("Nexus Trace") From RVI; ratified
 
-https://github.com/riscv/tg-nexus-trace
+  https://github.com/riscv/tg-nexus-trace
 
-IEEE-5001(Nexus) 标准是针对嵌入式处理器开发的一种调试和跟踪标准，它基于JTAG协议，并扩展了JTAG的功能，以支持对嵌入式系统的调试
+  - IEEE-5001(Nexus) 标准是针对嵌入式处理器开发的一种调试和跟踪标准，它基于JTAG协议，并扩展了JTAG的功能，以支持对嵌入式系统的调试
 
-类似于 E-Trace 主要用于调试
+  类似于 E-Trace，但是主要用于调试
 
 == RVFI / RVFI-DII / RVVI
 
 3. RVFI ("RISC-V Formal Verification Interface") From SymbioticEDA
 
-  以每周期指令退休（instruction retirement per cycle）为粒度，输出处理器在每个周期所退休指令的完整状态信息。
+  - 以每周期指令退休（instruction retirement per cycle）为粒度，输出处理器在每个周期所退休指令的完整状态信息。
 
 6. RVFI-DII ("Risc-V Formal Interface - Direct Instruction Injection") From CTSRD-CHERI
 
-  基于 RVFI, 扩展了一个 instruction trace format, 规范化了 execution trace 的数据包格式
+  - 基于 RVFI, 扩展了一个 instruction trace format, 规范化了 execution trace 的数据包格式
 
 4. RVVI ("RISC-V Verification Interface") Used by OpenHWGroup.
 
-- README 种自称为 RVFI 的超集
-- 记录的数据太多, 例如包含了所有的 GPR, FPR, CSR
+  - RVFI 的超集
+  - 记录的数据太多, 例如包含了所有的 GPR, FPR, CSR
 
 == Bluespec Trace Protocol
 
 
 5. "Trace Protocol" From Bluespec, Inc. (but ready to contribute this spec to RVI as an open spec)
 
-- 二进制格式
-- 字段是可选的，因此可以支持从最小跟踪到详细跟踪
-- 可以捕获所有标准架构状态更新（尚未包含向量）
-- 可以捕获陷阱/终端
-- 可以捕获额外的中间状态
-- 已经应用在 Bluespec 内部多个硬件设计和模拟器实现中
+  - 二进制格式
+
+  - 字段是可选的，因此可以支持从最小跟踪到详细跟踪
+
+  - 可以捕获所有标准架构状态更新（尚未包含向量）
+
+  - 可以捕获陷阱/终端
+
+  - 可以捕获额外的中间状态
+
+  - 已经应用在 Bluespec 内部多个硬件设计和模拟器实现中
 
 = RVFI-DII 协议介绍及 Sail 实现分析
 
