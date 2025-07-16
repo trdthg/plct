@@ -79,11 +79,11 @@
 
 == 六种 Trace 格式
 
-1. RVI E-Trace ("Efficient Trace") From RVI; ratified
+1. E-Trace ("Efficient Trace") From RVI; ratified
 
   https://github.com/riscv-non-isa/riscv-trace-spec
 
-2. RVI N-Trace ("Nexus Trace") From RVI; ratified
+2. N-Trace ("Nexus Trace") From RVI; ratified
 
   https://github.com/riscv/tg-nexus-trace
 
@@ -107,7 +107,7 @@
 
 == E-Trace
 
-1. RVI E-Trace ("Efficient Trace") From RVI; ratified
+1. E-Trace ("Efficient Trace") From RVI; ratified
 
   https://github.com/riscv-non-isa/riscv-trace-spec
 
@@ -118,7 +118,7 @@
 
 == N-Trace
 
-2. RVI N-Trace ("Nexus Trace") From RVI; ratified
+2. N-Trace ("Nexus Trace") From RVI; ratified
 
   https://github.com/riscv/tg-nexus-trace
 
@@ -250,6 +250,8 @@ RVFI-DII 由两个数据包结构组成，旨在通过套接字发送。
         RVVI
       ][
         #image("image-14.png")
+      ][
+        #image("image-23.png")
       ]
     ],
   )
