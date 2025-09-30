@@ -1,0 +1,25 @@
+From a138438a34656da3812b894b4c4f35d5bef697f1 Mon Sep 17 00:00:00 2001
+From: Mingzhu Yan <yanmingzhu@iscas.ac.cn>
+Date: Tue, 30 Sep 2025 02:24:59 +0000
+Subject: [PATCH] Pass REF to emu
+
+---
+ Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile b/Makefile
+index c170be032..1e7db3e66 100644
+--- a/Makefile
++++ b/Makefile
+@@ -274,7 +274,7 @@ reformat:
+ 
+ # verilator simulation
+ emu: sim-verilog
+-	$(MAKE) -C ./difftest emu SIM_TOP=SimTop DESIGN_DIR=$(NOOP_HOME) NUM_CORES=$(NUM_CORES) RTL_SUFFIX=$(RTL_SUFFIX)
++	$(MAKE) -C ./difftest emu SIM_TOP=SimTop DESIGN_DIR=$(NOOP_HOME) NUM_CORES=$(NUM_CORES) RTL_SUFFIX=$(RTL_SUFFIX) REF=$(REF)
+ 
+ emu-run: emu
+ 	$(MAKE) -C ./difftest emu-run SIM_TOP=SimTop DESIGN_DIR=$(NOOP_HOME) NUM_CORES=$(NUM_CORES) RTL_SUFFIX=$(RTL_SUFFIX)
+-- 
+2.43.0
+

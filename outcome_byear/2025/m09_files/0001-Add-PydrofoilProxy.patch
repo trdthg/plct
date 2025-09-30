@@ -1,0 +1,46 @@
+From fecd929128f5b5e7d2371946fb89ef1ddbd28b5f Mon Sep 17 00:00:00 2001
+From: Mingzhu Yan <yanmingzhu@iscas.ac.cn>
+Date: Tue, 30 Sep 2025 02:25:25 +0000
+Subject: [PATCH] Add PydrofoilProxy
+
+---
+ src/test/csrc/difftest/refproxy.cpp | 5 +++++
+ src/test/csrc/difftest/refproxy.h   | 6 ++++++
+ 2 files changed, 11 insertions(+)
+
+diff --git a/src/test/csrc/difftest/refproxy.cpp b/src/test/csrc/difftest/refproxy.cpp
+index 3dd5daaa..f3bbcda8 100644
+--- a/src/test/csrc/difftest/refproxy.cpp
++++ b/src/test/csrc/difftest/refproxy.cpp
+@@ -323,6 +323,11 @@ NemuProxy::NemuProxy(int coreid, size_t ram_size) : RefProxy(coreid, ram_size, N
+ SpikeProxy::SpikeProxy(int coreid, size_t ram_size)
+     : RefProxy(coreid, ram_size, SPIKE_ENV_VARIABLE, SPIKE_SO_FILENAME) {}
+ 
++#define PYDROFOIL_ENV_VARIABLE "PYDROFOIL_HOME"
++#define PYDROFOIL_SO_FILENAME  "pypy_c_pydrofoil_riscv.so"
++PydrofoilProxy::PydrofoilProxy(int coreid, size_t ram_size)
++    : RefProxy(coreid, ram_size, PYDROFOIL_ENV_VARIABLE, PYDROFOIL_SO_FILENAME) {}
++
+ LinkedProxy::LinkedProxy(int coreid, size_t ram_size) : RefProxy(coreid, ram_size) {
+   if (NUM_CORES > 1) {
+     printf("LinkedProxy does not support NUM_CORES(%d) > 1. Please use other REFs.\n", NUM_CORES);
+diff --git a/src/test/csrc/difftest/refproxy.h b/src/test/csrc/difftest/refproxy.h
+index 20dd65d9..d9fdb6a1 100644
+--- a/src/test/csrc/difftest/refproxy.h
++++ b/src/test/csrc/difftest/refproxy.h
+@@ -417,6 +417,12 @@ public:
+   ~NemuProxy() {}
+ };
+ 
++class PydrofoilProxy : public RefProxy {
++public:
++  PydrofoilProxy(int coreid, size_t ram_size = 0);
++  ~PydrofoilProxy() {}
++};
++
+ class SpikeProxy : public RefProxy {
+ public:
+   SpikeProxy(int coreid, size_t ram_size = 0);
+-- 
+2.43.0
+
