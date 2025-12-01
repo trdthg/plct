@@ -1,0 +1,5 @@
+An Efficient Approach to Apply the RISC-V Sail Model to Chip Verification
+
+The Sail RISC-V Model can generate an executable file from its formal specification, and Sail has already been used in riscv-arch-test (ACT). However, ACT only provides limited test cases and cannot comprehensively test your RISC-V implementation.
+Some chips may use self-developed simulators for testing, but they cannot obtain formal verification-based guarantees like RISC-V Sail Model, nor can they offer full configurability.
+This work introduces a new test framework that uses the RISC-V Sail Model as the ref model, ensuring the model's completeness and accuracy. To improve simulation performance, we choose to use Pydrofoil, which is an improved version of the Sail Model that delivers ultra-high performance. To enhance test compatibility and usability, we provide a set of simple test interfaces (including register access, memory access, etc.) and support customizing model configurations. Currently, it has successfully integrated tests for some open-source RISC-V implementations.
