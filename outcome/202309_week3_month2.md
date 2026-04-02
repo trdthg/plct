@@ -8,7 +8,7 @@ mugen
 - 运行截图：![mugen_run_in_openqa](202309_week3/mugen_run_in_openqa.png)
 - 结果：qemu 内存爆，即使有 post_fail_hook 也无法输出日志 // NOTE
 
-  ![Alt text](./202309_week3/mugen_run_in_openqa_failed.png)
+  ![Alt text](https://gitee.com/plct_backup/weekly_trdthg/blob/main/outcome/202309_week3/mugen_run_in_openqa_failed.png)
 
 ## 其他
 

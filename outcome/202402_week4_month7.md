@@ -9,7 +9,7 @@
 
 ## eulaceura
 
-- 使用 qemu 测试 eulaceura 图形化界面，firefox 浏览器能够正常运行 [运行截图](./202402_week1-3/1.png)
+- 使用 qemu 测试 eulaceura 图形化界面，firefox 浏览器能够正常运行 [运行截图](https://gitee.com/plct_backup/weekly_trdthg/blob/main/outcome/202402_week1-3/1.png)
 - 测试 eulaceura 提供的 bootfw 无法启动 23H1 系统，更换未 oerv 提供的 bios 可以正常启动，相关 [issue](https://gitee.com/eulaceura/bootfw-rvboards/issues/I961DZ)
 
 ## autotest
@@ -18,4 +18,4 @@
 
 ## dynamoRIO
 
-- 交叉编译，测试 [文档](../doc/dynamoRIO/README.md)
+- 交叉编译，测试 [文档](https://gitee.com/plct_backup/weekly_trdthg/blob/main/doc/dynamoRIO/README.md)

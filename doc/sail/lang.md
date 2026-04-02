@@ -536,7 +536,7 @@ int('o) 类型是一个整数，正好等于 int-kinded 类型变量 'n，即 in
 
 如果满足下图中总结的规则 (通过约束求解)，这些类型可以互换使用。
 
-![numberic_type](./assets/numberic_type.png)
+![numberic_type](https://gitee.com/plct_backup/weekly_trdthg/blob/main/doc/sail/assets/numberic_type.png)
 
 请注意，bit 不是数值类型 (即它不是 range(0, 1)。这是有意为之的，否则可以编写像 `(1: bit) + 5` 这样的表达式，最终等于 `6: range(5, 6)`。这种从位到其他数值类型的隐式转换是非常不可取的。位类型本身是具有成员 bitzero 和 bitone 的双元素类型。
 
@@ -550,7 +550,7 @@ let v : vector(3, dec, int) = [1, 2, 3]
 
 vector 类型的第一个参数是表示向量长度的数值表达式，最后一个参数是向量元素的类型。但第二个参数是什么？Sail 允许两种不同类型的向量排序 - 增加 (inc) 和减少 (dec)。下面显示了位向量 `0b10110000` 的这两个排序。
 
-![vector_order.png](./assets/vector_order.png)
+![vector_order.png](https://gitee.com/plct_backup/weekly_trdthg/blob/main/doc/sail/assets/vector_order.png)
 
 对于递增 (位) 向量，索引为 0 处是最有效位，索引向最低有效位增加。而对于递减 (位) 向量，最低有效位的索引为 0，索引从最高有效位减少到最低有效位。因此，增加索引有时称为 "最高有效位为零" 或 MSB0，而减少索引有时称为 "最低有效位为零" 或 LSB0。虽然这种向量排序对位向量最有意义 (通常称为位排序)，但在 Sail 中，它适用于所有向量。可以使用以下命令设置默认顺序
 

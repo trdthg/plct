@@ -3,7 +3,7 @@
 ## ruyi
 
 - 认领 dart risc-v 调研
-  - [交叉编译初步调查](../doc/ruyi/vscode-dart/README.md)
+  - [交叉编译初步调查](https://gitee.com/plct_backup/weekly_trdthg/blob/main/doc/ruyi/vscode-dart/README.md)
 
 ## [autotest](https://github.com/trdthg/t-autotest)
 

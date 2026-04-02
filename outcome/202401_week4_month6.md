@@ -4,11 +4,11 @@
 
 ### 调研
 
-- 调研 [基于 VSCode 以任一个 demo 走通 RUST RISC-V 交叉编译和运行过程](https://github.com/ruyisdk/pmd/issues/7): [文档](../doc/ruyi/vscode-rust.md)
+- 调研 [基于 VSCode 以任一个 demo 走通 RUST RISC-V 交叉编译和运行过程](https://github.com/ruyisdk/pmd/issues/7): [文档](https://gitee.com/plct_backup/weekly_trdthg/blob/main/doc/ruyi/vscode-rust.md)
 - 完成 lldb 调试器和 gdb 调试器调研，文档同上
 - 附带基于 vscode 远程调试树莓派 (arm), 文档同上
 
-- 调研开发板操作系统支持情况：文档 (../doc/ruyi/board-os-support.md)
+- 调研开发板操作系统支持情况：文档 (.[./doc/ruyi/board-os-support.md](https://gitee.com/plct_backup/weekly_trdthg/blob/main/outcome/doc/ruyi/board-os-support.md))
 
 ## [autotest](https://github.com/trdthg/t-autotest)
 

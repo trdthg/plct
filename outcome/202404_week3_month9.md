@@ -8,7 +8,7 @@
 
 ## autotest
 
-- 准备编写部分系统相关测试脚本 [doc](https://github.com/trdthg/plct/blob/main/outcome/202404_week3/README.md)
+- 准备编写部分系统相关测试脚本 [doc](https://gitee.com/plct_backup/weekly_trdthg/blob/main/outcome/202404_week3/README.md)
 
 - feature
   - vnc 自动重连 [commit](https://github.com/trdthg/t-autotest/commit/42cab912117106ebbf60fa4464d1ffe1e879c4cb)

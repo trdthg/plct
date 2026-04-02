@@ -4,7 +4,7 @@
 
 ## 本周工作
 
-- 参加周三技术分享，[openQA 自动化测试框架简介及应用.pptx](./202310_week2/openQA%20自动化测试框架简介及应用.pptx)
+- 参加周三技术分享，[openQA 自动化测试框架简介及应用.pptx](https://gitee.com/plct_backup/weekly_trdthg/blob/main/outcome/202310_week2/openQA%20自动化测试框架简介及应用.pptx)
 - 修改 oerv_tests 测试失败重试策略为重启，调整其他相关脚本的路径问题
 - oerv_tests 支持通过环境变量运行自定义脚本，解决 rc5 镜像软件源问题
   - <https://gitee.com/yunxiangluo/os-autoinst-distri-openeuler/pulls/4>

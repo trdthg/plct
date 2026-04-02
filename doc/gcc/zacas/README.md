@@ -583,8 +583,8 @@ void foo1(__int128 rd, __int128 rs2, __int128 *rs1) {
 
 ```
 
-[succ](./succ.rtl)
-[fail](./fail.rtl)
+[succ](https://gitee.com/plct_backup/weekly_trdthg/blob/main/doc/gcc/zacas/succ.rtl)
+[fail](https://gitee.com/plct_backup/weekly_trdthg/blob/main/doc/gcc/zacas/fail.rtl)
 
 生成的 succ 里是 mem，fail 则是 subreg, set 或 clobber. 似乎不是很容易查看，下面简化一些：
 

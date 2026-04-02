@@ -19,7 +19,7 @@ openQA 可以在 test suites 下为每一个测试之间设置依赖关系。依
 
 1. 在 test suites 下为用例添加新的环境变量：
 
-    ![Alt text](./202310_week1/image.png)
+    ![Alt text](https://gitee.com/plct_backup/weekly_trdthg/blob/main/outcome/202310_week1/image.png)
 
 2. 在 job group 中同时添加两个测试（被依赖的任务必须有）:
 
@@ -52,7 +52,7 @@ openQA 可以在 test suites 下为每一个测试之间设置依赖关系。依
 
     测试运行后应该多出一个 Dependencies tab 栏，显示任务间的关系：
 
-    ![Alt text](./202310_week1/image-1.png)
+    ![Alt text](https://gitee.com/plct_backup/weekly_trdthg/blob/main/outcome/202310_week1/image-1.png)
 
 ### 支持库情况
 
@@ -140,15 +140,15 @@ openQA 网络环境有三种
     zypper -n in wicked
     ```
 
-    ![Alt text](./202310_week1/image-2.png)
-    ![Alt text](./202310_week1/image-3.png)
+    ![Alt text](https://gitee.com/plct_backup/weekly_trdthg/blob/main/outcome/202310_week1/image-2.png)
+    ![Alt text](https://gitee.com/plct_backup/weekly_trdthg/blob/main/outcome/202310_week1/image-3.png)
 
 3. 配置 tap 网络
 
     - 使用官方提供的脚本（不建议）：<https://github.com/os-autoinst/os-autoinst/blob/master/script/os-autoinst-setup-multi-machine>，需要根据自己的网络情况，替换网卡配置（default=br0）为 eth0|enp0s3 等，网桥配置（default=br1）
     - 参考教程：<http://open.qa/docs/#_multi_machine_test_setup>
        注意事项：
-       - 下图中的防火墙配置 interface 需要根据网卡更改，xml 文件的功能与下面的 firewall-cmd 命令功能相同 ![Alt text](./202310_week1/image-4.png)
+       - 下图中的防火墙配置 interface 需要根据网卡更改，xml 文件的功能与下面的 firewall-cmd 命令功能相同 ![Alt text](https://gitee.com/plct_backup/weekly_trdthg/blob/main/outcome/202310_week1/image-4.png)
 
     - 对官方文档补充解释
         1. 创建启动虚拟交换机，创建网桥，配置网桥

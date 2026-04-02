@@ -2,7 +2,7 @@
 
 ## qtrvsim
 
-- 技术分享 ppt [qtrvsim 语法分析器实现及 bug 修复.ppt](https://github.com/trdthg/plct/blob/main/outcome/202404_week1/qtrvsim%20语法分析器实现及%20bug%20修复.ppt)
+- 技术分享 ppt [qtrvsim 语法分析器实现及 bug 修复.ppt](https://gitee.com/plct_backup/weekly_trdthg/blob/main/outcome/202404_week1/qtrvsim%20语法分析器实现及%20bug%20修复.ppt)
 
 ## eulaceura
 
